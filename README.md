@@ -1,10 +1,10 @@
 # Terrible Angular Template 
 ...with Firebase authentication wired in
 
-[![build status](https://github.com/peavers/terrible-angular-template/workflows/Main/badge.svg)](https://github.com/peavers/terrible-angular-template/actions)
+[![build status](https://github.com/peavers/terrible-spa/workflows/Main/badge.svg)](https://github.com/peavers/terrible-spa/actions)
 
 ## Demo
-https://terrible-angular-template.web.app
+https://terrible-spa.web.app
 
 ## Authentication
 Firebase already installed, just add your configuration to the `environment.ts` file, enable your authentication provider in firebase
