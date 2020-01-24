@@ -3,11 +3,29 @@
 html,
 body {
   height: 100%;
-  background-color: #f4f7fa;
+  background-color: #fcfcfc;
 }
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+h1 {
+  margin-bottom: 27px;
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  color: #294661;
+}
+
+h2 {
+  margin-bottom: 18px;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -.5px;
+  font-weight: 600;
+  color: #294661;
 }
