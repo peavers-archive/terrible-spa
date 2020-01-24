@@ -18,7 +18,8 @@ import { MaterialModule } from "./material.module";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ],
   entryComponents: [],
   providers: [MaterialModule]

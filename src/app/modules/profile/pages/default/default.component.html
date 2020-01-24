@@ -9,7 +9,6 @@
         <mat-tab-group animationDuration="0" dynamicHeight>
           <mat-tab label="Account">
             <div class="tab-body-content">
-
               <div class="columns">
                 <div class="column is-3">
                   <h2 class="header">Your account</h2>
@@ -23,7 +22,7 @@
                       </div>
                       <div class="column is-10">
                         <div class="edit-button">
-                          <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+                          <mat-icon fontSet="material-icons-outlined" (click)="editAbout()">edit</mat-icon>
                         </div>
                         <div class="content">
                           <span>{{ user.displayName }}</span>
@@ -42,7 +41,7 @@
                       </div>
                       <div class="column is-10">
                         <div class="edit-button">
-                         <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+                          <mat-icon fontSet="material-icons-outlined" (click)="editAccount()">edit</mat-icon>
                         </div>
                         <div class="content">
                           <span>{{ user.uid }}</span>
@@ -58,7 +57,7 @@
                       </div>
                       <div class="column is-10">
                         <div class="edit-button">
-                         <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+                          <mat-icon fontSet="material-icons-outlined" (click)="editTimezone()">edit</mat-icon>
                         </div>
                         <div class="content">
                           <span>{{ timezone }}</span>
@@ -72,10 +71,7 @@
           </mat-tab>
 
           <mat-tab label="System Settings">
-
-
             <div class="tab-body-content">
-
               <div class="columns">
                 <div class="column is-3">
                   <h2 class="header">Files</h2>
@@ -89,7 +85,7 @@
                       </div>
                       <div class="column is-10">
                         <div class="edit-button">
-                         <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+                          <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
                         </div>
                         <div class="content">
                           <span>/Volumes/media/Movies</span>
@@ -104,11 +100,11 @@
                   <div class="stacked-card">
                     <div class="columns is-multiline">
                       <div class="column is-2">
-                        <div class="title">Frequency</div>
+                        <div class="title">Scan Frequency</div>
                       </div>
                       <div class="column is-10">
                         <div class="edit-button">
-                         <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+                          <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
                         </div>
                         <div class="content">
                           <span>Every 5 minutes</span>
@@ -116,11 +112,9 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
-
           </mat-tab>
         </mat-tab-group>
       </div>

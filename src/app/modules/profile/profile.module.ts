@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared';
-import { DefaultComponent } from './pages/default/default.component';
-import { RoutingModule } from './profile.routing';
-import { MaterialModule } from "../../shared/material.module";
+import { NgModule } from "@angular/core";
+import { SharedModule } from "../../shared";
+import { DefaultComponent } from "./pages/default/default.component";
+import { RoutingModule } from "./profile.routing";
+import { EditDialogComponent } from "./components/edit-dialog/edit-dialog.component";
 
 @NgModule({
-  declarations: [DefaultComponent],
-  imports: [SharedModule, RoutingModule, MaterialModule],
+  declarations: [DefaultComponent, EditDialogComponent],
+  imports: [SharedModule, RoutingModule],
   exports: [],
-  entryComponents: []
+  entryComponents: [EditDialogComponent]
 })
-export class ProfileModule {}
+export class ProfileModule {
+}
