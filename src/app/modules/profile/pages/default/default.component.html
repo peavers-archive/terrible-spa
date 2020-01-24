@@ -1,0 +1,14 @@
+<div class="section" *ngIf="user">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-offset-4 is-4 has-text-centered">
+
+        <p>{{ user.displayName }}</p>
+
+        <p>
+          <small>{{ user.email }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

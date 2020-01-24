@@ -1,0 +1,27 @@
+<nav aria-label="main navigation" class="navbar is-fixed-top scrolling" role="navigation">
+  <div class="navbar-item">
+
+  </div>
+
+  <div class="navbar-item">
+
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+
+    </div>
+
+    <div class="navbar-item">
+      <div class="profile-button">
+        <button [matMenuTriggerFor]="settingsMenu" mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<mat-menu #settingsMenu="matMenu">
+  <button (click)="googleLogout()" mat-menu-item>Logout</button>
+</mat-menu>
