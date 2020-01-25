@@ -1,8 +1,8 @@
-<h1 mat-dialog-title>{{ data.title }}</h1>
+<h1 mat-dialog-title>{{ input.title }}</h1>
 
 <div mat-dialog-content>
   <div class="columns is-multiline">
-    <div class="column is-12" *ngFor="let field of data.formFields">
+    <div class="column is-12" *ngFor="let field of input.formFields">
       <mat-form-field class="is-fullwidth" shouldLabelFloat="false">
         <input matInput [value]="field.value" placeholder="{{ field.placeholder }}" disabled="{{ field.disabled }}"/>
       </mat-form-field>
@@ -11,9 +11,9 @@
 </div>
 
 <div mat-dialog-actions>
-  <button (click)="onNoClick()" mat-button color="primary">{{ data.cancelText }}</button>
+  <button (click)="onNoClick()" mat-button color="primary">{{ input.cancelText }}</button>
 
   <button (click)="submit()" [mat-dialog-close]="true" mat-raised-button color="primary">
-    {{ data.confirmText }}
+    {{ input.confirmText }}
   </button>
 </div>

@@ -10,11 +10,13 @@ import { EditDialogData } from "../../../../core/domain/modules";
 })
 export class EditDialogComponent {
 
+  input: EditDialogData;
+
   constructor(
     private dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: EditDialogData
   ) {
-    console.log(data)
+    this.input = data;
   }
 
   submit() {
