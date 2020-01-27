@@ -4,7 +4,7 @@
   <div class="columns is-multiline">
     <div class="column is-12" *ngFor="let field of input.formFields">
       <mat-form-field class="is-fullwidth" shouldLabelFloat="false">
-        <input matInput [value]="field.value" [placeholder]="field.placeholder" [readonly]="field.isReadOnly"/>
+        <input matInput [value]="field.value" placeholder="{{ field.placeholder }}" [readonly]="field.isReadOnly"/>
       </mat-form-field>
     </div>
   </div>

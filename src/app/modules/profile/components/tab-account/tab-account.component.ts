@@ -34,14 +34,14 @@ export class TabAccountComponent implements OnInit {
           ngModel: "",
           value: this.user.displayName,
           placeholder: "Name",
-          disabled: false
+          isReadOnly: false
         },
         {
           label: "Email",
           ngModel: "",
           value: this.user.email,
           placeholder: "Email",
-          disabled: false
+          isReadOnly: false
         }
       ]
     };
@@ -64,7 +64,7 @@ export class TabAccountComponent implements OnInit {
           ngModel: "",
           value: this.user.uid,
           placeholder: "Unique identifier",
-          disabled: true
+          isReadOnly: true
         }
       ]
     };
@@ -87,7 +87,7 @@ export class TabAccountComponent implements OnInit {
           ngModel: "",
           value: this.timezone,
           placeholder: "Name",
-          disabled: false
+          isReadOnly: false
         }
       ]
     };

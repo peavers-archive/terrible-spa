@@ -13,5 +13,5 @@ export interface FormField {
   ngModel?: string,
   value?: any,
   placeholder?: string,
-  disabled: boolean
+  isReadOnly: boolean
 }

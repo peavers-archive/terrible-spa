@@ -57,6 +57,13 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
   padding-top: 22px !important;
 }
 
+.mat-dialog-content {
+overflow: visible !important;
+}
+
+.mat-form-field-infix {
+  font-size: 13px !important;
+}
 
 // Forms
 .mat-form-field {
