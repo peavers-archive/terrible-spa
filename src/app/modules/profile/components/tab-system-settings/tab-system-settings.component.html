@@ -14,11 +14,8 @@
             <div class="edit-button">
               <mat-icon fontSet="material-icons-outlined" (click)="editDirectories()">edit</mat-icon>
             </div>
-            <div class="content">
-              <span>/Volumes/media/Movies</span>
-            </div>
-            <div class="content">
-              <span>/Volumes/media/Tv</span>
+            <div class="content" *ngFor="let directory of directories | async ">
+              <span>{{directory.path}}</span>
             </div>
           </div>
         </div>

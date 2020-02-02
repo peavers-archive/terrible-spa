@@ -15,3 +15,8 @@ export interface FormField {
   placeholder?: string,
   isReadOnly: boolean
 }
+
+export interface Directory {
+  id: string,
+  path?: string,
+}

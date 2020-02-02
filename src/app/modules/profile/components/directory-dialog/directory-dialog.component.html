@@ -1,10 +1,31 @@
-<h1 mat-dialog-title>{{ input.title }}</h1>
+<div class="level">
+  <div class="level-left">
+    <div class="level-item">
+      <h1 mat-dialog-title>{{ input.title }}</h1>
+    </div>
+  </div>
+
+  <div class="level-right">
+    <div class="level-item">
+      <button mat-icon-button (click)="addField()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
 
 <div mat-dialog-content>
   <div class="columns is-multiline">
     <div class="column is-12" *ngFor="let field of input.formFields">
       <mat-form-field class="is-fullwidth" shouldLabelFloat="false">
-        <input matInput [value]="field.value" placeholder="{{ field.placeholder }}" [readonly]="field.isReadOnly"/>
+        <mat-label>{{field.label}}</mat-label>
+
+        <input matInput [value]="field.value" [(ngModel)]="field.ngModel" [placeholder]="field.placeholder"
+               [readonly]="field.isReadOnly"/>
+
+        <mat-icon matSuffix fontSet="material-icons-outlined" (click)="deleteField(field)">delete</mat-icon>
+
       </mat-form-field>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { EditDialogData } from "../../../../core/domain/modules";
+import { EditDialogData, FormField } from "../../../../core/domain/modules";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 
 @Component({
@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
   styleUrls: ["./directory-dialog.component.scss"]
 })
 export class DirectoryDialogComponent implements OnInit {
+
   input: EditDialogData;
 
   constructor(
@@ -18,7 +19,7 @@ export class DirectoryDialogComponent implements OnInit {
   }
 
   submit() {
-    this.dialogRef.close();
+    this.dialogRef.close(this.input);
   }
 
   onNoClick() {
@@ -26,14 +27,20 @@ export class DirectoryDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const newField = {
+
+  }
+
+  addField() {
+    this.input.formFields.push({
       label: "Absolute path",
       ngModel: "",
       value: "",
       placeholder: "Absolute path",
       isReadOnly: false
-    };
+    });
+  }
 
-    this.data.formFields.unshift(newField);
+  deleteField(field: FormField) {
+    this.input.formFields = this.input.formFields.filter(f => f != field);
   }
 }

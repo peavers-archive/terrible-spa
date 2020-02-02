@@ -13,6 +13,7 @@ import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, ContentLayoutComponent, NavbarComponent, LoginComponent],
@@ -23,6 +24,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
     AngularFireAuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     SharedModule,
     MaterialModule
   ],
