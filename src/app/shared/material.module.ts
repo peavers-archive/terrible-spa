@@ -36,7 +36,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
-import { NgModule } from "@angular/core";
+import { NgModule, Injectable } from "@angular/core";
 
 @NgModule({
   exports: [
