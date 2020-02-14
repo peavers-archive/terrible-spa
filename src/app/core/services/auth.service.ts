@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/auth";
-import { auth, User } from "firebase/app";
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth, User } from 'firebase/app';
 
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthService {
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
@@ -14,16 +14,16 @@ export class AuthService {
   doGoogleLogin() {
     return new Promise<any>(resolve => {
       const provider = new auth.GoogleAuthProvider();
-      provider.addScope("profile");
-      provider.addScope("email");
+      provider.addScope('profile');
+      provider.addScope('email');
 
       this.angularFireAuth.auth.signInWithPopup(provider).then(
         response => {
           resolve(response);
-          this.router.navigate(["/"]);
+          this.router.navigate(['/']);
         },
         error => {
-          console.log("Unable to communicate with Google", error);
+          console.log('Unable to communicate with Google', error);
         }
       );
     });
@@ -34,8 +34,8 @@ export class AuthService {
   }
 
   public logout() {
-    this.angularFireAuth.auth.signOut().then(() => console.log("Bye!"));
+    this.angularFireAuth.auth.signOut().then(() => console.log('Bye!'));
 
-    this.router.navigate(["/login"]);
+    this.router.navigate(['/login']);
   }
 }

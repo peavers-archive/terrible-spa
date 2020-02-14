@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { AuthService } from "../../core/services/auth.service";
-import { User } from "firebase";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
+import { User } from 'firebase';
 
 @Component({
-  selector: "app-navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.scss"]
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 

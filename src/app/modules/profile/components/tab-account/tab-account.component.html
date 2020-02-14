@@ -12,7 +12,7 @@
           </div>
           <div class="column is-10">
             <div class="edit-button">
-              <mat-icon fontSet="material-icons-outlined" (click)="editAbout()">edit</mat-icon>
+              <mat-icon (click)="editAbout()" fontSet="material-icons-outlined">edit</mat-icon>
             </div>
             <div class="content">
               <span>{{ user.displayName }}</span>
@@ -31,7 +31,7 @@
           </div>
           <div class="column is-10">
             <div class="edit-button">
-              <mat-icon fontSet="material-icons-outlined" (click)="editAccount()">edit</mat-icon>
+              <mat-icon (click)="editAccount()" fontSet="material-icons-outlined">edit</mat-icon>
             </div>
             <div class="content">
               <span>{{ user.uid }}</span>
@@ -47,7 +47,7 @@
           </div>
           <div class="column is-10">
             <div class="edit-button">
-              <mat-icon fontSet="material-icons-outlined" (click)="editTimezone()">edit</mat-icon>
+              <mat-icon (click)="editTimezone()" fontSet="material-icons-outlined">edit</mat-icon>
             </div>
             <div class="content">
               <span>{{ timezone }}</span>

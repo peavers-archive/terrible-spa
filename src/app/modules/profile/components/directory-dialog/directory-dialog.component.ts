@@ -1,11 +1,11 @@
-import { Component, Inject, OnInit } from "@angular/core";
-import { EditDialogData, FormField } from "../../../../core/domain/modules";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Component, Inject, OnInit } from '@angular/core';
+import { EditDialogData, FormField } from '../../../../core/domain/modules';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: "app-directory-dialog",
-  templateUrl: "./directory-dialog.component.html",
-  styleUrls: ["./directory-dialog.component.scss"]
+  selector: 'app-directory-dialog',
+  templateUrl: './directory-dialog.component.html',
+  styleUrls: ['./directory-dialog.component.scss']
 })
 export class DirectoryDialogComponent implements OnInit {
 
@@ -32,10 +32,10 @@ export class DirectoryDialogComponent implements OnInit {
 
   addField() {
     this.input.formFields.push({
-      label: "Absolute path",
-      ngModel: "",
-      value: "",
-      placeholder: "Absolute path",
+      label: 'Absolute path',
+      ngModel: '',
+      value: '',
+      placeholder: 'Absolute path',
       isReadOnly: false
     });
   }

@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {User} from "firebase";
-import {EditDialogData} from "../../../../core/domain/modules";
-import {EditDialogComponent} from "../edit-dialog/edit-dialog.component";
-import {MatDialog} from "@angular/material/dialog";
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'firebase';
+import { EditDialogData } from '../../../../core/domain/modules';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tab-account',
@@ -24,76 +24,76 @@ export class TabAccountComponent implements OnInit {
 
   editAbout() {
     let dialogData: EditDialogData = {
-      title: "About",
-      confirmText: "Save",
-      cancelText: "Cancel",
+      title: 'About',
+      confirmText: 'Save',
+      cancelText: 'Cancel',
 
       formFields: [
         {
-          label: "Name",
-          ngModel: "",
+          label: 'Name',
+          ngModel: '',
           value: this.user.displayName,
-          placeholder: "Name",
+          placeholder: 'Name',
           isReadOnly: false
         },
         {
-          label: "Email",
-          ngModel: "",
+          label: 'Email',
+          ngModel: '',
           value: this.user.email,
-          placeholder: "Email",
+          placeholder: 'Email',
           isReadOnly: false
         }
       ]
     };
 
     this.dialog.open(EditDialogComponent, {
-      width: "35vw",
+      width: '35vw',
       data: dialogData
     });
   }
 
   editAccount() {
     let dialogData: EditDialogData = {
-      title: "Account",
-      confirmText: "Save",
-      cancelText: "Close",
+      title: 'Account',
+      confirmText: 'Save',
+      cancelText: 'Close',
 
       formFields: [
         {
-          label: "Account Id",
-          ngModel: "",
+          label: 'Account Id',
+          ngModel: '',
           value: this.user.uid,
-          placeholder: "Unique identifier",
+          placeholder: 'Unique identifier',
           isReadOnly: true
         }
       ]
     };
 
     this.dialog.open(EditDialogComponent, {
-      width: "35vw",
+      width: '35vw',
       data: dialogData
     });
   }
 
   editTimezone() {
     let dialogData: EditDialogData = {
-      title: "Timezone",
-      confirmText: "Save",
-      cancelText: "Cancel",
+      title: 'Timezone',
+      confirmText: 'Save',
+      cancelText: 'Cancel',
 
       formFields: [
         {
-          label: "Timezone",
-          ngModel: "",
+          label: 'Timezone',
+          ngModel: '',
           value: this.timezone,
-          placeholder: "Name",
+          placeholder: 'Name',
           isReadOnly: false
         }
       ]
     };
 
     this.dialog.open(EditDialogComponent, {
-      width: "35vw",
+      width: '35vw',
       data: dialogData
     });
   }

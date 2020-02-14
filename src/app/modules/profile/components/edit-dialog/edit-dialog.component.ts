@@ -1,11 +1,11 @@
-import { Component, Inject, ViewEncapsulation } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { EditDialogData } from "../../../../core/domain/modules";
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { EditDialogData } from '../../../../core/domain/modules';
 
 @Component({
-  selector: "app-delete-confirm-dialog",
-  templateUrl: "./edit-dialog.component.html",
-  styleUrls: ["./edit-dialog.component.scss"],
+  selector: 'app-delete-confirm-dialog',
+  templateUrl: './edit-dialog.component.html',
+  styleUrls: ['./edit-dialog.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class EditDialogComponent {

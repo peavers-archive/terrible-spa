@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Directory, EditDialogData, FormField } from "../../../../core/domain/modules";
-import { MatDialog } from "@angular/material/dialog";
-import { DirectoryDialogComponent } from "../directory-dialog/directory-dialog.component";
-import { DirectoryService } from "../../../../core/services/directory.service";
-import { Observable } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { Directory, EditDialogData, FormField } from '../../../../core/domain/modules';
+import { MatDialog } from '@angular/material/dialog';
+import { DirectoryDialogComponent } from '../directory-dialog/directory-dialog.component';
+import { DirectoryService } from '../../../../core/services/directory.service';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-tab-system-settings",
-  templateUrl: "./tab-system-settings.component.html",
-  styleUrls: ["./tab-system-settings.component.scss"]
+  selector: 'app-tab-system-settings',
+  templateUrl: './tab-system-settings.component.html',
+  styleUrls: ['./tab-system-settings.component.scss']
 })
 export class TabSystemSettingsComponent implements OnInit {
 
@@ -29,7 +29,7 @@ export class TabSystemSettingsComponent implements OnInit {
       directories.forEach(directory => {
         formFields.push(
           {
-            label: "Absolute path",
+            label: 'Absolute path',
             ngModel: directory.path,
             value: directory.path,
             placeholder: directory.path,
@@ -41,14 +41,14 @@ export class TabSystemSettingsComponent implements OnInit {
 
     // Load up modal data
     const dialogData: EditDialogData = {
-      title: "Directories",
-      confirmText: "Save",
-      cancelText: "Cancel",
+      title: 'Directories',
+      confirmText: 'Save',
+      cancelText: 'Cancel',
       formFields: formFields
     };
 
     const dialogRef = this.dialog.open(DirectoryDialogComponent, {
-      width: "35vw",
+      width: '35vw',
       data: dialogData
     });
 
