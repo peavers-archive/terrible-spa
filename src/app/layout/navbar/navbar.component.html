@@ -1,6 +1,8 @@
 <nav aria-label="main navigation" class="navbar is-fixed-top scrolling" role="navigation">
   <div class="navbar-item">
-
+    <button [routerLink]="'/'" mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
   </div>
 
   <div class="navbar-item">
@@ -23,5 +25,6 @@
 </nav>
 
 <mat-menu #settingsMenu="matMenu">
+  <button [routerLink]="'/profile'" mat-menu-item>Profile</button>
   <button (click)="googleLogout()" mat-menu-item>Logout</button>
 </mat-menu>

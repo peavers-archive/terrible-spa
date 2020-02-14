@@ -23,7 +23,7 @@ export class TabAccountComponent implements OnInit {
   }
 
   editAbout() {
-    let dialogData: EditDialogData = {
+    const dialogData: EditDialogData = {
       title: 'About',
       confirmText: 'Save',
       cancelText: 'Cancel',
@@ -53,7 +53,7 @@ export class TabAccountComponent implements OnInit {
   }
 
   editAccount() {
-    let dialogData: EditDialogData = {
+    const dialogData: EditDialogData = {
       title: 'Account',
       confirmText: 'Save',
       cancelText: 'Close',
@@ -76,7 +76,7 @@ export class TabAccountComponent implements OnInit {
   }
 
   editTimezone() {
-    let dialogData: EditDialogData = {
+    const dialogData: EditDialogData = {
       title: 'Timezone',
       confirmText: 'Save',
       cancelText: 'Cancel',

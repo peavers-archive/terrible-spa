@@ -44,7 +44,7 @@ export class TabSystemSettingsComponent implements OnInit {
       title: 'Directories',
       confirmText: 'Save',
       cancelText: 'Cancel',
-      formFields: formFields
+      formFields
     };
 
     const dialogRef = this.dialog.open(DirectoryDialogComponent, {
@@ -54,7 +54,7 @@ export class TabSystemSettingsComponent implements OnInit {
 
     // Handle the update
     dialogRef.afterClosed().subscribe((response: EditDialogData) => {
-      if (response == undefined) {
+      if (response === undefined) {
         return;
       }
 

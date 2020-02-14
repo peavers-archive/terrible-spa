@@ -1,0 +1,68 @@
+.section {
+  margin-top: 50px;
+}
+
+.header {
+  text-transform: capitalize;
+}
+
+.stacked-card {
+  margin-top: -1px;
+  background: rgb(255, 255, 255);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(233, 236, 239);
+  border-image: initial;
+  padding: 18px 20px;
+  position: relative;
+
+  .edit-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+    .mat-icon {
+      font-size: 19px;
+      color: #546b81;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+
+  .title {
+    color: rgb(41, 70, 97);
+    text-transform: capitalize;
+    padding: 0;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .content {
+    margin: 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: #546b81;
+
+    span {
+      display: inline-block;
+      word-break: break-all;
+    }
+  }
+}
+
+.bordered {
+  margin-top: -1px;
+  background: rgb(255, 255, 255);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(233, 236, 239);
+  border-image: initial;
+  padding: 18px 20px;
+}
+
+.tab-body-content {
+  margin-top: 50px
+}
