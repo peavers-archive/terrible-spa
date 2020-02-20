@@ -20,3 +20,9 @@ export interface Directory {
   id?: string,
   path?: string,
 }
+
+export interface MediaFile {
+  id: string,
+  absolutePath: string,
+  mimeType: string,
+}

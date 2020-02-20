@@ -6,7 +6,11 @@
       </div>
 
       <div class="column is-12">
-        Video card here
+        <div *ngFor="let mediaFile of mediaFiles | async">
+
+          {{mediaFile.absolutePath}}
+
+        </div>
       </div>
     </div>
   </div>
