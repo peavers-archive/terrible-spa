@@ -15,6 +15,6 @@ export class MediaFileService {
   }
 
   findAll(): Observable<MediaFile[]> {
-    return this.httpClient.get<MediaFile[]>(this.endpoint);
+    return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
   }
 }
