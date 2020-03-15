@@ -20,7 +20,7 @@ export class EditDialogComponent {
   }
 
   submit() {
-    this.dialogRef.close();
+    this.dialogRef.close(this.input.formFields);
   }
 
   onNoClick() {

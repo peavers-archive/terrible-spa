@@ -4,6 +4,8 @@ import { User } from 'firebase';
 import { MediaFileService } from '../../../../core/services/media-file.service';
 import { Observable } from 'rxjs';
 import { MediaFile } from '../../../../core/domain/modules';
+import { TaskProcessorService } from '../../../../core/services/task-processor.service';
+import { DirectoryService } from '../../../../core/services/directory.service';
 
 @Component({
   selector: 'app-default',
@@ -17,7 +19,10 @@ export class DefaultComponent implements OnInit {
 
   user: User;
 
-  constructor(private authService: AuthService, private mediaFileService: MediaFileService) {
+  constructor(private authService: AuthService,
+              private mediaFileService: MediaFileService,
+              private taskProcessorService: TaskProcessorService,
+              private directoryService: DirectoryService) {
   }
 
   ngOnInit() {
@@ -25,4 +30,9 @@ export class DefaultComponent implements OnInit {
     this.mediaFiles = this.mediaFileService.findAll();
   }
 
+  refreshMedia() {
+    this.directoryService.findAll().subscribe(directory => {
+      this.taskProcessorService.directories(directory.path).subscribe(); // Also does thumbnail generation
+    });
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Directory } from '../domain/modules';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -8,11 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DirectoryService {
-  private readonly endpoint: string;
-
-  private directorySubject: BehaviorSubject<Directory[]> = new BehaviorSubject<Directory[]>([]);
-
-  private directoryStore: Directory[] = [];
+  private readonly endpoint;
 
   constructor(private httpClient: HttpClient) {
     this.endpoint = `${environment.api}/directory`;
@@ -22,14 +18,8 @@ export class DirectoryService {
     return this.httpClient.post<Directory>(`${this.endpoint}`, directory);
   }
 
-  findAll(): Observable<Directory[]> {
-    this.httpClient.get<Directory[]>(this.endpoint).subscribe(directories => {
-      this.directoryStore = directories;
-
-      this.directorySubject.next(this.directoryStore);
-    });
-
-    return this.directorySubject.asObservable();
+  findAll(): Observable<Directory> {
+    return this.httpClient.get<Directory>(this.endpoint);
   }
 
   findById(id: string): Observable<Directory> {

@@ -17,7 +17,7 @@ export interface FormField {
 }
 
 export interface Directory {
-  id?: string,
+  id?: string | null,
   path?: string,
 }
 

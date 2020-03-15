@@ -7,18 +7,18 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class MediaFileService {
+export class TaskProcessorService {
   private readonly endpoint: string;
 
   constructor(private httpClient: HttpClient) {
-    this.endpoint = `${environment.api}/media-files`;
+    this.endpoint = `${environment.task}/task`;
   }
 
-  findAll(): Observable<MediaFile[]> {
-    return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
+  thumbnails(path: string): Observable<MediaFile[]> {
+    return this.httpClient.get<MediaFile[]>(`${this.endpoint}/thumbnails?path=${path}`);
   }
 
-  refreshMedia() {
-    return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
+  directories(path: string) {
+    return this.httpClient.get<MediaFile[]>(`${this.endpoint}/directories?path=${path}`);
   }
 }

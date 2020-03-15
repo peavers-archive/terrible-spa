@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Directory, EditDialogData, FormField } from '../../../../core/domain/modules';
-import { MatDialog } from '@angular/material/dialog';
-import { DirectoryDialogComponent } from '../directory-dialog/directory-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DirectoryService } from '../../../../core/services/directory.service';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,59 +12,81 @@ import { Observable } from 'rxjs';
 })
 export class TabSystemSettingsComponent implements OnInit {
 
-  directories: Observable<Directory[]> = new Observable<Directory[]>();
+  directory: Observable<Directory> = new Observable<Directory>();
 
-  constructor(private dialog: MatDialog, private directoryService: DirectoryService) {
+  constructor(
+    private dialog: MatDialog,
+    private directoryService: DirectoryService) {
   }
 
   ngOnInit() {
-    this.directories = this.directoryService.findAll();
+    this.directory = this.directoryService.findAll();
   }
 
-  editDirectories() {
-    const formFields: FormField[] = [];
-
-    // Populate existing directories
-    this.directories.subscribe(directories => {
-      directories.forEach(directory => {
-        formFields.push(
-          {
-            label: 'Absolute path',
-            ngModel: directory.path,
-            value: directory.path,
-            placeholder: directory.path,
-            isReadOnly: false
-          }
-        );
-      });
-    });
-
-    // Load up modal data
+  addDirectory() {
     const dialogData: EditDialogData = {
-      title: 'Directories',
+      title: 'Media Directory',
       confirmText: 'Save',
       cancelText: 'Cancel',
-      formFields
+
+      formFields: [
+        {
+          label: 'Directory',
+          value: '',
+          placeholder: 'Directory',
+          isReadOnly: false
+        }
+      ]
     };
 
-    const dialogRef = this.dialog.open(DirectoryDialogComponent, {
-      width: '35vw',
-      data: dialogData
-    });
-
-    // Handle the update
-    dialogRef.afterClosed().subscribe((response: EditDialogData) => {
+    this.openDialog(dialogData).afterClosed().subscribe((response: FormField[]) => {
       if (response === undefined) {
         return;
       }
 
-      response.formFields.forEach(field => {
+      response.forEach(field => {
         const directory: Directory = {
-          path: field.ngModel
+          path: field.value
         };
 
-        this.directoryService.save(directory).subscribe(result => console.log(result));
+        this.directory = this.directoryService.save(directory);
       });
+    });
+  }
+
+  editDirectory(directory: Directory) {
+    const dialogData: EditDialogData = {
+      title: 'Media Directory',
+      confirmText: 'Save',
+      cancelText: 'Cancel',
+
+      formFields: [
+        {
+          label: 'Directory',
+          value: directory.path,
+          placeholder: 'Directory',
+          isReadOnly: false
+        }
+      ]
+    };
+
+    this.openDialog(dialogData).afterClosed().subscribe((response: FormField[]) => {
+      if (response === undefined) {
+        return;
+      }
+
+      response.forEach(field => {
+        directory.path = field.value;
+
+        this.directoryService.save(directory).subscribe();
+      });
+    });
+  }
+
+  private openDialog(dialogData): MatDialogRef<EditDialogComponent> {
+    return this.dialog.open(EditDialogComponent, {
+      width: '35vw',
+      data: dialogData
     });
   }
 }
