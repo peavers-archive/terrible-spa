@@ -1,0 +1,18 @@
+<div class="video animated fadeIn">
+
+  <div>
+    <div class="overlay">
+      <figure class="image is-3by2">
+        <img *ngIf="coverImage(video) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
+      </figure>
+    </div>
+
+    <div class="video-name">
+      {{ video.absolutePath }}
+    </div>
+    <div class="video-meta">
+
+    </div>
+  </div>
+
+</div>

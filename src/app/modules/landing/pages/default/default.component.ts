@@ -23,14 +23,4 @@ export class DefaultComponent implements OnInit {
     this.user = this.authService.getUser();
     this.mediaFiles = this.mediaFileService.findAll();
   }
-
-  coverImage(mediaFile: MediaFile): string {
-    if (mediaFile.thumbnails == null) {
-      return '';
-    }
-
-    const cover = mediaFile.thumbnails[4];
-
-    return cover === null ? '' : cover;
-  }
 }

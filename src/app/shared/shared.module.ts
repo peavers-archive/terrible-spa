@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { RemoteImagePipe } from './pipes/remote-image.pipe';
+import { VideoCardLayoutComponent } from './components/video-card-layout/video-card-layout.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { RemoteImagePipe } from './pipes/remote-image.pipe';
     ReactiveFormsModule
   ],
   declarations: [
-    RemoteImagePipe
+    RemoteImagePipe,
+    VideoCardLayoutComponent
   ],
   exports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { RemoteImagePipe } from './pipes/remote-image.pipe';
     ReactiveFormsModule,
     RouterModule,
     MaterialModule,
-    RemoteImagePipe
+    RemoteImagePipe,
+    VideoCardLayoutComponent
   ],
   entryComponents: [],
   providers: [MaterialModule]
