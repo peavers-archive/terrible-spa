@@ -11,11 +11,11 @@ export class TaskProcessorService {
   private readonly endpoint: string;
 
   constructor(private httpClient: HttpClient) {
-    this.endpoint = `${environment.task}/task`;
+    this.endpoint = `${environment.api}/task`;
   }
 
-  thumbnails(path: string): Observable<MediaFile[]> {
-    return this.httpClient.get<MediaFile[]>(`${this.endpoint}/thumbnails?path=${path}`);
+  thumbnails(): Observable<MediaFile[]> {
+    return this.httpClient.get<MediaFile[]>(`${this.endpoint}/thumbnails`);
   }
 
   directories(path: string) {

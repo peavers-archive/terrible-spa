@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DirectoryService } from '../../../../core/services/directory.service';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { Observable } from 'rxjs';
+import { TaskProcessorService } from '../../../../core/services/task-processor.service';
 
 @Component({
   selector: 'app-tab-system-settings',
@@ -16,7 +17,9 @@ export class TabSystemSettingsComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private directoryService: DirectoryService) {
+    private directoryService: DirectoryService,
+    private taskProcessorService: TaskProcessorService
+  ) {
   }
 
   ngOnInit() {
@@ -81,6 +84,16 @@ export class TabSystemSettingsComponent implements OnInit {
         this.directoryService.save(directory).subscribe();
       });
     });
+  }
+
+  scanDirectory() {
+    this.directoryService.findAll().subscribe(directory => {
+      this.taskProcessorService.directories(directory.path).subscribe();
+    });
+  }
+
+  generateThumbnails() {
+    this.taskProcessorService.thumbnails().subscribe();
   }
 
   private openDialog(dialogData): MatDialogRef<EditDialogComponent> {

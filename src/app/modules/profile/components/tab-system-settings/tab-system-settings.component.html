@@ -43,5 +43,48 @@
       </div>
     </div>
   </div>
+
+
+  <div class="columns is-multiline">
+    <div class="column is-3">
+      <h2 class="header">Trigger events</h2>
+    </div>
+    <div class="column is-9">
+      <div class="stacked-card">
+        <div class="columns is-multiline">
+          <div class="column is-2">
+            <div class="title">Directory scan</div>
+          </div>
+          <div class="column is-10">
+            <div class="edit-button" (click)="scanDirectory()">
+              <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+            </div>
+            <div class="content">
+              <span>Trigger a manual scan of all directories looking for media files.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stacked-card">
+        <div class="columns is-multiline">
+          <div class="column is-2">
+            <div class="title">Generate Thumbnails</div>
+          </div>
+          <div class="column is-10">
+            <div class="edit-button" (click)="generateThumbnails()">
+              <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+            </div>
+            <div class="content">
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
 </div>
 

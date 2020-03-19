@@ -25,4 +25,5 @@ export interface MediaFile {
   id: string,
   absolutePath: string,
   mimeType: string,
+  thumbnails: string[]
 }

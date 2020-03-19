@@ -5,13 +5,10 @@
         <h1>Media</h1>
       </div>
 
-      <div class="column is-12 has-text-centered">
-        <button mat-button (click)="refreshMedia()">Refresh</button>
-      </div>
-
       <div class="column is-12">
         <div *ngFor="let mediaFile of mediaFiles | async">
           {{mediaFile.absolutePath}}
+          <img *ngIf="coverImage(mediaFile) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
         </div>
       </div>
     </div>
