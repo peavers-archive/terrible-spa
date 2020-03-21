@@ -7,6 +7,7 @@ import { RemoteImagePipe } from './pipes/remote-image.pipe';
 import { VideoCardLayoutComponent } from './components/video-card-layout/video-card-layout.component';
 import { FileSizePipe } from './pipes/file-size.pipe';
 import { MomentModule } from 'ngx-moment';
+import { RemoteVideoPipe } from './pipes/remote-video.pipe';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { MomentModule } from 'ngx-moment';
   ],
   declarations: [
     RemoteImagePipe,
+    RemoteVideoPipe,
     FileSizePipe,
     VideoCardLayoutComponent
   ],
@@ -30,6 +32,7 @@ import { MomentModule } from 'ngx-moment';
     RouterModule,
     MaterialModule,
     RemoteImagePipe,
+    RemoteVideoPipe,
     FileSizePipe,
     VideoCardLayoutComponent
   ],

@@ -1,0 +1,36 @@
+<div class="section" *ngIf="mediaFile | async as video">
+  <div class="container">
+    <div class="columns video-header">
+      <div class="column is-2">
+        <div class="circle-image">
+          <figure class="image">
+            <img
+              *ngIf="coverImage(video) | remoteImage as thumbnail"
+              [src]="thumbnail"
+              alt="thumbnail"
+              class="rounded"
+            />
+          </figure>
+        </div>
+      </div>
+
+      <div class="column">
+        <h1 class="title">{{ video.name }}</h1>
+        <p class="metadata">Size: {{ video.size | fileSize }}</p>
+        <p class="metadata">Added: {{ video.lastModifiedTime | amTimeAgo }}</p>
+        <p class="metadata">Location: {{ video.absolutePath }}</p>
+      </div>
+    </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <mat-video
+          src="{{ video.absolutePath | remoteVideo }}"
+          [download]="true"
+          [title]="video.name"
+          [poster]="coverImage(video) | remoteImage"
+        ></mat-video>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <div class="video animated fadeIn">
 
-  <div>
+  <div (click)="goTo(video)">
     <div class="overlay">
       <figure class="image is-3by2">
         <img *ngIf="coverImage(video) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>

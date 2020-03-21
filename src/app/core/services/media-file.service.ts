@@ -14,6 +14,10 @@ export class MediaFileService {
     this.endpoint = `${environment.api}/media-files`;
   }
 
+  findById(id: string): Observable<MediaFile> {
+    return this.httpClient.get<MediaFile>(`${this.endpoint}/${id}`);
+  }
+
   findAll(): Observable<MediaFile[]> {
     return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
   }

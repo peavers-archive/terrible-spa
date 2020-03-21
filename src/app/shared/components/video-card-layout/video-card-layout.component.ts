@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MediaFile } from '../../../core/domain/modules';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-video-card-layout',
@@ -9,6 +10,9 @@ import { MediaFile } from '../../../core/domain/modules';
 export class VideoCardLayoutComponent {
   THUMBNAIL_POSITION = 4;
 
+  constructor(private router: Router) {
+  }
+
   @Input()
   video: MediaFile;
 
@@ -16,5 +20,9 @@ export class VideoCardLayoutComponent {
     return mediaFile.thumbnails == null || mediaFile.thumbnails[this.THUMBNAIL_POSITION] == null
       ? null
       : mediaFile.thumbnails[this.THUMBNAIL_POSITION];
+  }
+
+  goTo(video: MediaFile) {
+    this.router.navigate([`/video/${video.id}`]);
   }
 }
