@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MediaFile } from '../../../core/domain/modules';
 
 @Component({
@@ -6,19 +6,15 @@ import { MediaFile } from '../../../core/domain/modules';
   templateUrl: './video-card-layout.component.html',
   styleUrls: ['./video-card-layout.component.scss']
 })
-export class VideoCardLayoutComponent implements OnInit {
+export class VideoCardLayoutComponent {
+  THUMBNAIL_POSITION = 4;
+
   @Input()
   video: MediaFile;
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
   coverImage(mediaFile: MediaFile): string {
-    if (mediaFile.thumbnails == null || mediaFile.thumbnails[4] == null) {
-      return '';
-    }
-
-    return mediaFile.thumbnails[4];
+    return mediaFile.thumbnails == null || mediaFile.thumbnails[this.THUMBNAIL_POSITION] == null
+      ? null
+      : mediaFile.thumbnails[this.THUMBNAIL_POSITION];
   }
 }

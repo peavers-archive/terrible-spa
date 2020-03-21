@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { RemoteImagePipe } from './pipes/remote-image.pipe';
 import { VideoCardLayoutComponent } from './components/video-card-layout/video-card-layout.component';
+import { FileSizePipe } from './pipes/file-size.pipe';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   imports: [
@@ -13,10 +15,12 @@ import { VideoCardLayoutComponent } from './components/video-card-layout/video-c
     ReactiveFormsModule,
     RouterModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MomentModule
   ],
   declarations: [
     RemoteImagePipe,
+    FileSizePipe,
     VideoCardLayoutComponent
   ],
   exports: [
@@ -26,6 +30,7 @@ import { VideoCardLayoutComponent } from './components/video-card-layout/video-c
     RouterModule,
     MaterialModule,
     RemoteImagePipe,
+    FileSizePipe,
     VideoCardLayoutComponent
   ],
   entryComponents: [],

@@ -23,7 +23,20 @@ export interface Directory {
 
 export interface MediaFile {
   id: string,
+
+  name: string,
+
   absolutePath: string,
+
   mimeType: string,
+
+  size: number,
+
+  lastAccessTime: number,
+
+  lastModifiedTime: number,
+
+  importedTime: number,
+
   thumbnails: string[]
 }

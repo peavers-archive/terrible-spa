@@ -8,10 +8,10 @@
     </div>
 
     <div class="video-name">
-      {{ video.absolutePath }}
+      {{ video.name }}
     </div>
     <div class="video-meta">
-
+      {{ video.importedTime | amTimeAgo }} <span class="is-pulled-right">{{ video.size | fileSize }}</span>
     </div>
   </div>
 
