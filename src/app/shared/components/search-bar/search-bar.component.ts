@@ -1,20 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
-import { User } from 'firebase';
-import { environment } from '../../../environments/environment';
-import { MediaSearchHit } from '../../core/domain/modules';
 import { Observable } from 'rxjs';
+import { MediaSearchHit } from '../../../core/domain/modules';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-search-bar',
+  templateUrl: './search-bar.component.html',
+  styleUrls: ['./search-bar.component.scss']
 })
-export class NavbarComponent implements OnInit {
-
-  user: User;
+export class SearchBarComponent {
 
   searchInput = '';
 
@@ -24,17 +20,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private router: Router,
-    private authService: AuthService
+    private router: Router
   ) {
-  }
-
-  async ngOnInit() {
-    this.user = this.authService.getUser();
-  }
-
-  googleLogout() {
-    this.authService.logout();
   }
 
   onKey(event) {

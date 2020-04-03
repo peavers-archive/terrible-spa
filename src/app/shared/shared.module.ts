@@ -8,6 +8,7 @@ import { VideoCardLayoutComponent } from './components/video-card-layout/video-c
 import { FileSizePipe } from './pipes/file-size.pipe';
 import { MomentModule } from 'ngx-moment';
 import { RemoteVideoPipe } from './pipes/remote-video.pipe';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   imports: [
@@ -17,14 +18,9 @@ import { RemoteVideoPipe } from './pipes/remote-video.pipe';
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MomentModule
+    MomentModule,
   ],
-  declarations: [
-    RemoteImagePipe,
-    RemoteVideoPipe,
-    FileSizePipe,
-    VideoCardLayoutComponent
-  ],
+  declarations: [RemoteImagePipe, RemoteVideoPipe, FileSizePipe, VideoCardLayoutComponent, SearchBarComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -34,10 +30,10 @@ import { RemoteVideoPipe } from './pipes/remote-video.pipe';
     RemoteImagePipe,
     RemoteVideoPipe,
     FileSizePipe,
-    VideoCardLayoutComponent
+    VideoCardLayoutComponent,
+    SearchBarComponent,
   ],
   entryComponents: [],
-  providers: [MaterialModule]
+  providers: [MaterialModule],
 })
-export class SharedModule {
-}
+export class SharedModule {}

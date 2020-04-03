@@ -30,6 +30,11 @@ h2 {
   color: #294661;
 }
 
+.metadata {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
 // -------------------------------------------
 // Custom material styles below
 // -------------------------------------------
@@ -58,7 +63,7 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 }
 
 .mat-dialog-content {
-overflow: visible !important;
+  overflow: visible !important;
 }
 
 .mat-form-field-infix {
@@ -69,7 +74,6 @@ overflow: visible !important;
 .mat-form-field {
   width: 100%;
 }
-
 
 // Tabs
 .mat-tab-label {
