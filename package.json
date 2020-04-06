@@ -29,7 +29,7 @@
     "bulma": "^0.8.1",
     "codelyzer": "^5.2.2",
     "firebase": "^7.13.2",
-    "mat-video": "^2.7.2",
+    "mat-video": "^2.8.0",
     "moment": "^2.24.0",
     "ngx-moment": "^3.5.0",
     "rxjs": "~6.5.5",
