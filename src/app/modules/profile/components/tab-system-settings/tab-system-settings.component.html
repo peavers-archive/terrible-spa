@@ -1,87 +1,102 @@
 <div class="tab-body-content">
-  <div class="columns">
-    <div class="column is-3">
-      <h2 class="header">Files</h2>
+    <div class="columns">
+        <div class="column is-3">
+            <h2 class="header">Files</h2>
+        </div>
+
+        <div class="column is-9">
+            <div class="stacked-card">
+                <div class="columns is-multiline">
+                    <div class="column is-2">
+                        <div class="title">Media Directory</div>
+                    </div>
+                    <div class="column is-10" *ngIf="directory | async as dir; else addDirectoryButton">
+                        <div class="edit-button">
+                            <mat-icon (click)="editDirectory(dir)" fontSet="material-icons-outlined">edit</mat-icon>
+                        </div>
+                        <div class="content">
+                            <span>{{dir.path}}</span>
+                        </div>
+                    </div>
+                    <ng-template #addDirectoryButton>
+                        <div class="edit-button">
+                            <mat-icon (click)="addDirectory()" fontSet="material-icons-outlined">edit</mat-icon>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="stacked-card">
+                <div class="columns is-multiline">
+                    <div class="column is-2">
+                        <div class="title">Scan Frequency</div>
+                    </div>
+                    <div class="column is-10">
+                        <div class="edit-button">
+                            <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+                        </div>
+                        <div class="content">
+                            <span>Every 5 minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="column is-9">
-      <div class="stacked-card">
-        <div class="columns is-multiline">
-          <div class="column is-2">
-            <div class="title">Media Directory</div>
-          </div>
-          <div class="column is-10" *ngIf="directory | async as dir; else addDirectoryButton">
-            <div class="edit-button">
-              <mat-icon (click)="editDirectory(dir)" fontSet="material-icons-outlined">edit</mat-icon>
-            </div>
-            <div class="content">
-              <span>{{dir.path}}</span>
-            </div>
-          </div>
-          <ng-template #addDirectoryButton>
-            <div class="edit-button">
-              <mat-icon (click)="addDirectory()" fontSet="material-icons-outlined">edit</mat-icon>
-            </div>
-          </ng-template>
-        </div>
-      </div>
 
-      <div class="stacked-card">
-        <div class="columns is-multiline">
-          <div class="column is-2">
-            <div class="title">Scan Frequency</div>
-          </div>
-          <div class="column is-10">
-            <div class="edit-button">
-              <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
-            </div>
-            <div class="content">
-              <span>Every 5 minutes</span>
-            </div>
-          </div>
+    <div class="columns is-multiline">
+        <div class="column is-3">
+            <h2 class="header">Trigger events</h2>
         </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="columns is-multiline">
-    <div class="column is-3">
-      <h2 class="header">Trigger events</h2>
-    </div>
-    <div class="column is-9">
-      <div class="stacked-card">
-        <div class="columns is-multiline">
-          <div class="column is-2">
-            <div class="title">Directory scan</div>
-          </div>
-          <div class="column is-10">
-            <div class="edit-button" (click)="scanDirectory()">
-              <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+        <div class="column is-9">
+            <div class="stacked-card">
+                <div class="columns is-multiline">
+                    <div class="column is-2">
+                        <div class="title">Directory scan</div>
+                    </div>
+                    <div class="column is-10">
+                        <div class="edit-button" (click)="scanDirectory()">
+                            <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+                        </div>
+                        <div class="content">
+                            <span>Trigger a manual scan of all directories looking for media files.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="content">
-              <span>Trigger a manual scan of all directories looking for media files.</span>
+            <div class="stacked-card">
+                <div class="columns is-multiline">
+                    <div class="column is-2">
+                        <div class="title">Generate Thumbnails</div>
+                    </div>
+                    <div class="column is-10">
+                        <div class="edit-button" (click)="generateThumbnails()">
+                            <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+                        </div>
+                        <div class="content">
+                            <span>Trigger a manual creation of thumbnails.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="stacked-card">
+                <div class="columns is-multiline">
+                    <div class="column is-2">
+                        <div class="title">Reindex search</div>
+                    </div>
+                    <div class="column is-10">
+                        <div class="edit-button" (click)="generateIndex()">
+                            <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+                        </div>
+                        <div class="content">
+                            <span>Force the search index to be refreshed.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="stacked-card">
-        <div class="columns is-multiline">
-          <div class="column is-2">
-            <div class="title">Generate Thumbnails</div>
-          </div>
-          <div class="column is-10">
-            <div class="edit-button" (click)="generateThumbnails()">
-              <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
-            </div>
-            <div class="content">
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <div class="content">

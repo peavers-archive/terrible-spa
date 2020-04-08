@@ -1,7 +1,40 @@
-<app-navbar></app-navbar>
+<section class="main-content columns is-fullheight">
 
-<div class="columns is-fullheight">
-  <div class="column is-12">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+    <app-navbar></app-navbar>
+
+    <aside class="column is-1 is-narrow-mobile is-fullheight section is-hidden-mobile">
+        <ul>
+            <li class="menu-item">
+                <div class="with-icon" [routerLink]="'/'">
+                    <mat-icon fontSet="material-icons-outlined">home</mat-icon>
+                    Home
+                </div>
+            </li>
+            <li class="menu-item">
+                <div class="with-icon">
+                    <mat-icon fontSet="material-icons-outlined">video_library</mat-icon>
+                    Libraries
+                </div>
+            </li>
+            <li class="menu-item" [routerLink]="'/profile'">
+                <div class="with-icon">
+                    <mat-icon>perm_identity</mat-icon>
+                    Profile
+                </div>
+            </li>
+        </ul>
+    </aside>
+
+    <div class="container column is-10">
+
+        <div class="columns is-fullheight">
+            <div class="column is-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+

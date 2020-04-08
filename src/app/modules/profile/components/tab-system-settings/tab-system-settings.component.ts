@@ -1,105 +1,113 @@
-import { Component, OnInit } from '@angular/core';
-import { Directory, EditDialogData, FormField } from '../../../../core/domain/modules';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DirectoryService } from '../../../../core/services/directory.service';
-import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import { Observable } from 'rxjs';
-import { TaskProcessorService } from '../../../../core/services/task-processor.service';
+import {Component, OnInit} from '@angular/core';
+import {Directory, EditDialogData, FormField} from '../../../../core/domain/modules';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DirectoryService} from '../../../../core/services/directory.service';
+import {EditDialogComponent} from '../edit-dialog/edit-dialog.component';
+import {Observable} from 'rxjs';
+import {TaskProcessorService} from '../../../../core/services/task-processor.service';
+import {SearchService} from "../../../../core/services/search.service";
 
 @Component({
-  selector: 'app-tab-system-settings',
-  templateUrl: './tab-system-settings.component.html',
-  styleUrls: ['./tab-system-settings.component.scss']
+    selector: 'app-tab-system-settings',
+    templateUrl: './tab-system-settings.component.html',
+    styleUrls: ['./tab-system-settings.component.scss']
 })
 export class TabSystemSettingsComponent implements OnInit {
 
-  directory: Observable<Directory> = new Observable<Directory>();
+    directory: Observable<Directory> = new Observable<Directory>();
 
-  constructor(
-    private dialog: MatDialog,
-    private directoryService: DirectoryService,
-    private taskProcessorService: TaskProcessorService
-  ) {
-  }
+    constructor(
+        private dialog: MatDialog,
+        private directoryService: DirectoryService,
+        private taskProcessorService: TaskProcessorService,
+        private searchService: SearchService
+    ) {
+    }
 
-  ngOnInit() {
-    this.directory = this.directoryService.findAll();
-  }
+    ngOnInit() {
+        this.directory = this.directoryService.findAll();
+    }
 
-  addDirectory() {
-    const dialogData: EditDialogData = {
-      title: 'Media Directory',
-      confirmText: 'Save',
-      cancelText: 'Cancel',
+    addDirectory() {
+        const dialogData: EditDialogData = {
+            title: 'Media Directory',
+            confirmText: 'Save',
+            cancelText: 'Cancel',
 
-      formFields: [
-        {
-          label: 'Directory',
-          value: '',
-          placeholder: 'Directory',
-          isReadOnly: false
-        }
-      ]
-    };
-
-    this.openDialog(dialogData).afterClosed().subscribe((response: FormField[]) => {
-      if (response === undefined) {
-        return;
-      }
-
-      response.forEach(field => {
-        const directory: Directory = {
-          path: field.value
+            formFields: [
+                {
+                    label: 'Directory',
+                    value: '',
+                    placeholder: 'Directory',
+                    isReadOnly: false
+                }
+            ]
         };
 
-        this.directory = this.directoryService.save(directory);
-      });
-    });
-  }
+        this.openDialog(dialogData).afterClosed().subscribe((response: FormField[]) => {
+            if (response === undefined) {
+                return;
+            }
 
-  editDirectory(directory: Directory) {
-    const dialogData: EditDialogData = {
-      title: 'Media Directory',
-      confirmText: 'Save',
-      cancelText: 'Cancel',
+            response.forEach(field => {
+                const directory: Directory = {
+                    path: field.value
+                };
 
-      formFields: [
-        {
-          label: 'Directory',
-          value: directory.path,
-          placeholder: 'Directory',
-          isReadOnly: false
-        }
-      ]
-    };
+                this.directory = this.directoryService.save(directory);
+            });
+        });
+    }
 
-    this.openDialog(dialogData).afterClosed().subscribe((response: FormField[]) => {
-      if (response === undefined) {
-        return;
-      }
+    editDirectory(directory: Directory) {
+        const dialogData: EditDialogData = {
+            title: 'Media Directory',
+            confirmText: 'Save',
+            cancelText: 'Cancel',
 
-      response.forEach(field => {
-        directory.path = field.value;
+            formFields: [
+                {
+                    label: 'Directory',
+                    value: directory.path,
+                    placeholder: 'Directory',
+                    isReadOnly: false
+                }
+            ]
+        };
 
-        this.directoryService.save(directory).subscribe();
-      });
-    });
-  }
+        this.openDialog(dialogData).afterClosed().subscribe((response: FormField[]) => {
+            if (response === undefined) {
+                return;
+            }
 
-  scanDirectory() {
-    this.directoryService.findAll().subscribe(directory => {
-      this.taskProcessorService.directories(directory.path).subscribe();
-    });
-  }
+            response.forEach(field => {
+                directory.path = field.value;
 
-  generateThumbnails() {
-    this.taskProcessorService.thumbnails().subscribe();
-  }
+                this.directoryService.save(directory).subscribe();
+            });
+        });
+    }
 
-  private openDialog(dialogData): MatDialogRef<EditDialogComponent> {
-    return this.dialog.open(EditDialogComponent, {
-      width: '35vw',
-      data: dialogData
-    });
-  }
+    scanDirectory() {
+        this.directoryService.findAll().subscribe(directory => {
+            this.taskProcessorService.directories(directory.path).subscribe();
+        });
+    }
+
+    generateThumbnails() {
+        this.taskProcessorService.thumbnails().subscribe();
+    }
+
+    generateIndex() {
+        this.searchService.generateIndex().subscribe(() => {
+            console.log("DONE!")
+        })
+    }
+
+    private openDialog(dialogData): MatDialogRef<EditDialogComponent> {
+        return this.dialog.open(EditDialogComponent, {
+            width: '35vw',
+            data: dialogData
+        });
+    }
 }

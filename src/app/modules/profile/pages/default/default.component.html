@@ -1,4 +1,4 @@
-<div *ngIf="user" class="section">
+<div *ngIf="user | async as user" class="section">
   <div class="container">
     <div class="columns is-multiline">
       <div class="column is-12">

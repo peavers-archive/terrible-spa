@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase/app';
 
 import { Router } from '@angular/router';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthService {
       provider.addScope('profile');
       provider.addScope('email');
 
-      this.angularFireAuth.auth.signInWithPopup(provider).then(
+      this.angularFireAuth.signInWithPopup(provider).then(
         response => {
           resolve(response);
           this.router.navigate(['/']);
@@ -29,12 +30,12 @@ export class AuthService {
     });
   }
 
-  public getUser(): User {
-    return this.angularFireAuth.auth.currentUser;
+  public getUser(): Observable<User | null> {
+    return this.angularFireAuth.user;
   }
 
   public logout() {
-    this.angularFireAuth.auth.signOut().then(() => console.log('Bye!'));
+    this.angularFireAuth.signOut().then(() => console.log('Bye!'));
 
     this.router.navigate(['/login']);
   }

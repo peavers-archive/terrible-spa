@@ -40,14 +40,3 @@ export interface MediaFile {
 
   thumbnails: string[]
 }
-
-export interface MediaSearchHit {
-  id: string,
-
-  sourceAsMap: SourceAsMap
-}
-
-export interface SourceAsMap {
-  path: string,
-  name: string
-}

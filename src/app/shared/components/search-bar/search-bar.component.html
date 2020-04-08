@@ -14,8 +14,8 @@
   <li *ngFor="let video of searchResults | async" class="search-results-item">
     <div class="columns">
       <div (click)="goTo(video.id)" class="column is-11">
-        <p>{{ video.sourceAsMap.name }}</p>
-        <p class="metadata">{{ video.sourceAsMap.path }}</p>
+        <p>{{ video.name }}</p>
+        <p class="metadata">{{ video.absolutePath }}</p>
       </div>
     </div>
   </li>

@@ -1,0 +1,26 @@
+aside {
+  width: 180px;
+  height: 100vh;
+  max-width: 180px;
+  min-width: 180px;
+  padding-top: 30px;
+  vertical-align: top;
+  background: #fbfbfc;
+  border-right: 1px solid #e9ecef;
+
+  .menu-item {
+    font-size: 13px;
+    color: #294661;
+    font-weight: 400;
+    padding: 14px;
+  }
+
+  .mat-icon {
+    margin-right: 14px;
+  }
+}
+
+.with-icon {
+  display: flex;
+  align-items: center;
+}

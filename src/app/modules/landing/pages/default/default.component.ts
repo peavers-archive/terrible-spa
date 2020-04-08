@@ -14,7 +14,7 @@ import { MediaFile } from '../../../../core/domain/modules';
 export class DefaultComponent implements OnInit {
   mediaFiles: Observable<MediaFile[]> = new Observable<MediaFile[]>();
 
-  user: User;
+  user: Observable<User | null> = new Observable<User|null>();
 
   constructor(private authService: AuthService, private mediaFileService: MediaFileService) {
   }
