@@ -1,0 +1,18 @@
+img {
+  object-fit: cover;
+  border-radius: 50%;
+  background: #dbdbdb;
+  border: 1px solid #dbdbdb;
+  overflow: hidden;
+}
+
+.is-64x64 {
+  height: 64px;
+  width: 64px;
+}
+
+.is-32x32 {
+  height: 24px;
+  width: 24px;
+  margin-right: 14px;
+}

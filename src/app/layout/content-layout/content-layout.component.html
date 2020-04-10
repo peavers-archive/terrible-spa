@@ -1,8 +1,15 @@
-<section class="main-content columns is-fullheight">
+<div class="columns is-fullheight is-multiline is-fluid">
 
-    <app-navbar></app-navbar>
+    <aside class="column is-12 is-narrow-mobile is-fullheight is-hidden-mobile">
+        <ul class="user-profile">
+            <li class="menu-item" *ngIf="user | async as user">
+                <div class="with-icon">
+                    <app-user-picture></app-user-picture>
+                    {{user.displayName}}
+                </div>
+            </li>
+        </ul>
 
-    <aside class="column is-1 is-narrow-mobile is-fullheight section is-hidden-mobile">
         <ul>
             <li class="menu-item">
                 <div class="with-icon" [routerLink]="'/'">
@@ -25,16 +32,11 @@
         </ul>
     </aside>
 
-    <div class="container column is-10">
-
+    <div class="container column is-10 is-fluid">
         <div class="columns is-fullheight">
             <div class="column is-12">
                 <router-outlet></router-outlet>
             </div>
         </div>
-
     </div>
-
-</section>
-
-
+</div>

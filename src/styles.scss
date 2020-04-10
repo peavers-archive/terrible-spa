@@ -42,10 +42,10 @@ h2 {
 @include mat-core();
 
 $blue: (
-  500: #1a82e2,
-  contrast: (
-    500: #fff
-  )
+        500: #1a82e2,
+        contrast: (
+                500: #fff
+        )
 );
 
 $custom-primary: mat-palette($blue);
@@ -84,4 +84,59 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
   color: #1a82e2;
   font-weight: 400;
   font-size: 13px;
+}
+
+// Stacked Cards
+.stacked-card {
+  margin-top: -1px;
+  background: rgb(255, 255, 255);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(233, 236, 239);
+  border-image: initial;
+  padding: 18px 20px;
+  position: relative;
+
+  h2 {
+    font-size: 20px;
+    color: #445b6c;
+    line-height: 19px;
+  }
+
+  .edit-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+    .mat-icon {
+      font-size: 19px;
+      color: #546b81;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+
+  .title {
+    color: rgb(41, 70, 97);
+    text-transform: capitalize;
+    padding: 0;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .content {
+    margin: 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: #546b81;
+
+    span {
+      display: inline-block;
+      word-break: break-all;
+    }
+  }
+
 }
