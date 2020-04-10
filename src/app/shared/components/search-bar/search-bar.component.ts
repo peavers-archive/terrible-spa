@@ -1,46 +1,35 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
-import {MediaFile} from "../../../core/domain/modules";
-import {SearchService} from "../../../core/services/search.service";
+import {Component, EventEmitter, Output} from '@angular/core';
+import {Subject} from "rxjs";
+import {debounceTime} from "rxjs/operators";
 
 @Component({
-  selector: 'app-search-bar',
-  templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.scss']
+    selector: 'app-search-bar',
+    templateUrl: './search-bar.component.html',
+    styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
 
-  searchInput = '';
+    searchInput = '';
 
-  searchResults: Observable<MediaFile[]>;
+    debouncer: Subject<string | boolean> = new Subject<string | boolean>();
 
-  showResults: boolean;
+    @Output()
+    valueChange = new EventEmitter<string | boolean>();
 
-  constructor(
-    private searchService: SearchService,
-    private router: Router
-  ) {
-  }
+    constructor() {
+        this.debouncer
+            .pipe(debounceTime(250))
+            .subscribe((value) => this.valueChange.emit(value));
 
-  onKey(event) {
-    this.searchInput = event.target.value;
+    }
 
-    this.searchResults = this.searchService.search(this.searchInput)
+    onKey(event) {
+        this.debouncer.next(event.target.value);
+    }
 
-    this.searchResults.subscribe(videos => {
-      this.showResults = videos.length >= 1;
-    });
-  }
+    clearSearchInput() {
+        this.searchInput = '';
 
-  clearSearchInput() {
-    this.searchInput = '';
-    this.showResults = false;
-  }
-
-  goTo(id: string) {
-    this.router.navigate([`/video/${id}`]);
-  }
+        this.debouncer.next(false);
+    }
 }
