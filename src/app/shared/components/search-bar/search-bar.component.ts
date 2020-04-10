@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Output} from '@angular/core';
 import {Subject} from "rxjs";
 import {debounceTime} from "rxjs/operators";
 
@@ -23,13 +23,22 @@ export class SearchBarComponent {
 
     }
 
-    onKey(event) {
-        this.debouncer.next(event.target.value);
+    @HostListener('window:keyup', ['$event'])
+    keyEvent() {
+        if (this.isNotEmpty()) {
+            this.debouncer.next(this.searchInput);
+        } else {
+            this.debouncer.next(false);
+        }
     }
 
     clearSearchInput() {
         this.searchInput = '';
 
         this.debouncer.next(false);
+    }
+
+    isNotEmpty() {
+        return this.searchInput.length > 1
     }
 }

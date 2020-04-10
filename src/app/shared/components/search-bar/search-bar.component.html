@@ -2,10 +2,10 @@
     <mat-icon class="search-icon">search</mat-icon>
 
     <label>
-        <input placeholder="Search" (keyup)="onKey($event)" [(ngModel)]="searchInput" [value]="searchInput" />
+        <input placeholder="Search" [(ngModel)]="searchInput" [value]="searchInput"/>
     </label>
 
-    <button mat-icon-button class="search-clear" (click)="clearSearchInput()" *ngIf="searchInput.length >= 1">
+    <button mat-icon-button class="search-clear" (click)="clearSearchInput()" *ngIf="isNotEmpty()">
         <mat-icon>clear</mat-icon>
     </button>
 </div>

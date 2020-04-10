@@ -3,7 +3,7 @@
   z-index: 0;
 
   ::placeholder {
-    color: #404040;
+    color: #546b81;
     opacity: 1;
   }
 
@@ -19,9 +19,9 @@
     transition: border 0.1s ease-out;
     font-weight: 400;
     outline: none;
-    color: #212121;
+    color: #546b81;
     padding: 14px 14px 14px 70px;
-    font-size: 14px;
+    font-size: 13px;
 
     &:focus {
       box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12),

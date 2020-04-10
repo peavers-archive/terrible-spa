@@ -26,10 +26,6 @@ export class DefaultComponent implements OnInit {
     }
 
     search(query: any) {
-        if (query) {
-            this.mediaFiles = this.searchService.search(query);
-        } else {
-            this.mediaFiles = this.mediaFileService.findAll();
-        }
+        this.mediaFiles = query ? this.searchService.search(query) : this.mediaFileService.findAll();
     }
 }
