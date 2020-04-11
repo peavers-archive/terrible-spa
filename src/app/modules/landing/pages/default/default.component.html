@@ -1,19 +1,17 @@
 <div *ngIf="user | async" class="section is-fluid">
-    <div class="container is-fluid">
-        <div class="columns is-multiline">
-            <div class="column is-12">
-                <h1>Media</h1>
-            </div>
-
-
-            <div class="column is-12">
-                <app-search-bar (valueChange)="search($event)"></app-search-bar>
-            </div>
-
-
-            <div class="column is-2" *ngFor="let mediaFile of mediaFiles | async">
-                <app-video-card-layout [video]="mediaFile"></app-video-card-layout>
-            </div>
-        </div>
+  <div class="container is-fluid">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h1>Media</h1>
+      </div>
+      <div class="column is-4 is-offset-4">
+        <app-search-bar (valueChange)="search($event)"></app-search-bar>
+      </div>
     </div>
+    <div class="columns is-multiline">
+      <div class="column is-2" *ngFor="let mediaFile of mediaFiles | async">
+        <app-video-card-layout [video]="mediaFile"></app-video-card-layout>
+      </div>
+    </div>
+  </div>
 </div>

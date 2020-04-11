@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MediaFileService {
   private readonly endpoint: string;
@@ -22,7 +22,7 @@ export class MediaFileService {
     return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
   }
 
-  refreshMedia() {
-    return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
+  deleteAll() {
+    return this.httpClient.delete(`${this.endpoint}`);
   }
 }

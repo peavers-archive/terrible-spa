@@ -1,11 +1,11 @@
 <div class="search-box">
-    <mat-icon class="search-icon">search</mat-icon>
+  <mat-icon class="search-icon">search</mat-icon>
 
-    <label>
-        <input placeholder="Search" [(ngModel)]="searchInput" [value]="searchInput"/>
-    </label>
+  <label>
+    <input placeholder="Search" [(ngModel)]="searchInput" [value]="searchInput" />
+  </label>
 
-    <button mat-icon-button class="search-clear" (click)="clearSearchInput()" *ngIf="isNotEmpty()">
-        <mat-icon>clear</mat-icon>
-    </button>
+  <button mat-icon-button class="search-clear" (click)="clearSearchInput()" *ngIf="isNotEmpty()">
+    <mat-icon>clear</mat-icon>
+  </button>
 </div>

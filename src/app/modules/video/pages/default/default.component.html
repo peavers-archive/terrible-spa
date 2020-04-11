@@ -1,39 +1,79 @@
 <div class="section" *ngIf="mediaFile as video">
-    <div class="container">
-        <div class="columns video-header">
-            <div class="column">
-                <h1>{{ video.name }}</h1>
-            </div>
-        </div>
-
-        <div class="columns is-multiline">
-            <div class="column is-12">
-                <mat-video
-                        src="{{ video.absolutePath | remoteVideo }}"
-                        [download]="true"
-                        [title]="video.name"
-                        [poster]="coverImage(video) | remoteImage"
-                ></mat-video>
-            </div>
-        </div>
-
-        <div class="stacked-card">
-
-            <h2>Metadata</h2>
-
-            <div class="columns is-multiline">
-                <div class="column is-12">
-                    <p class="metadata">Size: {{ video.size | fileSize }}</p>
-                    <p class="metadata">Added: {{ video.lastModifiedTime | amTimeAgo }}</p>
-                    <p class="metadata">Location: {{ video.absolutePath }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="columns is-multiline">
-            <div class="column is-12" *ngFor="let video of relatedMediaFiles | async">
-                {{video.absolutePath}}
-            </div>
-        </div>
+  <div class="container">
+    <div class="columns video-header">
+      <div class="column">
+        <h1>{{ video.name }}</h1>
+      </div>
     </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <mat-video
+          src="{{ video.absolutePath | remoteVideo }}"
+          [download]="true"
+          [title]="video.name"
+          [poster]="coverImage(video) | remoteImage"
+        ></mat-video>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <ul>
+            <li class="action">
+              <button mat-button>
+                <mat-icon>add_to_queue</mat-icon>
+                Add to favourites
+              </button>
+            </li>
+
+            <li class="action">
+              <button mat-button [matMenuTriggerFor]="playlists">
+                <mat-icon>playlist_add</mat-icon>
+                Add to list
+              </button>
+            </li>
+
+            <mat-menu #playlists="matMenu">
+              <ng-template matMenuContent>
+                <button (click)="createPlaylist(video)" mat-menu-item>New list</button>
+
+                <div *ngFor="let mediaList of mediaLists | async">
+                  <button (click)="addToList(mediaList, video)" mat-menu-item>
+                    {{ mediaList.name }}
+                  </button>
+                </div>
+              </ng-template>
+            </mat-menu>
+
+            <li class="action is-pulled-right">
+              <button mat-button>
+                <mat-icon>delete_forever</mat-icon>
+                Delete from disk
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <h2>Metadata</h2>
+
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <p class="metadata">Size: {{ video.size | fileSize }}</p>
+          <p class="metadata">Added: {{ video.lastModifiedTime | amTimeAgo }}</p>
+          <p class="metadata">Location: {{ video.absolutePath }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-12" *ngFor="let video of relatedMediaFiles | async">
+        {{ video.absolutePath }}
+      </div>
+    </div>
+  </div>
 </div>

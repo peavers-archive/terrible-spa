@@ -15,7 +15,7 @@ body {
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol';
+    'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 h1 {
@@ -48,10 +48,10 @@ h2 {
 @include mat-core();
 
 $blue: (
-        500: #1a82e2,
-        contrast: (
-                500: #fff
-        )
+  500: #1a82e2,
+  contrast: (
+    500: #fff,
+  ),
 );
 
 $custom-primary: mat-palette($blue);
@@ -59,7 +59,6 @@ $custom-accent: mat-palette($mat-pink, 500, 900, A100);
 $custom-warn: mat-palette($mat-deep-orange);
 $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 @include angular-material-theme($custom-theme);
-
 
 // Dialogs
 .mat-dialog-actions {
@@ -122,7 +121,6 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
     &:hover {
       cursor: pointer;
     }
-
   }
 
   .title {
@@ -144,5 +142,4 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
       word-break: break-all;
     }
   }
-
 }

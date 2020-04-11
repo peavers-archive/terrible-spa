@@ -1,26 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { MediaFile } from '../../../core/domain/modules';
 import { Router } from '@angular/router';
-import {trigger, style, animate, transition} from '@angular/animations';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-video-card-layout',
   templateUrl: './video-card-layout.component.html',
   styleUrls: ['./video-card-layout.component.scss'],
   animations: [
-    trigger('fade', [
-      transition('void => *', [
-        style({ opacity: 0 }),
-        animate(150, style({opacity: 1}))
-      ])
-    ])
-  ]
+    trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate(150, style({ opacity: 1 }))])]),
+  ],
 })
 export class VideoCardLayoutComponent {
   THUMBNAIL_POSITION = 4;
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   @Input()
   video: MediaFile;

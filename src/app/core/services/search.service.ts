@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Directory, MediaFile} from '../domain/modules';
+import { MediaFile } from '../domain/modules';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchService {
   private readonly endpoint;
@@ -18,8 +18,11 @@ export class SearchService {
     return this.httpClient.get(`${this.endpoint}/index`);
   }
 
-  search(query: String): Observable<MediaFile[]> {
+  search(query: string): Observable<MediaFile[]> {
     return this.httpClient.get<MediaFile[]>(`${this.endpoint}?query=${query}`);
   }
 
+  deleteAll() {
+    return this.httpClient.delete(`${this.endpoint}`);
+  }
 }

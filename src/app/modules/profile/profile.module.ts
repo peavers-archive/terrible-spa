@@ -6,12 +6,19 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
 import { TabAccountComponent } from './components/tab-account/tab-account.component';
 import { TabSystemSettingsComponent } from './components/tab-system-settings/tab-system-settings.component';
 import { DirectoryDialogComponent } from './components/directory-dialog/directory-dialog.component';
+import { TabDangerZoneComponent } from './components/tab-danger-zone/tab-danger-zone.component';
 
 @NgModule({
-  declarations: [DefaultComponent, EditDialogComponent, TabAccountComponent, TabSystemSettingsComponent, DirectoryDialogComponent],
+  declarations: [
+    DefaultComponent,
+    EditDialogComponent,
+    TabAccountComponent,
+    TabSystemSettingsComponent,
+    DirectoryDialogComponent,
+    TabDangerZoneComponent,
+  ],
   imports: [SharedModule, RoutingModule],
   exports: [],
-  entryComponents: [EditDialogComponent, DirectoryDialogComponent]
+  entryComponents: [EditDialogComponent, DirectoryDialogComponent],
 })
-export class ProfileModule {
-}
+export class ProfileModule {}

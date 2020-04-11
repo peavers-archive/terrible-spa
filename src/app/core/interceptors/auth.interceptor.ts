@@ -5,8 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private angularFireAuth: AngularFireAuth) {
-  }
+  constructor(private angularFireAuth: AngularFireAuth) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return from(this.handleAccess(request, next));
@@ -14,11 +13,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
     await this.angularFireAuth.auth.currentUser.getIdToken().then(
-      token =>
+      (token) =>
         (request = request.clone({
           setHeaders: {
-            Authorization: 'Bearer ' + token
-          }
+            Authorization: 'Bearer ' + token,
+          },
         }))
     );
 

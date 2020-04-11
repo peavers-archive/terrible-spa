@@ -7,7 +7,6 @@ import { RoutingModule } from './landing.routing';
   declarations: [DefaultComponent],
   imports: [SharedModule, RoutingModule],
   exports: [],
-  entryComponents: []
+  entryComponents: [],
 })
-export class LandingModule {
-}
+export class LandingModule {}

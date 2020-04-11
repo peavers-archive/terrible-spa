@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskProcessorService {
   private readonly endpoint: string;

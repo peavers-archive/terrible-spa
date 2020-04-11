@@ -1,0 +1,41 @@
+<div class="tab-body-content">
+  <div class="columns">
+    <div class="column is-3">
+      <h2 class="header">Delete</h2>
+    </div>
+
+    <div class="column is-9">
+      <div class="stacked-card">
+        <div class="columns is-multiline">
+          <div class="column is-2">
+            <div class="title">Mongo</div>
+          </div>
+          <div class="column is-10">
+            <div class="edit-button">
+              <mat-icon fontSet="material-icons-outlined" (click)="deleteMongo()">play_arrow</mat-icon>
+            </div>
+            <div class="content">
+              <span>Delete all information from the database. This does not remove your files.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stacked-card">
+        <div class="columns is-multiline">
+          <div class="column is-2">
+            <div class="title">Elasticsearch</div>
+          </div>
+          <div class="column is-10">
+            <div class="edit-button">
+              <mat-icon fontSet="material-icons-outlined" (click)="deleteElasticsearch()">play_arrow</mat-icon>
+            </div>
+            <div class="content">
+              <span>Delete all information from the search appliance. This does not remove your files.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

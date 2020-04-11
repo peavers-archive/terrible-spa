@@ -1,9 +1,8 @@
 <div class="video" @fade>
-
   <div (click)="goTo(video)">
     <div class="overlay">
       <figure class="image is-3by2">
-        <img *ngIf="coverImage(video) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
+        <img *ngIf="coverImage(video) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
       </figure>
     </div>
 
@@ -14,5 +13,4 @@
       {{ video.importedTime | amTimeAgo }} <span class="is-pulled-right">{{ video.size | fileSize }}</span>
     </div>
   </div>
-
 </div>
