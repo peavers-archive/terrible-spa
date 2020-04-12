@@ -1,0 +1,102 @@
+.mat-tab-label-content {
+  text-transform: capitalize;
+}
+
+.tab-body-content {
+  margin-top: 50px;
+}
+
+.video {
+  box-shadow: none;
+  border-radius: 4px;
+  border: 1px solid #dadce0;
+
+  //box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: white;
+  //border-radius: 2px;
+  //border: 2px solid transparent;
+  position: relative;
+
+  &.selectedVideo {
+    border-color: #673ab7;
+    box-shadow: none;
+
+    .checkbox-overlay {
+      visibility: visible;
+    }
+
+    &:hover {
+      box-shadow: none;
+
+      ::ng-deep .video-action-menu {
+        visibility: hidden;
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    //box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+
+    .image {
+      opacity: 0.8;
+    }
+
+    .checkbox-overlay {
+      visibility: visible;
+    }
+
+    ::ng-deep .video-action-menu {
+      visibility: visible;
+    }
+  }
+
+  .overlay {
+    background-color: #0a0a0a;
+  }
+
+  .video-name {
+    padding: 10px;
+    word-wrap: break-word;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #111111;
+    margin: 8px 0;
+    height: 42px;
+    overflow: hidden;
+  }
+
+  .video-meta {
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: rgba(17, 17, 17, 0.6);
+  }
+
+  .image {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .checkbox-overlay {
+    visibility: hidden;
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    z-index: 2;
+  }
+
+  ::ng-deep .video-action-menu {
+    visibility: hidden;
+  }
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: rgba(255, 255, 255, 0.7);
+}

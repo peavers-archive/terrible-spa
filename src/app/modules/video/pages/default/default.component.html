@@ -1,4 +1,4 @@
-<div class="section" *ngIf="mediaFile as video">
+<div class="section" *ngIf="mediaFile | async as video">
   <div class="container">
     <div class="columns video-header">
       <div class="column">
@@ -21,11 +21,20 @@
       <div class="columns is-multiline">
         <div class="column is-12">
           <ul>
-            <li class="action">
-              <button mat-button>
-                <mat-icon>add_to_queue</mat-icon>
-                Add to favourites
-              </button>
+            <li class="action" *ngIf="favourites | async as favourites">
+              <div *ngIf="isInList(favourites, video); else addToListButton">
+                <button mat-button (click)="removeFromList(favourites, video)">
+                  <mat-icon>add_to_queue</mat-icon>
+                  Remove from favourites
+                </button>
+              </div>
+
+              <ng-template #addToListButton>
+                <button mat-button (click)="addToList(favourites, video)">
+                  <mat-icon>add_to_queue</mat-icon>
+                  Add to favourites
+                </button>
+              </ng-template>
             </li>
 
             <li class="action">
@@ -37,7 +46,7 @@
 
             <mat-menu #playlists="matMenu">
               <ng-template matMenuContent>
-                <button (click)="createPlaylist(video)" mat-menu-item>New list</button>
+                <button (click)="createMediaList(video)" mat-menu-item>New list</button>
 
                 <div *ngFor="let mediaList of mediaLists | async">
                   <button (click)="addToList(mediaList, video)" mat-menu-item>
@@ -67,12 +76,6 @@
           <p class="metadata">Added: {{ video.lastModifiedTime | amTimeAgo }}</p>
           <p class="metadata">Location: {{ video.absolutePath }}</p>
         </div>
-      </div>
-    </div>
-
-    <div class="columns is-multiline">
-      <div class="column is-12" *ngFor="let video of relatedMediaFiles | async">
-        {{ video.absolutePath }}
       </div>
     </div>
   </div>

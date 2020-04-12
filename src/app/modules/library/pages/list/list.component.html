@@ -1,0 +1,15 @@
+<div class="section" *ngIf="mediaList | async as mediaList">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h1 (click)="editMediaList(mediaList)" matTooltip="Click to rename" class="editable">{{ mediaList.name }}</h1>
+      </div>
+    </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-2" *ngFor="let mediaFile of mediaList.mediaFiles">
+        <app-video-card-layout [video]="mediaFile"></app-video-card-layout>
+      </div>
+    </div>
+  </div>
+</div>

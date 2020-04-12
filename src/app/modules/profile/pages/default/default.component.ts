@@ -4,7 +4,7 @@ import { User } from 'firebase';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-default',
+  selector: 'app-profile',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,

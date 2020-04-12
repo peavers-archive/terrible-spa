@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { MediaFile, MediaList } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaListService } from '../../../../core/services/media-list.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-default',
@@ -15,27 +16,26 @@ import { MediaListService } from '../../../../core/services/media-list.service';
 export class DefaultComponent implements OnInit {
   THUMBNAIL_POSITION = 4;
 
-  mediaFile: MediaFile;
-
-  relatedMediaFiles: Observable<MediaFile[]> = new Observable<MediaFile[]>();
+  mediaFile: Observable<MediaFile> = new Observable<MediaFile>();
 
   mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();
+
+  favourites: Observable<MediaList> = new Observable<MediaList>();
 
   constructor(
     private route: ActivatedRoute,
     private mediaFileService: MediaFileService,
     private searchService: SearchService,
-    private mediaListService: MediaListService
+    private mediaListService: MediaListService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((response) => {
-      this.mediaFileService.findById(response.id).subscribe((mediaFile) => {
-        this.relatedMediaFiles = this.searchService.search(mediaFile.name);
-        this.mediaLists = this.mediaListService.findAll();
+    this.favourites = this.mediaListService.findFavourite();
+    this.mediaLists = this.mediaListService.findAllWithFilter('favourites');
 
-        this.mediaFile = mediaFile;
-      });
+    this.route.params.subscribe((response) => {
+      this.mediaFile = this.mediaFileService.findById(response.id);
     });
   }
 
@@ -45,13 +45,27 @@ export class DefaultComponent implements OnInit {
       : mediaFile.thumbnails[this.THUMBNAIL_POSITION];
   }
 
-  createPlaylist(video: MediaFile) {
+  createMediaList(video: MediaFile) {
     this.mediaListService.create(video);
   }
 
   addToList(mediaList: MediaList, video: MediaFile) {
     mediaList.mediaFiles.push(video);
 
-    this.mediaListService.save(mediaList).subscribe();
+    this.mediaListService
+      .save(mediaList)
+      .subscribe(() => this.snackBar.open(`Added ${video.name} to ${mediaList.name}`));
+  }
+
+  removeFromList(mediaList: MediaList, video: MediaFile) {
+    mediaList.mediaFiles = mediaList.mediaFiles.filter((file) => file.id !== video.id);
+
+    this.mediaListService
+      .save(mediaList)
+      .subscribe(() => this.snackBar.open(`Removed ${video.name} from ${mediaList.name}`));
+  }
+
+  isInList(mediaList: MediaList, video: MediaFile) {
+    return mediaList.mediaFiles.some((value) => value.id === video.id);
   }
 }

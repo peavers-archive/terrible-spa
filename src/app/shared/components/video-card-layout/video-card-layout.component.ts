@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MediaFile } from '../../../core/domain/modules';
 import { Router } from '@angular/router';
-import { trigger, style, animate, transition } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-video-card-layout',
@@ -12,7 +12,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ],
 })
 export class VideoCardLayoutComponent {
-  THUMBNAIL_POSITION = 4;
+  THUMBNAIL_POSITION = 0;
 
   constructor(private router: Router) {}
 

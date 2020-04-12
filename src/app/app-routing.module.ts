@@ -1,11 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import {
-  AngularFireAuthGuard,
-  AngularFireAuthGuardModule,
-  redirectLoggedInTo,
-  redirectUnauthorizedTo,
-} from '@angular/fire/auth-guard';
+import { AngularFireAuthGuard, AngularFireAuthGuardModule, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { LoginComponent } from './layout/login/login.component';
 import { CONTENT_ROUTES } from './shared';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';

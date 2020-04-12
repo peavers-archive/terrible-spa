@@ -5,6 +5,7 @@ import { EditDialogData, FormField, MediaFile, MediaList } from '../domain/modul
 import { EditDialogComponent } from '../../modules/profile/components/edit-dialog/edit-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs';
 export class MediaListService {
   private readonly endpoint: string;
 
-  constructor(private httpClient: HttpClient, private dialog: MatDialog) {
+  constructor(private httpClient: HttpClient, private dialog: MatDialog, private snackBar: MatSnackBar) {
     this.endpoint = `${environment.api}/media-lists`;
   }
 
@@ -22,6 +23,18 @@ export class MediaListService {
 
   findAll(): Observable<MediaList[]> {
     return this.httpClient.get<MediaList[]>(`${this.endpoint}`);
+  }
+
+  findAllWithFilter(filter: string): Observable<MediaList[]> {
+    return this.httpClient.get<MediaList[]>(`${this.endpoint}?filter=${filter}`);
+  }
+
+  findFavourite() {
+    return this.httpClient.get<MediaList>(`${this.endpoint}/favourites`);
+  }
+
+  findById(id: string): Observable<MediaList> {
+    return this.httpClient.get<MediaList>(`${this.endpoint}/${id}`);
   }
 
   public create(video: MediaFile) {
@@ -52,7 +65,7 @@ export class MediaListService {
           mediaFiles: new Array(1).fill(video),
         };
 
-        this.save(mediaList).subscribe();
+        this.save(mediaList).subscribe(() => this.snackBar.open(`Added ${video.name} to ${mediaList.name}`));
       });
   }
 

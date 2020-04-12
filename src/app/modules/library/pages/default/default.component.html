@@ -1,0 +1,45 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h1>Libraries</h1>
+      </div>
+
+      <div class="column is-12">
+        <mat-tab-group animationDuration="0" dynamicHeight>
+          <mat-tab label="favourites">
+            <div class="columns is-multiline tab-body-content" *ngIf="favourites | async as favourites">
+              <div class="column is-2" *ngFor="let mediaFile of favourites.mediaFiles">
+                <app-video-card-layout [video]="mediaFile"></app-video-card-layout>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Lists">
+            <div class="columns is-multiline tab-body-content" *ngIf="mediaLists | async as mediaLists">
+              <div class="column is-2" *ngFor="let mediaList of mediaLists">
+                <div class="video" @fade>
+                  <div (click)="goTo(mediaList)">
+                    <div class="overlay">
+                      <figure class="image is-3by2">
+                        <img
+                          *ngIf="coverImage(mediaList.mediaFiles[0]) | remoteImage as thumbnail"
+                          [src]="thumbnail"
+                          alt="thumbnail"
+                        />
+                      </figure>
+                    </div>
+
+                    <div class="video-name">
+                      {{ mediaList.name }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

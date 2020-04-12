@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent, ContentLayoutComponent, NavbarComponent, LoginComponent],
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

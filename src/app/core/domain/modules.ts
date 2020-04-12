@@ -34,6 +34,7 @@ export interface MediaFile {
 }
 
 export class MediaList {
+  id?: string;
   name: string;
-  mediaFiles: MediaFile[];
+  mediaFiles?: MediaFile[];
 }
