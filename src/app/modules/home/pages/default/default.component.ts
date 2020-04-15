@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { User } from 'firebase';
 import { MediaFileService } from '../../../../core/services/media-file.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MediaFile } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
 
@@ -12,10 +12,12 @@ import { SearchService } from '../../../../core/services/search.service';
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class DefaultComponent implements OnInit {
-  mediaFiles: Observable<MediaFile[]> = new Observable<MediaFile[]>();
+export class DefaultComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
 
-  user: Observable<User | null> = new Observable<User | null>();
+  mediaFiles: MediaFile[] = [];
+
+  user: Observable<User> = new Observable<User>();
 
   constructor(
     private authService: AuthService,
@@ -23,12 +25,19 @@ export class DefaultComponent implements OnInit {
     private searchService: SearchService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.user = this.authService.getUser();
-    this.mediaFiles = this.mediaFileService.findAll();
+
+    this.subscriptions.push(this.mediaFileService.findAll().subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
   }
 
-  search(query: any) {
-    this.mediaFiles = query ? this.searchService.search(query) : this.mediaFileService.findAll();
+  search(query: any): void {
+    let observable = query ? this.searchService.search(query) : this.mediaFileService.findAll();
+
+    this.subscriptions.push(observable.subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

@@ -14,8 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./list.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [
-    trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate(150, style({ opacity: 1 }))])])
-  ]
+    trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate(150, style({ opacity: 1 }))])]),
+  ],
 })
 export class ListComponent implements OnInit {
   mediaList: Observable<MediaList> = new Observable<MediaList>();
@@ -25,8 +25,7 @@ export class ListComponent implements OnInit {
     private mediaListService: MediaListService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe((response) => {
@@ -45,9 +44,9 @@ export class ListComponent implements OnInit {
           label: 'List name',
           value: mediaList.name,
           placeholder: 'List name',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     this.openDialog(dialogData)
@@ -59,16 +58,14 @@ export class ListComponent implements OnInit {
 
         mediaList.name = response[0].value;
 
-        this.mediaListService
-          .save(mediaList)
-          .subscribe(() => this.snackBar.open(`Renamed to ${mediaList.name}`));
+        this.mediaListService.save(mediaList).subscribe(() => this.snackBar.open(`Renamed to ${mediaList.name}`));
       });
   }
 
   private openDialog(dialogData): MatDialogRef<EditDialogComponent> {
     return this.dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData
+      data: dialogData,
     });
   }
 }

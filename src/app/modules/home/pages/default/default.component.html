@@ -1,4 +1,4 @@
-<div *ngIf="user | async" class="section is-fluid">
+<div *ngIf="user | async" class="section">
   <div class="container is-fluid">
     <div class="columns is-multiline">
       <div class="column is-12">
@@ -8,10 +8,12 @@
         <app-search-bar (valueChange)="search($event)"></app-search-bar>
       </div>
     </div>
-    <div class="columns is-multiline">
-      <div class="column is-2" *ngFor="let mediaFile of mediaFiles | async">
-        <app-video-card-layout [video]="mediaFile"></app-video-card-layout>
+
+    <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="mediaFiles">
+      <div class="columns is-multiline video-list" #container>
+        <app-video-card-layout *ngFor="let item of scroll.viewPortItems" [video]="item" class="column is-2">
+        </app-video-card-layout>
       </div>
-    </div>
+    </virtual-scroller>
   </div>
 </div>

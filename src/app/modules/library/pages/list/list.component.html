@@ -1,5 +1,5 @@
 <div class="section" *ngIf="mediaList | async as mediaList">
-  <div class="container">
+  <div class="container is-fluid">
     <div class="columns is-multiline">
       <div class="column is-12">
         <h1 (click)="editMediaList(mediaList)" matTooltip="Click to rename" class="editable">{{ mediaList.name }}</h1>

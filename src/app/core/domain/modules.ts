@@ -1,51 +1,50 @@
 export interface DialogData {
-    title?: string;
-    confirmText?: string | null;
-    cancelText?: string;
+  title?: string;
+  confirmText?: string | null;
+  cancelText?: string;
 }
 
 export interface EditDialogData extends DialogData {
-    formFields: FormField[];
+  formFields: FormField[];
 }
 
 export interface FormField {
-    label?: string;
-    ngModel?: string;
-    value?: any;
-    placeholder?: string;
-    isReadOnly: boolean;
+  label?: string;
+  ngModel?: string;
+  value?: any;
+  placeholder?: string;
+  isReadOnly: boolean;
 }
 
 export interface Directory {
-    id?: string | null;
-    path?: string;
+  id?: string | null;
+  path?: string;
 }
 
 export interface MediaFile {
-    id: string;
+  id: string;
 
-    name: string;
+  name: string;
 
-    path: string;
+  path: string;
 
-    extension: string;
+  extension: string;
 
-    size: number;
+  size: number;
 
-    thumbnails: string[12]
+  thumbnails: string[12];
 
-    createdTime: number;
+  createdTime: number;
 
-    lastAccessTime: number;
+  lastAccessTime: number;
 
-    lastModifiedTime: number;
+  lastModifiedTime: number;
 
-    importedTime: number;
-
+  importedTime: number;
 }
 
 export class MediaList {
-    id?: string;
-    name: string;
-    mediaFiles?: MediaFile[];
+  id?: string;
+  name: string;
+  mediaFiles?: MediaFile[];
 }

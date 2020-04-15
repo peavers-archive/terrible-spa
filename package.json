@@ -33,6 +33,7 @@
     "mat-video": "^2.8.0",
     "moment": "^2.24.0",
     "ngx-moment": "^3.5.0",
+    "ngx-virtual-scroller": "^4.0.3",
     "rxjs": "~6.5.5",
     "tslib": "^1.11.1",
     "uuid": "^7.0.3",

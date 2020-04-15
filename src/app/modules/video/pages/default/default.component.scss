@@ -1,12 +1,17 @@
 .action {
   display: inline-block;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.87);
+  color: #294661;
   text-transform: uppercase;
-  font-weight: 500;
-  padding-right: 20px;
+  font-size: 13px;
+  font-weight: 400;
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+table {
+  td {
+    padding-right: 10px;
   }
 }
