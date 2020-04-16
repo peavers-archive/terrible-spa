@@ -3,8 +3,9 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { User } from 'firebase';
 import { MediaFileService } from '../../../../core/services/media-file.service';
 import { Observable, Subscription } from 'rxjs';
-import { MediaFile } from '../../../../core/domain/modules';
+import { MediaFile, MediaList } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
+import { MediaListService } from '../../../../core/services/media-list.service';
 
 @Component({
   selector: 'app-default',
@@ -17,16 +18,24 @@ export class DefaultComponent implements OnInit, OnDestroy {
 
   mediaFiles: MediaFile[] = [];
 
-  user: Observable<User> = new Observable<User>();
+  mediaLists: MediaList[] = [];
+
+  favourites: MediaList;
 
   constructor(
-    private authService: AuthService,
     private mediaFileService: MediaFileService,
+    private mediaListService: MediaListService,
     private searchService: SearchService
   ) {}
 
   ngOnInit(): void {
-    this.user = this.authService.getUser();
+    this.subscriptions.push(
+      this.mediaListService.findFavourite().subscribe((favourites) => (this.favourites = favourites))
+    );
+
+    this.subscriptions.push(
+      this.mediaListService.findAllWithFilter('favourites').subscribe((mediaLists) => (this.mediaLists = mediaLists))
+    );
 
     this.subscriptions.push(this.mediaFileService.findAll().subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
   }

@@ -6,6 +6,7 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { Observable } from 'rxjs';
 import { TaskProcessorService } from '../../../../core/services/task-processor.service';
 import { SearchService } from '../../../../core/services/search.service';
+import Utils from '../../../../shared/utils/utils.component';
 
 @Component({
   selector: 'app-tab-system-settings',
@@ -42,7 +43,7 @@ export class TabSystemSettingsComponent implements OnInit {
       ],
     };
 
-    this.openDialog(dialogData)
+    Utils.openDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -75,7 +76,7 @@ export class TabSystemSettingsComponent implements OnInit {
       ],
     };
 
-    this.openDialog(dialogData)
+    Utils.openDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -92,24 +93,15 @@ export class TabSystemSettingsComponent implements OnInit {
 
   scanDirectory() {
     this.directoryService.findAll().subscribe((directory) => {
-      this.taskProcessorService.directories(directory.path).subscribe();
+      this.taskProcessorService.directories(directory.path);
     });
   }
 
   generateThumbnails() {
-    this.taskProcessorService.thumbnails().subscribe();
+    this.taskProcessorService.thumbnails();
   }
 
   generateIndex() {
-    this.searchService.generateIndex().subscribe(() => {
-      console.log('DONE!');
-    });
-  }
-
-  private openDialog(dialogData): MatDialogRef<EditDialogComponent> {
-    return this.dialog.open(EditDialogComponent, {
-      width: '35vw',
-      data: dialogData,
-    });
+    this.searchService.generateIndex();
   }
 }

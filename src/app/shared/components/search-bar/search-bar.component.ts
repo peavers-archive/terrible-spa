@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import Utils from '../../utils/utils.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,7 +9,7 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent {
-  searchInput = '';
+  searchInput = Utils.emptyString();
 
   debouncer: Subject<string | boolean> = new Subject<string | boolean>();
 
@@ -29,7 +30,7 @@ export class SearchBarComponent {
   }
 
   clearSearchInput() {
-    this.searchInput = '';
+    this.searchInput = Utils.emptyString();
 
     this.debouncer.next(false);
   }

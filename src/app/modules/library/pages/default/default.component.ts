@@ -1,29 +1,36 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MediaFile, MediaList } from '../../../../core/domain/modules';
 import { MediaListService } from '../../../../core/services/media-list.service';
-import { animate, style, transition, trigger } from '@angular/animations';
+import Utils from '../../../../shared/utils/utils.component';
 
 @Component({
   selector: 'app-library',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: [
-    trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate(150, style({ opacity: 1 }))])]),
-  ],
+  animations: Utils.fadeAnimation(),
 })
-export class DefaultComponent implements OnInit {
-  mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();
+export class DefaultComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
 
-  favourites: Observable<MediaList> = new Observable<MediaList>();
+  mediaLists: MediaList[] = [];
+
+  favourites: MediaList;
 
   constructor(private router: Router, private route: ActivatedRoute, private mediaListService: MediaListService) {}
 
   ngOnInit() {
-    this.favourites = this.mediaListService.findFavourite();
-    this.mediaLists = this.mediaListService.findAllWithFilter('favourites');
+    this.subscriptions.push(
+      this.mediaListService.findFavourite().subscribe((favourites) => {
+        this.favourites = favourites;
+      })
+    );
+
+    this.subscriptions.push(
+      this.mediaListService.findAllWithFilter('favourites').subscribe((mediaLists) => (this.mediaLists = mediaLists))
+    );
   }
 
   coverImage(mediaFile: MediaFile): string {
@@ -32,5 +39,9 @@ export class DefaultComponent implements OnInit {
 
   goTo(mediaList: MediaList) {
     this.router.navigate([`/library/${mediaList.id}`]);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

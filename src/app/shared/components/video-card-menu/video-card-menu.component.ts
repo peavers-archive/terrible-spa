@@ -1,26 +1,31 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { MediaFile, MediaList } from '../../../core/domain/modules';
+import { MediaListService } from '../../../core/services/media-list.service';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { MediaFileService } from '../../../../core/services/media-file.service';
-import { Observable, Subscription } from 'rxjs';
-import { MediaFile, MediaList } from '../../../../core/domain/modules';
-import { SearchService } from '../../../../core/services/search.service';
-import { MediaListService } from '../../../../core/services/media-list.service';
+import { MediaFileService } from '../../../core/services/media-file.service';
+import { SearchService } from '../../../core/services/search.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-default',
-  templateUrl: './default.component.html',
-  styleUrls: ['./default.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  selector: 'app-video-card-menu',
+  templateUrl: './video-card-menu.component.html',
+  styleUrls: ['./video-card-menu.component.scss'],
 })
-export class DefaultComponent implements OnInit, OnDestroy {
+export class VideoCardMenuComponent implements OnDestroy {
   subscriptions: Subscription[] = [];
 
-  mediaFile: Observable<MediaFile> = new Observable<MediaFile>();
+  @Input()
+  mediaFile: MediaFile;
 
-  mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();
+  @Input()
+  mediaList: MediaList;
 
-  favourites: Observable<MediaList> = new Observable<MediaList>();
+  @Input()
+  mediaLists: MediaList[];
+
+  @Input()
+  favourites: MediaList;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,15 +34,6 @@ export class DefaultComponent implements OnInit, OnDestroy {
     private mediaListService: MediaListService,
     private snackBar: MatSnackBar
   ) {}
-
-  ngOnInit() {
-    this.favourites = this.mediaListService.findFavourite();
-    this.mediaLists = this.mediaListService.findAllWithFilter('favourites');
-
-    this.route.params.subscribe((response) => {
-      this.mediaFile = this.mediaFileService.findById(response.id);
-    });
-  }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());

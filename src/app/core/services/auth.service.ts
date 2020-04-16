@@ -29,11 +29,11 @@ export class AuthService {
     });
   }
 
-  public getUser(): Observable<User | null> {
+  getUser(): Observable<User | null> {
     return this.angularFireAuth.user;
   }
 
-  public logout() {
+  logout() {
     this.angularFireAuth.signOut().then(() => console.log('Bye!'));
 
     this.router.navigate(['/login']);

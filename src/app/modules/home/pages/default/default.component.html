@@ -1,4 +1,4 @@
-<div *ngIf="user | async" class="section">
+<div class="section">
   <div class="container is-fluid">
     <div class="columns is-multiline">
       <div class="column is-12">
@@ -11,7 +11,13 @@
 
     <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="mediaFiles">
       <div class="columns is-multiline video-list" #container>
-        <app-video-card-layout *ngFor="let item of scroll.viewPortItems" [video]="item" class="column is-2">
+        <app-video-card-layout
+          *ngFor="let item of scroll.viewPortItems"
+          [mediaFile]="item"
+          [favourites]="favourites"
+          [mediaLists]="mediaLists"
+          class="column is-2"
+        >
         </app-video-card-layout>
       </div>
     </virtual-scroller>

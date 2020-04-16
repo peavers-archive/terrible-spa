@@ -23,23 +23,14 @@ export interface Directory {
 
 export interface MediaFile {
   id: string;
-
   name: string;
-
   path: string;
-
   extension: string;
-
   size: number;
-
   thumbnails: string[12];
-
   createdTime: number;
-
   lastAccessTime: number;
-
   lastModifiedTime: number;
-
   importedTime: number;
 }
 
@@ -47,4 +38,8 @@ export class MediaList {
   id?: string;
   name: string;
   mediaFiles?: MediaFile[];
+}
+
+export class StaticRequest {
+  path: string;
 }

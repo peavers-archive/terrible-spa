@@ -11,6 +11,7 @@ import { RemoteVideoPipe } from './pipes/remote-video.pipe';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { UserPictureComponent } from './components/user-picture/user-picture.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
+import { VideoCardMenuComponent } from './components/video-card-menu/video-card-menu.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     VideoCardLayoutComponent,
     SearchBarComponent,
     UserPictureComponent,
+    VideoCardMenuComponent,
   ],
   exports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     RemoteVideoPipe,
     FileSizePipe,
     VideoCardLayoutComponent,
+    VideoCardMenuComponent,
     SearchBarComponent,
     UserPictureComponent,
   ],

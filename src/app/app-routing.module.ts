@@ -34,7 +34,6 @@ const routes: Routes = [
     AngularFireAuthGuardModule,
     RouterModule.forRoot(routes, {
       useHash: false,
-      onSameUrlNavigation: 'reload',
     }),
   ],
   exports: [RouterModule],

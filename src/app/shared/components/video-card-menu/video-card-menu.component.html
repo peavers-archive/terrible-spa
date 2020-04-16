@@ -1,0 +1,41 @@
+<div class="video-action-menu">
+  <!-- Trigger opens the menu -->
+  <button [mat-menu-trigger-for]="videoMenu" class="video-menu-trigger" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <!-- Main menu content -->
+  <mat-menu #videoMenu="matMenu">
+    <ng-template matMenuContent *ngIf="favourites">
+      <ng-container *ngIf="isInList(favourites, mediaFile); then removeFavourite; else addFavourite"></ng-container>
+
+      <ng-template #removeFavourite>
+        <button (click)="removeFromList(favourites, mediaFile)" mat-menu-item>Remove from library</button>
+      </ng-template>
+      <ng-template #addFavourite>
+        <button (click)="addToList(favourites, mediaFile)" mat-menu-item>Add to library</button>
+      </ng-template>
+
+      <button [matMenuTriggerFor]="mediaListMenu" mat-menu-item>
+        Personal Lists
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <!-- List sub content -->
+  <mat-menu #mediaListMenu="matMenu">
+    <ng-template matMenuContent>
+      <button *ngIf="mediaList" (click)="removeFromList(mediaList, mediaFile)" mat-menu-item>
+        Remove from {{ mediaList.name }}
+      </button>
+
+      <button (click)="createMediaList(mediaFile)" mat-menu-item>New playlist</button>
+
+      <div *ngFor="let mediaList of mediaLists">
+        <button (click)="addToList(mediaList, mediaFile)" mat-menu-item>
+          {{ mediaList.name }}
+        </button>
+      </div>
+    </ng-template>
+  </mat-menu>
+</div>

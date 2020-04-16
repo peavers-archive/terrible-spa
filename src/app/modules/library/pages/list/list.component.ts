@@ -1,24 +1,27 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { EditDialogData, FormField, MediaList } from '../../../../core/domain/modules';
 import { MediaListService } from '../../../../core/services/media-list.service';
-import { animate, style, transition, trigger } from '@angular/animations';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { EditDialogComponent } from '../../../profile/components/edit-dialog/edit-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Utils from '../../../../shared/utils/utils.component';
 
 @Component({
   selector: 'app-library',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: [
-    trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate(150, style({ opacity: 1 }))])]),
-  ],
+  animations: Utils.fadeAnimation(),
 })
-export class ListComponent implements OnInit {
-  mediaList: Observable<MediaList> = new Observable<MediaList>();
+export class ListComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
+
+  mediaLists: MediaList[] = [];
+
+  favourites: MediaList;
+
+  mediaList: MediaList;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,8 +31,20 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.subscriptions.push(
+      this.mediaListService.findFavourite().subscribe((favourites) => {
+        this.favourites = favourites;
+      })
+    );
+
+    this.subscriptions.push(
+      this.mediaListService.findAllWithFilter('favourites').subscribe((mediaLists) => (this.mediaLists = mediaLists))
+    );
+
     this.route.params.subscribe((response) => {
-      this.mediaList = this.mediaListService.findById(response.id);
+      this.subscriptions.push(
+        this.mediaListService.findById(response.id).subscribe((mediaList) => (this.mediaList = mediaList))
+      );
     });
   }
 
@@ -49,7 +64,7 @@ export class ListComponent implements OnInit {
       ],
     };
 
-    this.openDialog(dialogData)
+    Utils.openDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -62,10 +77,7 @@ export class ListComponent implements OnInit {
       });
   }
 
-  private openDialog(dialogData): MatDialogRef<EditDialogComponent> {
-    return this.dialog.open(EditDialogComponent, {
-      width: '35vw',
-      data: dialogData,
-    });
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

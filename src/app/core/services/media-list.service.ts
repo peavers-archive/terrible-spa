@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { EditDialogData, FormField, MediaFile, MediaList } from '../domain/modules';
-import { EditDialogComponent } from '../../modules/profile/components/edit-dialog/edit-dialog.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Utils from '../../shared/utils/utils.component';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +21,6 @@ export class MediaListService {
     return this.httpClient.post<MediaList>(`${this.endpoint}`, mediaList);
   }
 
-  findAll(): Observable<MediaList[]> {
-    return this.httpClient.get<MediaList[]>(`${this.endpoint}`);
-  }
-
   findAllWithFilter(filter: string): Observable<MediaList[]> {
     return this.httpClient.get<MediaList[]>(`${this.endpoint}?filter=${filter}`);
   }
@@ -37,7 +33,7 @@ export class MediaListService {
     return this.httpClient.get<MediaList>(`${this.endpoint}/${id}`);
   }
 
-  public create(video: MediaFile) {
+  create(video: MediaFile) {
     const dialogData: EditDialogData = {
       title: 'New list',
       confirmText: 'Save',
@@ -53,7 +49,7 @@ export class MediaListService {
       ],
     };
 
-    this.openDialog(dialogData)
+    Utils.openDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -67,12 +63,5 @@ export class MediaListService {
 
         this.save(mediaList).subscribe(() => this.snackBar.open(`Added ${video.name} to ${mediaList.name}`));
       });
-  }
-
-  private openDialog(dialogData): MatDialogRef<EditDialogComponent> {
-    return this.dialog.open(EditDialogComponent, {
-      width: '35vw',
-      data: dialogData,
-    });
   }
 }

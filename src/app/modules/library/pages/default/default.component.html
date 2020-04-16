@@ -8,15 +8,19 @@
       <div class="column is-12">
         <mat-tab-group animationDuration="0" dynamicHeight>
           <mat-tab label="favourites">
-            <div class="columns is-multiline tab-body-content" *ngIf="favourites | async as favourites">
+            <div class="columns is-multiline tab-body-content" *ngIf="favourites">
               <div class="column is-2" *ngFor="let mediaFile of favourites.mediaFiles">
-                <app-video-card-layout [video]="mediaFile"></app-video-card-layout>
+                <app-video-card-layout
+                  [mediaFile]="mediaFile"
+                  [mediaLists]="mediaLists"
+                  [favourites]="favourites"
+                ></app-video-card-layout>
               </div>
             </div>
           </mat-tab>
 
           <mat-tab label="Lists">
-            <div class="columns is-multiline tab-body-content" *ngIf="mediaLists | async as mediaLists">
+            <div class="columns is-multiline tab-body-content" *ngIf="mediaLists">
               <div class="column is-2" *ngFor="let mediaList of mediaLists">
                 <div class="video" @fade>
                   <div (click)="goTo(mediaList)">
@@ -29,11 +33,9 @@
                         />
                       </figure>
                     </div>
-
                     <div class="video-name">
                       {{ mediaList.name }}
                     </div>
-
                     <div class="video-meta">Size {{ mediaList.mediaFiles.length }}</div>
                   </div>
                 </div>

@@ -1,113 +1,110 @@
 <div class="section" *ngIf="mediaFile | async as video">
-    <div class="container">
-        <div class="columns video-header">
-            <div class="column">
-                <h1>{{ video.name }}</h1>
-            </div>
-        </div>
-
-        <div class="columns is-multiline">
-            <div class="column is-12">
-                <video width="100%" controls>
-                    <source src="{{ video.path | remoteVideo }}" type="video/mp4"/>
-                </video>
-            </div>
-        </div>
-
-        <div class="stacked-card">
-            <div class="columns is-multiline">
-                <div class="column is-12">
-
-                    <ul>
-                        <li class="action" *ngIf="favourites | async as favourites">
-                            <div *ngIf="isInList(favourites, video); else addToListButton">
-                                <button mat-button (click)="removeFromList(favourites, video)">
-                                    <mat-icon>remove_from_queue</mat-icon>
-                                    Remove from library
-                                </button>
-                            </div>
-
-                            <ng-template #addToListButton>
-                                <button mat-button (click)="addToList(favourites, video)">
-                                    <mat-icon>add_to_queue</mat-icon>
-                                    Add to library
-                                </button>
-                            </ng-template>
-                        </li>
-
-                        <li class="action">
-                            <button mat-button [matMenuTriggerFor]="playlists">
-                                <mat-icon>playlist_add</mat-icon>
-                                Add to a list
-                            </button>
-                        </li>
-
-                        <mat-menu #playlists="matMenu">
-                            <ng-template matMenuContent>
-                                <button (click)="createMediaList(video)" mat-menu-item>New list</button>
-
-                                <div *ngFor="let mediaList of mediaLists | async">
-                                    <button (click)="addToList(mediaList, video)" mat-menu-item>
-                                        {{ mediaList.name }}
-                                    </button>
-                                </div>
-                            </ng-template>
-                        </mat-menu>
-
-                        <li class="action is-pulled-right">
-                            <button mat-button>
-                                <mat-icon>delete_forever</mat-icon>
-                                Delete from disk
-                            </button>
-                        </li>
-                    </ul>
-
-
-                </div>
-            </div>
-        </div>
-
-        <div class="stacked-card">
-            <h2>Metadata</h2>
-
-            <div class="columns is-multiline">
-                <div class="column is-12">
-                    <table>
-                        <tr>
-                            <td>Id</td>
-                            <td>{{ video.id }}</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>{{ video.name }}</td>
-                        </tr>
-                        <tr>
-                            <td>Extension</td>
-                            <td>{{ video.extension }}</td>
-                        </tr>
-                        <tr>
-                            <td>Path</td>
-                            <td>{{ video.path }}</td>
-                        </tr>
-                        <tr>
-                            <td>Created</td>
-                            <td>{{ video.createdTime | amTimeAgo}}</td>
-                        </tr>
-                        <tr>
-                            <td>last accessed</td>
-                            <td>{{ video.lastAccessTime | amTimeAgo}}</td>
-                        </tr>
-                        <tr>
-                            <td>last modified</td>
-                            <td>{{ video.lastModifiedTime | amTimeAgo}}</td>
-                        </tr>
-                        <tr>
-                            <td>Imported</td>
-                            <td>{{ video.importedTime | amTimeAgo }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+  <div class="container is-fluid">
+    <div class="columns video-header">
+      <div class="column">
+        <h1>{{ video.name }}</h1>
+      </div>
     </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <video width="100%" controls preload="auto">
+          <source src="{{ video.id | remoteVideo }}" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <ul>
+            <li class="action" *ngIf="favourites | async as favourites">
+              <div *ngIf="isInList(favourites, video); else addToListButton">
+                <button mat-button (click)="removeFromList(favourites, video)">
+                  <mat-icon>remove_from_queue</mat-icon>
+                  Remove from library
+                </button>
+              </div>
+
+              <ng-template #addToListButton>
+                <button mat-button (click)="addToList(favourites, video)">
+                  <mat-icon>add_to_queue</mat-icon>
+                  Add to library
+                </button>
+              </ng-template>
+            </li>
+
+            <li class="action">
+              <button mat-button [matMenuTriggerFor]="playlists">
+                <mat-icon>playlist_add</mat-icon>
+                Add to list
+              </button>
+            </li>
+
+            <mat-menu #playlists="matMenu">
+              <ng-template matMenuContent>
+                <button (click)="createMediaList(video)" mat-menu-item>New list</button>
+
+                <div *ngFor="let mediaList of mediaLists | async">
+                  <button (click)="addToList(mediaList, video)" mat-menu-item>
+                    {{ mediaList.name }}
+                  </button>
+                </div>
+              </ng-template>
+            </mat-menu>
+
+            <li class="action is-pulled-right">
+              <button mat-button>
+                <mat-icon>delete_forever</mat-icon>
+                Delete from disk
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <h2>Metadata</h2>
+
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <table>
+            <tr>
+              <td>Id</td>
+              <td>{{ video.id }}</td>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td>{{ video.name }}</td>
+            </tr>
+            <tr>
+              <td>Extension</td>
+              <td>{{ video.extension }}</td>
+            </tr>
+            <tr>
+              <td>Path</td>
+              <td>{{ video.path }}</td>
+            </tr>
+            <tr>
+              <td>Created</td>
+              <td>{{ video.createdTime | amTimeAgo }}</td>
+            </tr>
+            <tr>
+              <td>last accessed</td>
+              <td>{{ video.lastAccessTime | amTimeAgo }}</td>
+            </tr>
+            <tr>
+              <td>last modified</td>
+              <td>{{ video.lastModifiedTime | amTimeAgo }}</td>
+            </tr>
+            <tr>
+              <td>Imported</td>
+              <td>{{ video.importedTime | amTimeAgo }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

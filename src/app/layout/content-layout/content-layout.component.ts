@@ -9,7 +9,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./content-layout.component.scss'],
 })
 export class ContentLayoutComponent implements OnInit {
-  user: Observable<User | null> = new Observable<User | null>();
+  user: Observable<User> = new Observable<User>();
 
   constructor(private authService: AuthService) {}
 

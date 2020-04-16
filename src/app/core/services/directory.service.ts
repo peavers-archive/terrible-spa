@@ -21,12 +21,4 @@ export class DirectoryService {
   findAll(): Observable<Directory> {
     return this.httpClient.get<Directory>(this.endpoint);
   }
-
-  findById(id: string): Observable<Directory> {
-    return this.httpClient.get<Directory>(`${this.endpoint}/${id}`);
-  }
-
-  deleteById(id: string): Observable<Directory> {
-    return this.httpClient.delete<Directory>(`${this.endpoint}/${id}`);
-  }
 }
