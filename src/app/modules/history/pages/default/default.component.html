@@ -8,9 +8,15 @@
       <div class="column is-12" *ngIf="history | async as history">
 
         <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="history.results">
-          <div *ngFor="let item of scroll.viewPortItems">
-            <p (click)="goTo(item)">{{ item.name }}</p>
-          </div>
+            <div class="stacked-card on-hover" *ngFor="let item of scroll.viewPortItems" @fade (click)="goTo(item)">
+              <div class="columns is-multiline">
+                <div class="column is-12">
+                  <div class="content">
+                    <span>{{item.lastWatched | amTimeAgo}} {{item.name}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
         </virtual-scroller>
 
       </div>

@@ -31,6 +31,7 @@ export interface MediaFile {
   createdTime: number;
   lastAccessTime: number;
   lastModifiedTime: number;
+  lastWatched: number;
 }
 
 export class MediaList {
