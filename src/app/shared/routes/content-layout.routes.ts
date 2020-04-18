@@ -17,4 +17,8 @@ export const CONTENT_ROUTES: Routes = [
     path: 'profile',
     loadChildren: () => import('../../modules/profile/profile.module').then((m) => m.ProfileModule),
   },
+  {
+    path: 'history',
+    loadChildren: () => import('../../modules/history/history.module').then((m) => m.HistoryModule),
+  },
 ];

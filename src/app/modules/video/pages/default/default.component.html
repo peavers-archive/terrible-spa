@@ -1,15 +1,15 @@
-<div class="section" *ngIf="mediaFile | async as video">
+<div class="section" *ngIf="mediaFile">
   <div class="container is-fluid">
     <div class="columns video-header">
       <div class="column">
-        <h1>{{ video.name }}</h1>
+        <h1>{{ mediaFile.name }}</h1>
       </div>
     </div>
 
     <div class="columns is-multiline">
       <div class="column is-12">
         <video width="100%" controls preload="auto">
-          <source src="{{ video.id | remoteVideo }}" type="video/mp4" />
+          <source src="{{ mediaFile.id | remoteVideo }}" type="video/mp4" />
         </video>
       </div>
     </div>
@@ -19,15 +19,15 @@
         <div class="column is-12">
           <ul>
             <li class="action" *ngIf="favourites | async as favourites">
-              <div *ngIf="isInList(favourites, video); else addToListButton">
-                <button mat-button (click)="removeFromList(favourites, video)">
+              <div *ngIf="isInList(favourites, mediaFile); else addToListButton">
+                <button mat-button (click)="removeFromList(favourites, mediaFile)">
                   <mat-icon>remove_from_queue</mat-icon>
                   Remove from library
                 </button>
               </div>
 
               <ng-template #addToListButton>
-                <button mat-button (click)="addToList(favourites, video)">
+                <button mat-button (click)="addToList(favourites, mediaFile)">
                   <mat-icon>add_to_queue</mat-icon>
                   Add to library
                 </button>
@@ -43,10 +43,10 @@
 
             <mat-menu #playlists="matMenu">
               <ng-template matMenuContent>
-                <button (click)="createMediaList(video)" mat-menu-item>New list</button>
+                <button (click)="createMediaList(mediaFile)" mat-menu-item>New list</button>
 
                 <div *ngFor="let mediaList of mediaLists | async">
-                  <button (click)="addToList(mediaList, video)" mat-menu-item>
+                  <button (click)="addToList(mediaList, mediaFile)" mat-menu-item>
                     {{ mediaList.name }}
                   </button>
                 </div>
@@ -72,35 +72,31 @@
           <table>
             <tr>
               <td>Id</td>
-              <td>{{ video.id }}</td>
+              <td>{{ mediaFile.id }}</td>
             </tr>
             <tr>
               <td>Name</td>
-              <td>{{ video.name }}</td>
+              <td>{{ mediaFile.name }}</td>
             </tr>
             <tr>
               <td>Extension</td>
-              <td>{{ video.extension }}</td>
+              <td>{{ mediaFile.extension }}</td>
             </tr>
             <tr>
               <td>Path</td>
-              <td>{{ video.path }}</td>
+              <td>{{ mediaFile.path }}</td>
             </tr>
             <tr>
               <td>Created</td>
-              <td>{{ video.createdTime | amTimeAgo }}</td>
+              <td>{{ mediaFile.createdTime | amTimeAgo }}</td>
             </tr>
             <tr>
               <td>last accessed</td>
-              <td>{{ video.lastAccessTime | amTimeAgo }}</td>
+              <td>{{ mediaFile.lastAccessTime | amTimeAgo }}</td>
             </tr>
             <tr>
               <td>last modified</td>
-              <td>{{ video.lastModifiedTime | amTimeAgo }}</td>
-            </tr>
-            <tr>
-              <td>Imported</td>
-              <td>{{ video.importedTime | amTimeAgo }}</td>
+              <td>{{ mediaFile.lastModifiedTime | amTimeAgo }}</td>
             </tr>
           </table>
         </div>

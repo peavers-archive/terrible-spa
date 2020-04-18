@@ -10,7 +10,7 @@
       {{ mediaFile.name }}
     </div>
     <div class="video-meta">
-      {{ mediaFile.importedTime | amTimeAgo }} <span class="is-pulled-right">{{ mediaFile.size | fileSize }}</span>
+      {{ mediaFile.lastModifiedTime | amTimeAgo }} <span class="is-pulled-right">{{ mediaFile.size | fileSize }}</span>
     </div>
   </div>
 

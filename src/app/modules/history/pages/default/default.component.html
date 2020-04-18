@@ -1,0 +1,19 @@
+<div class="section">
+  <div class="container is-fluid">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h1>History</h1>
+      </div>
+
+      <div class="column is-12" *ngIf="history | async as history">
+
+        <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="history.results">
+          <div *ngFor="let item of scroll.viewPortItems">
+            <p (click)="goTo(item)">{{ item.name }}</p>
+          </div>
+        </virtual-scroller>
+
+      </div>
+    </div>
+  </div>
+</div>

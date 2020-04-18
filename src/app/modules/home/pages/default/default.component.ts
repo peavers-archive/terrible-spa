@@ -3,7 +3,7 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { User } from 'firebase';
 import { MediaFileService } from '../../../../core/services/media-file.service';
 import { Observable, Subscription } from 'rxjs';
-import { MediaFile, MediaList } from '../../../../core/domain/modules';
+import { GroupedMediaFile, MediaFile, MediaList } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaListService } from '../../../../core/services/media-list.service';
 

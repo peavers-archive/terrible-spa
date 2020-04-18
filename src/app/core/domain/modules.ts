@@ -31,7 +31,6 @@ export interface MediaFile {
   createdTime: number;
   lastAccessTime: number;
   lastModifiedTime: number;
-  importedTime: number;
 }
 
 export class MediaList {
@@ -40,6 +39,14 @@ export class MediaList {
   mediaFiles?: MediaFile[];
 }
 
-export class StaticRequest {
-  path: string;
+export class GroupedMediaFile {
+  year: number;
+  month: number;
+  day: number;
+  results: MediaFile[];
+}
+
+export class History {
+  id: string;
+  results: MediaFile[];
 }

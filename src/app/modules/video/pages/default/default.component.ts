@@ -6,6 +6,7 @@ import { MediaFile, MediaList } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaListService } from '../../../../core/services/media-list.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HistoryService } from '../../../../core/services/history.service';
 
 @Component({
   selector: 'app-default',
@@ -16,7 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DefaultComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
-  mediaFile: Observable<MediaFile> = new Observable<MediaFile>();
+  mediaFile: MediaFile;
 
   mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();
 
@@ -27,6 +28,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
     private mediaFileService: MediaFileService,
     private searchService: SearchService,
     private mediaListService: MediaListService,
+    private historyService: HistoryService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -35,7 +37,10 @@ export class DefaultComponent implements OnInit, OnDestroy {
     this.mediaLists = this.mediaListService.findAllWithFilter('favourites');
 
     this.route.params.subscribe((response) => {
-      this.mediaFile = this.mediaFileService.findById(response.id);
+      this.mediaFileService.findById(response.id).subscribe((mediaFile) => {
+        this.mediaFile = mediaFile;
+        this.historyService.addToHistory(mediaFile).subscribe(() => console.log('Added to History'));
+      });
     });
   }
 
