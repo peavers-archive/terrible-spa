@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { MediaFile, MediaList } from '../../../core/domain/modules';
 import { Router } from '@angular/router';
 import Utils from '../../utils/utils.component';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { SelectService } from '../../../core/services/select-service';
 
 @Component({
   selector: 'app-video-card-layout',
@@ -12,7 +14,7 @@ import Utils from '../../utils/utils.component';
 export class VideoCardLayoutComponent {
   THUMBNAIL_POSITION = 0;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private selectService: SelectService) {}
 
   @Input()
   mediaFile: MediaFile;
@@ -33,6 +35,18 @@ export class VideoCardLayoutComponent {
   }
 
   goTo(video: MediaFile) {
-    this.router.navigate([`/video/${video.id}`]);
+    if (this.selectService.selectMode) {
+      this.mediaFile.isSelected = this.mediaFile.isSelected
+        ? this.selectService.remove(this.mediaFile)
+        : this.selectService.add(this.mediaFile);
+    } else {
+      this.router.navigate([`/video/${video.id}`]);
+    }
+  }
+
+  select(event: MatCheckboxChange) {
+    this.mediaFile.isSelected = event.checked
+      ? this.selectService.add(this.mediaFile)
+      : this.selectService.remove(this.mediaFile);
   }
 }

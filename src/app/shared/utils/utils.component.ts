@@ -17,4 +17,8 @@ export default class Utils {
   static emptyString(): string {
     return '';
   }
+
+  static isEmpty(array: any[]): boolean {
+    return !(!Array.isArray(array) || !array.length);
+  }
 }

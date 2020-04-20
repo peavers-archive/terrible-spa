@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { GroupedMediaFile, MediaFile, MediaList } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaListService } from '../../../../core/services/media-list.service';
+import Utils from '../../../../shared/utils/utils.component';
 
 @Component({
   selector: 'app-default',
@@ -48,5 +49,9 @@ export class DefaultComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  }
+
+  isEmpty(array: any[]): boolean {
+    return Utils.isEmpty(array);
   }
 }

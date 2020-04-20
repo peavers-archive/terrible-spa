@@ -1,28 +1,57 @@
-<nav aria-label="main navigation" class="navbar is-fixed-top scrolling" role="navigation">
-  <div class="navbar-item">
-    <button [routerLink]="'/'" mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
+<nav class="navbar top-bar is-fixed-top select-bar" *ngIf="isSelectBar(); else navbar">
+  <div class="navbar-brand">
+    haps.io
   </div>
 
-  <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+  <div class="navbar-start">
     <div class="navbar-item">
-      <app-search-bar></app-search-bar>
+      <div class="selected-count">{{ selectedLabel }}</div>
+    </div>
+    <div class="navbar-item">
+      <button mat-flat-button (click)="clear()">
+        Deselect all
+      </button>
     </div>
   </div>
 
   <div class="navbar-end">
+    <div class="navbar-item" *ngIf="favourites | async as favourites">
+      <button (click)="addToList(favourites)" mat-icon-button matTooltip="Add to library">
+        <mat-icon>add_to_queue</mat-icon>
+      </button>
+    </div>
+
     <div class="navbar-item">
-      <div class="profile-button">
-        <button [matMenuTriggerFor]="settingsMenu" mat-icon-button>
-          <mat-icon>more_vert</mat-icon>
-        </button>
-      </div>
+      <button [matMenuTriggerFor]="mediaListMenu" mat-icon-button matTooltip="Add to list">
+        <mat-icon aria-label="Add to playlist">playlist_add</mat-icon>
+      </button>
+
+      <!-- List sub content -->
+      <mat-menu #mediaListMenu="matMenu">
+        <ng-template matMenuContent>
+          <button (click)="createMediaList()" mat-menu-item>New playlist</button>
+
+          <div *ngFor="let mediaList of mediaLists | async">
+            <button (click)="addToList(mediaList)" mat-menu-item>
+              {{ mediaList.name }}
+            </button>
+          </div>
+        </ng-template>
+      </mat-menu>
+    </div>
+
+    <div class="navbar-item">
+      <button mat-icon-button matTooltip="Delete forever" (click)="deleteSelected()">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
     </div>
   </div>
 </nav>
 
-<mat-menu #settingsMenu="matMenu">
-  <button [routerLink]="'/profile'" mat-menu-item>Profile</button>
-  <button (click)="googleLogout()" mat-menu-item>Logout</button>
-</mat-menu>
+<ng-template #navbar>
+  <nav class="navbar top-bar is-fixed-top">
+    <div class="navbar-brand">
+      haps.io
+    </div>
+  </nav>
+</ng-template>

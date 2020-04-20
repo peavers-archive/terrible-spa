@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { TaskProcessorService } from '../../../../core/services/task-processor.service';
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaFileService } from '../../../../core/services/media-file.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tab-danger-zone',
@@ -17,6 +18,7 @@ export class TabDangerZoneComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private directoryService: DirectoryService,
     private taskProcessorService: TaskProcessorService,
     private searchService: SearchService,
@@ -28,10 +30,10 @@ export class TabDangerZoneComponent implements OnInit {
   }
 
   deleteMongo() {
-    this.mediaFileService.deleteAll().subscribe();
+    this.mediaFileService.deleteAll().subscribe(() => this.snackBar.open(`Deleting all files from the database`));
   }
 
   deleteElasticsearch() {
-    this.searchService.deleteAll().subscribe();
+    this.searchService.deleteAll().subscribe(() => this.snackBar.open(`Deleting all search indexes`));
   }
 }

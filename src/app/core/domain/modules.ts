@@ -22,6 +22,7 @@ export interface Directory {
 }
 
 export interface MediaFile {
+  isSelected: boolean;
   id: string;
   name: string;
   path: string;

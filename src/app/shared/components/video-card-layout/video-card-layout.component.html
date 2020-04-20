@@ -1,4 +1,11 @@
-<div class="video" @fade>
+<div class="video selectedVideo" @fade [ngClass]="{ selectedVideo: mediaFile.isSelected }">
+  <mat-checkbox
+    class="checkbox-overlay"
+    (change)="select($event)"
+    [checked]="mediaFile.isSelected"
+    [color]="'primary'"
+  ></mat-checkbox>
+
   <div (click)="goTo(mediaFile)">
     <div class="overlay">
       <figure class="image is-3by2">
