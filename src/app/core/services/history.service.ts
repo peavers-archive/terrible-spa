@@ -18,7 +18,7 @@ export class HistoryService {
     return this.httpClient.post<MediaFile>(`${this.endpoint}`, mediaFile);
   }
 
-  findById() {
-    return this.httpClient.get<History>(`${this.endpoint}/1`);
+  getHistory() {
+    return this.httpClient.get<History>(`${this.endpoint}`);
   }
 }

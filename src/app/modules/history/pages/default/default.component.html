@@ -9,14 +9,15 @@
         <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="history.results">
           <div
             class="stacked-card on-hover"
-            *ngFor="let item of scroll.viewPortItems.reverse()"
+            *ngFor="let item of scroll.viewPortItems"
             @fade
             (click)="goTo(item)"
           >
             <div class="columns is-multiline">
               <div class="column is-12">
                 <div class="content">
-                  <span>{{ item.lastWatched | amCalendar }} - {{ item.name }}</span>
+                  <span class="last-watched-time">{{ item.lastWatched | amCalendar }}</span>
+                  <span>{{ item.name }}</span>
                 </div>
               </div>
             </div>

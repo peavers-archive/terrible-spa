@@ -20,7 +20,7 @@ export class DefaultComponent implements OnInit {
   history: Observable<History> = new Observable<History>();
 
   ngOnInit() {
-    this.history = this.historyService.findById();
+    this.history = this.historyService.getHistory();
   }
 
   goTo(mediaFile: MediaFile) {
