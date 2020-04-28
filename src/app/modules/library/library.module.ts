@@ -11,6 +11,6 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
   declarations: [DefaultComponent, ListComponent],
   imports: [SharedModule, LibraryRoutingModule, MomentModule, MatVideoModule, VirtualScrollerModule],
   exports: [],
-  entryComponents: [],
+  entryComponents: []
 })
 export class LibraryModule {}

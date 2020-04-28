@@ -1,3 +1,3 @@
-# Terrible Single Page Application 
+# Terrible Single Page Application
 
-Frontend client for the terrible project. 
+Frontend client for the terrible project.

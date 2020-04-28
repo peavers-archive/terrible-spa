@@ -12,7 +12,7 @@ import Utils from '../../shared/utils/utils.component';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  animations: Utils.fadeAnimation(),
+  animations: Utils.fadeAnimation()
 })
 export class NavbarComponent implements OnInit {
   user: Observable<User> = new Observable<User>();
@@ -61,7 +61,7 @@ export class NavbarComponent implements OnInit {
   }
 
   createMediaList() {
-    this.selectService.selected.forEach((mediaFile) => {
+    this.selectService.selected.forEach(mediaFile => {
       this.mediaListService.create(mediaFile);
     });
   }

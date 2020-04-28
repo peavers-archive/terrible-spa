@@ -6,7 +6,7 @@ export default class Utils {
   static openDialog(dialog: MatDialog, dialogData): MatDialogRef<EditDialogComponent> {
     return dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData,
+      data: dialogData
     });
   }
 

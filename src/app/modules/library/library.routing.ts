@@ -9,18 +9,18 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: DefaultComponent,
+        component: DefaultComponent
       },
       {
         path: ':id',
-        component: ListComponent,
-      },
-    ],
-  },
+        component: ListComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class LibraryRoutingModule {}
