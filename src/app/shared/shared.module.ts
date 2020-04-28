@@ -21,7 +21,7 @@ import { VideoCardMenuComponent } from './components/video-card-menu/video-card-
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MomentModule,
+    MomentModule
   ],
   declarations: [
     EditDialogComponent,
@@ -31,7 +31,7 @@ import { VideoCardMenuComponent } from './components/video-card-menu/video-card-
     VideoCardLayoutComponent,
     SearchBarComponent,
     UserPictureComponent,
-    VideoCardMenuComponent,
+    VideoCardMenuComponent
   ],
   exports: [
     CommonModule,
@@ -45,9 +45,9 @@ import { VideoCardMenuComponent } from './components/video-card-menu/video-card-
     VideoCardLayoutComponent,
     VideoCardMenuComponent,
     SearchBarComponent,
-    UserPictureComponent,
+    UserPictureComponent
   ],
   entryComponents: [EditDialogComponent],
-  providers: [MaterialModule],
+  providers: [MaterialModule]
 })
 export class SharedModule {}

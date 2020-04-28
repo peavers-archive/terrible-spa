@@ -3,7 +3,7 @@ import { MediaFile } from '../domain/modules';
 import Utils from '../../shared/utils/utils.component';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SelectService {
   private _selected: MediaFile[] = [];
@@ -27,13 +27,13 @@ export class SelectService {
   }
 
   remove(mediaFile: MediaFile) {
-    this.selected = this.selected.filter((f) => mediaFile.id != f.id);
+    this.selected = this.selected.filter(f => mediaFile.id != f.id);
 
     return false;
   }
 
   clear() {
-    this.selected.forEach((mediaFile) => (mediaFile.isSelected = false));
+    this.selected.forEach(mediaFile => (mediaFile.isSelected = false));
 
     this.selected = [];
 
