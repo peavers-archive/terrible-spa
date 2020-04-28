@@ -34,7 +34,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
   }
 
   coverImage(mediaFile: MediaFile): string {
-    return mediaFile.thumbnails == null || mediaFile.thumbnails[4] == null ? null : mediaFile.thumbnails[4];
+    return null;
   }
 
   goTo(mediaList: MediaList) {

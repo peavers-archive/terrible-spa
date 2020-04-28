@@ -28,7 +28,7 @@ html,
 body {
   height: 100%;
   min-height: 100%;
-  background-color: #fcfcfc;
+  background-color: #fff;
 }
 
 h1 {
@@ -55,7 +55,7 @@ h2 {
 @import '~@angular/material/theming';
 
 $blue: (
-  500: #1a82e2,
+  500: #294661,
   contrast: (
     500: #fff
   )
@@ -98,8 +98,8 @@ $custom-typography: mat-typography-config(
 }
 
 .mat-tab-label.mat-tab-label-active {
-  color: #1a82e2;
-  font-weight: 400;
+  color: #294661;
+  //font-weight: 400;
   font-size: 13px;
 }
 

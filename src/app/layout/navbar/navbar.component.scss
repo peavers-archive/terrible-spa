@@ -4,3 +4,52 @@
   margin-left: 10px;
   min-height: 55px;
 }
+
+.navbar {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.top-bar {
+  border-bottom: none;
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+.mid-bar {
+  top: 64px;
+  width: 100%;
+  z-index: 1;
+
+  .tabs {
+    background-color: white;
+    margin-left: 100px;
+    position: absolute;
+    bottom: -1px;
+
+    a {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.87);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+}
+
+.dynamic-row {
+  height: auto;
+  padding: 0;
+}
+
+.mat-tab-nav-bar {
+  height: 100%;
+  padding: 14px 0 0 100px;
+}
+
+.mat-tab-links {
+  margin-bottom: auto;
+}
+
+.mat-tab-link {
+  text-transform: uppercase;
+  min-width: 0;
+  padding: 0 14px;
+}
