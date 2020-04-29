@@ -37,13 +37,13 @@
             <li class="action">
               <button mat-button [matMenuTriggerFor]="playlists">
                 <mat-icon>playlist_add</mat-icon>
-                Add to list
+                Add to collection
               </button>
             </li>
 
             <mat-menu #playlists="matMenu">
               <ng-template matMenuContent>
-                <button (click)="createMediaList(mediaFile)" mat-menu-item>New list</button>
+                <button (click)="createMediaList(mediaFile)" mat-menu-item>New collection</button>
 
                 <div *ngFor="let mediaList of mediaLists | async">
                   <button (click)="addToList(mediaList, mediaFile)" mat-menu-item>

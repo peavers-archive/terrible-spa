@@ -35,7 +35,7 @@ export class MediaListService {
 
   create(video: MediaFile) {
     const dialogData: EditDialogData = {
-      title: 'New list',
+      title: 'New collection',
       confirmText: 'Save',
       cancelText: 'Cancel',
 

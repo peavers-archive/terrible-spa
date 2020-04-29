@@ -22,14 +22,14 @@
     </div>
 
     <div class="navbar-item">
-      <button [matMenuTriggerFor]="mediaListMenu" mat-icon-button matTooltip="Add to list">
-        <mat-icon aria-label="Add to playlist">playlist_add</mat-icon>
+      <button [matMenuTriggerFor]="mediaListMenu" mat-icon-button matTooltip="Add to collection">
+        <mat-icon aria-label="Add to collection">playlist_add</mat-icon>
       </button>
 
       <!-- List sub content -->
       <mat-menu #mediaListMenu="matMenu">
         <ng-template matMenuContent>
-          <button (click)="createMediaList()" mat-menu-item>New playlist</button>
+          <button (click)="createMediaList()" mat-menu-item>New collection</button>
 
           <div *ngFor="let mediaList of mediaLists | async">
             <button (click)="addToList(mediaList)" mat-menu-item>
