@@ -10,7 +10,7 @@ import Utils from '../../../../shared/utils/utils.component';
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: Utils.fadeAnimation(),
+  animations: Utils.fadeAnimation()
 })
 export class DefaultComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
@@ -23,17 +23,17 @@ export class DefaultComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(
-      this.mediaListService.findFavourite().subscribe((favourites) => {
+      this.mediaListService.findFavourite().subscribe(favourites => {
         this.favourites = favourites;
       })
     );
 
     this.subscriptions.push(
-      this.mediaListService.findAllWithFilter('favourites').subscribe((mediaLists) => (this.mediaLists = mediaLists))
+      this.mediaListService.findAllWithFilter('favourites').subscribe(mediaLists => (this.mediaLists = mediaLists))
     );
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }
