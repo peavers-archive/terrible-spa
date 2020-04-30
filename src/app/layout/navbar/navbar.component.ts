@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  animations: Utils.fadeAnimation(),
+  animations: Utils.fadeAnimation()
 })
 export class NavbarComponent implements OnInit {
   isLibrary = false;
@@ -58,12 +58,12 @@ export class NavbarComponent implements OnInit {
     this.navLinks = [
       {
         path: '/library',
-        label: 'favorites',
+        label: 'favorites'
       },
       {
         path: '/library/collections',
-        label: 'my collections',
-      },
+        label: 'my collections'
+      }
     ];
   }
 
@@ -94,13 +94,13 @@ export class NavbarComponent implements OnInit {
   }
 
   createMediaList() {
-    this.selectService.selected.forEach((mediaFile) => {
+    this.selectService.selected.forEach(mediaFile => {
       this.mediaListService.create(mediaFile);
     });
   }
 
   search(query: any): void {
-    this.searchService.search(query).subscribe((searchResults) => (this.searchResults = searchResults));
+    this.searchService.search(query).subscribe(searchResults => (this.searchResults = searchResults));
   }
 
   showSearchResults(): boolean {

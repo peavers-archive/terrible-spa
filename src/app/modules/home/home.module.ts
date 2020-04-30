@@ -8,6 +8,6 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
   declarations: [DefaultComponent],
   imports: [SharedModule, RoutingModule, VirtualScrollerModule],
   exports: [],
-  entryComponents: [],
+  entryComponents: []
 })
 export class HomeModule {}

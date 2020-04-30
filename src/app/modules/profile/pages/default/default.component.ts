@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   selector: 'app-profile',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class DefaultComponent implements OnInit {
   user: Observable<User | null> = new Observable<User | null>();
