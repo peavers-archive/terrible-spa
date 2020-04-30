@@ -6,11 +6,12 @@ import { MomentModule } from 'ngx-moment';
 import { MatVideoModule } from 'mat-video';
 import { ListComponent } from './pages/list/list.component';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+import { CollectionComponent } from './pages/collections/collections.component';
 
 @NgModule({
-  declarations: [DefaultComponent, ListComponent],
+  declarations: [DefaultComponent, ListComponent, CollectionComponent],
   imports: [SharedModule, LibraryRoutingModule, MomentModule, MatVideoModule, VirtualScrollerModule],
   exports: [],
-  entryComponents: []
+  entryComponents: [],
 })
 export class LibraryModule {}

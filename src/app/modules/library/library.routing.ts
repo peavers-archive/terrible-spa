@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './pages/default/default.component';
 import { ListComponent } from './pages/list/list.component';
+import { CollectionComponent } from './pages/collections/collections.component';
 
 export const routes: Routes = [
   {
@@ -9,18 +10,22 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: DefaultComponent
+        component: DefaultComponent,
       },
       {
-        path: ':id',
-        component: ListComponent
-      }
-    ]
-  }
+        path: 'collections',
+        component: CollectionComponent,
+      },
+      {
+        path: 'collections/:id',
+        component: ListComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class LibraryRoutingModule {}

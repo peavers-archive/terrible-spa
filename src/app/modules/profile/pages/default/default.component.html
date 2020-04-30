@@ -7,8 +7,10 @@
 
       <div class="column is-12">
         <mat-tab-group animationDuration="0" dynamicHeight>
-          <mat-tab label="Account" *ngIf="user | async as user">
-            <app-tab-account [user]="user"></app-tab-account>
+          <mat-tab label="Account">
+            <div *ngIf="user | async as user">
+              <app-tab-account [user]="user"></app-tab-account>
+            </div>
           </mat-tab>
 
           <mat-tab label="System Settings">

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Directory, EditDialogData, FormField } from '../../../../core/domain/modules';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DirectoryService } from '../../../../core/services/directory.service';
-import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { Observable } from 'rxjs';
 import { TaskProcessorService } from '../../../../core/services/task-processor.service';
 import { SearchService } from '../../../../core/services/search.service';
@@ -11,7 +10,7 @@ import Utils from '../../../../shared/utils/utils.component';
 @Component({
   selector: 'app-tab-system-settings',
   templateUrl: './tab-system-settings.component.html',
-  styleUrls: ['./tab-system-settings.component.scss']
+  styleUrls: ['./tab-system-settings.component.scss'],
 })
 export class TabSystemSettingsComponent implements OnInit {
   directory: Observable<Directory> = new Observable<Directory>();
@@ -38,9 +37,9 @@ export class TabSystemSettingsComponent implements OnInit {
           label: 'Directory',
           value: '',
           placeholder: 'Directory',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     Utils.openDialog(this.dialog, dialogData)
@@ -50,9 +49,9 @@ export class TabSystemSettingsComponent implements OnInit {
           return;
         }
 
-        response.forEach(field => {
+        response.forEach((field) => {
           const directory: Directory = {
-            path: field.value
+            path: field.value,
           };
 
           this.directory = this.directoryService.save(directory);
@@ -71,9 +70,9 @@ export class TabSystemSettingsComponent implements OnInit {
           label: 'Directory',
           value: directory.path,
           placeholder: 'Directory',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     Utils.openDialog(this.dialog, dialogData)
@@ -83,7 +82,7 @@ export class TabSystemSettingsComponent implements OnInit {
           return;
         }
 
-        response.forEach(field => {
+        response.forEach((field) => {
           directory.path = field.value;
 
           this.directoryService.save(directory).subscribe();
@@ -92,7 +91,7 @@ export class TabSystemSettingsComponent implements OnInit {
   }
 
   scanDirectory() {
-    this.directoryService.findAll().subscribe(directory => {
+    this.directoryService.findAll().subscribe((directory) => {
       this.taskProcessorService.directories(directory.path);
     });
   }

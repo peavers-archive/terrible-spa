@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ import Utils from '../../../../shared/utils/utils.component';
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: Utils.fadeAnimation()
+  animations: Utils.fadeAnimation(),
 })
 export class DefaultComponent implements OnInit {
   constructor(private historyService: HistoryService, private router: Router) {}

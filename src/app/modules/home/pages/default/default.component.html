@@ -4,9 +4,6 @@
       <div class="column is-12">
         <h1>Media</h1>
       </div>
-      <div class="column is-4 is-offset-4">
-        <app-search-bar (valueChange)="search($event)"></app-search-bar>
-      </div>
     </div>
 
     <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="mediaFiles">

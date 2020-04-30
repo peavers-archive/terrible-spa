@@ -31,7 +31,7 @@
         <ng-template matMenuContent>
           <button (click)="createMediaList()" mat-menu-item>New collection</button>
 
-          <div *ngFor="let mediaList of mediaLists | async">
+          <div *ngFor="let mediaList of mediaLists">
             <button (click)="addToList(mediaList)" mat-menu-item>
               {{ mediaList.name }}
             </button>
@@ -53,5 +53,40 @@
     <div class="navbar-brand">
       haps.io
     </div>
+
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <div class="navbar-item">
+        <app-search-bar (valueChange)="search($event)"></app-search-bar>
+
+        <ul class="search-results" *ngIf="showSearchResults()">
+          <li *ngFor="let video of searchResults" class="search-results-item">
+            <div class="columns">
+              <div (click)="goTo(video.id)" class="column is-11">
+                <p>{{ video.name }}</p>
+                <p class="metadata">{{ video.path }}</p>
+              </div>
+
+              <div class="column is-1"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar mid-bar" *ngIf="isLibrary">
+    <nav mat-tab-nav-bar>
+      <a
+        mat-tab-link
+        *ngFor="let link of navLinks"
+        [routerLink]="link.path"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [active]="rla.isActive"
+      >
+        {{ link.label }}
+      </a>
+    </nav>
   </nav>
 </ng-template>

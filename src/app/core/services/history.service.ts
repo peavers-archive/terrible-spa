@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Directory, History, MediaFile } from '../domain/modules';
+import { History, MediaFile } from '../domain/modules';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HistoryService {
   private readonly endpoint;

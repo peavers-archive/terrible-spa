@@ -6,7 +6,7 @@ import Utils from '../../utils/utils.component';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.scss']
+  styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent {
   searchInput = Utils.emptyString();
@@ -17,7 +17,7 @@ export class SearchBarComponent {
   valueChange = new EventEmitter<string | boolean>();
 
   constructor() {
-    this.debouncer.pipe(debounceTime(250)).subscribe(value => this.valueChange.emit(value));
+    this.debouncer.pipe(debounceTime(250)).subscribe((value) => this.valueChange.emit(value));
   }
 
   @HostListener('window:keyup', ['$event'])

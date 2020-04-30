@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { MediaFile } from '../domain/modules';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskProcessorService {
   private readonly endpoint: string;
