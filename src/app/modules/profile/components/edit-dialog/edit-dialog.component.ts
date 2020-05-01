@@ -6,7 +6,7 @@ import { EditDialogData } from '../../../../core/domain/modules';
   selector: 'app-delete-confirm-dialog',
   templateUrl: './edit-dialog.component.html',
   styleUrls: ['./edit-dialog.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class EditDialogComponent {
   input: EditDialogData;

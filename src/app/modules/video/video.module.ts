@@ -9,6 +9,6 @@ import { MatVideoModule } from 'mat-video';
   declarations: [DefaultComponent],
   imports: [SharedModule, RoutingModule, MomentModule, MatVideoModule],
   exports: [],
-  entryComponents: [],
+  entryComponents: []
 })
 export class VideoModule {}
