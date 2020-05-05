@@ -26,6 +26,7 @@ export interface MediaFile {
   id: string;
   name: string;
   path: string;
+  thumbnailPath: string;
   extension: string;
   size: number;
   thumbnails: string[12];

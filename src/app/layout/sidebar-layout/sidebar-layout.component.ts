@@ -4,11 +4,11 @@ import { User } from 'firebase';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
-  selector: 'app-content-layout',
-  templateUrl: './content-layout.component.html',
-  styleUrls: ['./content-layout.component.scss'],
+  selector: 'app-sidebar-layout',
+  templateUrl: './sidebar-layout.component.html',
+  styleUrls: ['./sidebar-layout.component.scss'],
 })
-export class ContentLayoutComponent implements OnInit {
+export class SidebarLayoutComponent implements OnInit {
   user: Observable<User> = new Observable<User>();
 
   constructor(private authService: AuthService) {}

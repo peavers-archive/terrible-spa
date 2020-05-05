@@ -1,0 +1,43 @@
+.zero-z-index {
+  z-index: 0 !important;
+}
+
+.navigation-bar {
+  z-index: 31;
+  top: 60px;
+  width: 100%;
+  border-bottom: none;
+
+  .tabs {
+    background-color: white;
+    margin-left: 100px;
+    position: absolute;
+    bottom: -1px;
+
+    a {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.87);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+}
+
+.mat-tab-nav-bar {
+  height: 100%;
+  padding: 14px 0 0 100px;
+  width: 100%;
+}
+
+.mat-tab-links {
+  margin-bottom: auto;
+}
+
+.mat-tab-link {
+  text-transform: capitalize;
+  font-size: 13px;
+  color: #294661;
+  font-weight: 400;
+  min-width: 0;
+  padding: 0 14px;
+}

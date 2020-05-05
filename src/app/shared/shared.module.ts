@@ -12,6 +12,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { UserPictureComponent } from './components/user-picture/user-picture.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 import { VideoCardMenuComponent } from './components/video-card-menu/video-card-menu.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { SelectBarComponent } from './components/select-bar/select-bar.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,7 @@ import { VideoCardMenuComponent } from './components/video-card-menu/video-card-
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MomentModule
+    MomentModule,
   ],
   declarations: [
     EditDialogComponent,
@@ -31,10 +33,13 @@ import { VideoCardMenuComponent } from './components/video-card-menu/video-card-
     VideoCardLayoutComponent,
     SearchBarComponent,
     UserPictureComponent,
-    VideoCardMenuComponent
+    VideoCardMenuComponent,
+    NavigationBarComponent,
+    SelectBarComponent,
   ],
   exports: [
     CommonModule,
+    SelectBarComponent,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -45,9 +50,10 @@ import { VideoCardMenuComponent } from './components/video-card-menu/video-card-
     VideoCardLayoutComponent,
     VideoCardMenuComponent,
     SearchBarComponent,
-    UserPictureComponent
+    NavigationBarComponent,
+    UserPictureComponent,
   ],
   entryComponents: [EditDialogComponent],
-  providers: [MaterialModule]
+  providers: [MaterialModule],
 })
 export class SharedModule {}

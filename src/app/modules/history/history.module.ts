@@ -10,6 +10,6 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
   declarations: [DefaultComponent],
   imports: [SharedModule, RoutingModule, MomentModule, MatVideoModule, VirtualScrollerModule],
   exports: [],
-  entryComponents: []
+  entryComponents: [],
 })
 export class HistoryModule {}

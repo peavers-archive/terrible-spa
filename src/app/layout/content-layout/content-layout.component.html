@@ -1,34 +1,7 @@
-<app-navbar></app-navbar>
+<app-header></app-header>
 
 <div class="columns is-fullheight is-multiline is-fluid">
-  <aside class="column is-12 is-narrow-mobile is-fullheight is-hidden-mobile">
-    <ul>
-      <li class="menu-item" [routerLink]="'/'">
-        <div class="with-icon">
-          <mat-icon fontSet="material-icons-outlined">home</mat-icon>
-          Home
-        </div>
-      </li>
-      <li class="menu-item" [routerLink]="'/library'">
-        <div class="with-icon">
-          <mat-icon fontSet="material-icons-outlined">video_library</mat-icon>
-          Libraries
-        </div>
-      </li>
-      <li class="menu-item" [routerLink]="'/profile'">
-        <div class="with-icon">
-          <mat-icon>perm_identity</mat-icon>
-          Profile
-        </div>
-      </li>
-      <li class="menu-item" [routerLink]="'/history'">
-        <div class="with-icon">
-          <mat-icon>history</mat-icon>
-          History
-        </div>
-      </li>
-    </ul>
-  </aside>
+  <app-sidebar-layout></app-sidebar-layout>
 
   <div class="container column is-10 is-fluid">
     <div class="columns is-fullheight">

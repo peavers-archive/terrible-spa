@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-tab-danger-zone',
   templateUrl: './tab-danger-zone.component.html',
-  styleUrls: ['./tab-danger-zone.component.scss']
+  styleUrls: ['./tab-danger-zone.component.scss'],
 })
 export class TabDangerZoneComponent implements OnInit {
   directory: Observable<Directory> = new Observable<Directory>();

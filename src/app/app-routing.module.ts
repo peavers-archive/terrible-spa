@@ -4,7 +4,7 @@ import {
   AngularFireAuthGuard,
   AngularFireAuthGuardModule,
   redirectLoggedInTo,
-  redirectUnauthorizedTo
+  redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
 import { LoginComponent } from './layout/login/login.component';
 import { CONTENT_ROUTES } from './shared';
@@ -19,24 +19,24 @@ const routes: Routes = [
     children: CONTENT_ROUTES,
     canActivate: [AngularFireAuthGuard],
     component: ContentLayoutComponent,
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'login',
     component: LoginComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectLoggedInToHome }
-  }
+    data: { authGuardPipe: redirectLoggedInToHome },
+  },
 ];
 
 @NgModule({
   imports: [
     AngularFireAuthGuardModule,
     RouterModule.forRoot(routes, {
-      useHash: false
-    })
+      useHash: false,
+    }),
   ],
   exports: [RouterModule],
-  providers: [AngularFireAuthGuard]
+  providers: [AngularFireAuthGuard],
 })
 export class AppRoutingModule {}

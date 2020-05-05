@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
-import { NavbarComponent } from './layout/navbar/navbar.component';
+import { HeaderComponent } from './layout/header/header.component';
 import { LoginComponent } from './layout/login/login.component';
 import { SharedModule } from './shared';
 import { MaterialModule } from './shared/material.module';
@@ -15,9 +15,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { SidebarLayoutComponent } from './layout/sidebar-layout/sidebar-layout.component';
 
 @NgModule({
-  declarations: [AppComponent, ContentLayoutComponent, NavbarComponent, LoginComponent],
+  declarations: [AppComponent, ContentLayoutComponent, HeaderComponent, LoginComponent, SidebarLayoutComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -27,9 +28,9 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

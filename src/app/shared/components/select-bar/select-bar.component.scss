@@ -1,0 +1,19 @@
+.mid-bar {
+  top: 64px;
+  width: 100%;
+  z-index: 1;
+
+  .tabs {
+    background-color: white;
+    margin-left: 100px;
+    position: absolute;
+    bottom: -1px;
+
+    a {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.87);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+}

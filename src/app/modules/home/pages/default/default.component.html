@@ -1,8 +1,8 @@
 <div class="section">
-  <div class="container is-fluid" *ngIf="isEmpty(mediaFiles); else noContent">
+  <div class="container is-fluid">
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h1>Media</h1>
+        <h1>Recently added</h1>
       </div>
     </div>
 
@@ -19,10 +19,4 @@
       </div>
     </virtual-scroller>
   </div>
-
-  <ng-template #noContent>
-    <div class="container is-fluid">
-      <div class="column is-12 has-text-centered"></div>
-    </div>
-  </ng-template>
 </div>

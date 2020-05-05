@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-tab-account',
   templateUrl: './tab-account.component.html',
-  styleUrls: ['./tab-account.component.scss']
+  styleUrls: ['./tab-account.component.scss'],
 })
 export class TabAccountComponent implements OnInit {
   @Input()
@@ -31,21 +31,21 @@ export class TabAccountComponent implements OnInit {
           ngModel: '',
           value: this.user.displayName,
           placeholder: 'Name',
-          isReadOnly: false
+          isReadOnly: false,
         },
         {
           label: 'Email',
           ngModel: '',
           value: this.user.email,
           placeholder: 'Email',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     this.dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData
+      data: dialogData,
     });
   }
 
@@ -61,14 +61,14 @@ export class TabAccountComponent implements OnInit {
           ngModel: '',
           value: this.user.uid,
           placeholder: 'Unique identifier',
-          isReadOnly: true
-        }
-      ]
+          isReadOnly: true,
+        },
+      ],
     };
 
     this.dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData
+      data: dialogData,
     });
   }
 
@@ -84,14 +84,14 @@ export class TabAccountComponent implements OnInit {
           ngModel: '',
           value: this.timezone,
           placeholder: 'Name',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     this.dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData
+      data: dialogData,
     });
   }
 }

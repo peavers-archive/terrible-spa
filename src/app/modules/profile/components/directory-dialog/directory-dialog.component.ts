@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-directory-dialog',
   templateUrl: './directory-dialog.component.html',
-  styleUrls: ['./directory-dialog.component.scss']
+  styleUrls: ['./directory-dialog.component.scss'],
 })
 export class DirectoryDialogComponent implements OnInit {
   input: EditDialogData;
@@ -33,11 +33,11 @@ export class DirectoryDialogComponent implements OnInit {
       ngModel: '',
       value: '',
       placeholder: 'Absolute path',
-      isReadOnly: false
+      isReadOnly: false,
     });
   }
 
   deleteField(field: FormField) {
-    this.input.formFields = this.input.formFields.filter(f => f != field);
+    this.input.formFields = this.input.formFields.filter((f) => f != field);
   }
 }

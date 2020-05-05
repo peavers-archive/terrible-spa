@@ -4,7 +4,7 @@ import { AuthService } from '../../../core/services/auth.service';
 @Component({
   selector: 'app-user-picture',
   templateUrl: './user-picture.component.html',
-  styleUrls: ['./user-picture.component.scss']
+  styleUrls: ['./user-picture.component.scss'],
 })
 export class UserPictureComponent {
   @Input()
@@ -18,13 +18,13 @@ export class UserPictureComponent {
 
   constructor(private authService: AuthService) {
     if (this.name === undefined) {
-      authService.getUser().subscribe(user => {
+      authService.getUser().subscribe((user) => {
         this.name = user.displayName;
       });
     }
 
     if (this.pictureUrl === undefined) {
-      authService.getUser().subscribe(user => {
+      authService.getUser().subscribe((user) => {
         this.pictureUrl = user.photoURL;
       });
     }

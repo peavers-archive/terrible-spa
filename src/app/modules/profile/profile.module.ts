@@ -15,10 +15,10 @@ import { TabDangerZoneComponent } from './components/tab-danger-zone/tab-danger-
     TabAccountComponent,
     TabSystemSettingsComponent,
     DirectoryDialogComponent,
-    TabDangerZoneComponent
+    TabDangerZoneComponent,
   ],
   imports: [SharedModule, RoutingModule],
   exports: [],
-  entryComponents: [EditDialogComponent, DirectoryDialogComponent]
+  entryComponents: [EditDialogComponent, DirectoryDialogComponent],
 })
 export class ProfileModule {}

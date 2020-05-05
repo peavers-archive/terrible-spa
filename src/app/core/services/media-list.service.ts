@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import Utils from '../../shared/utils/utils.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MediaListService {
   private readonly endpoint: string;
@@ -44,9 +44,9 @@ export class MediaListService {
           label: 'Name',
           value: '',
           placeholder: 'Name',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     Utils.openDialog(this.dialog, dialogData)
@@ -58,7 +58,7 @@ export class MediaListService {
 
         const mediaList: MediaList = {
           name: response[0].value,
-          mediaFiles: new Array(1).fill(video)
+          mediaFiles: new Array(1).fill(video),
         };
 
         this.save(mediaList).subscribe(() => this.snackBar.open(`Added ${video.name} to ${mediaList.name}`));

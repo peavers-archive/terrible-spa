@@ -1,0 +1,42 @@
+.search-results {
+  color: #444444;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  display: block;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  width: 800px;
+  top: 56px;
+  background-color: white;
+  z-index: 2;
+  overflow-y: auto;
+  max-height: 50vh;
+  border-radius: 0 0 2px 2px;
+
+  .search-results-item {
+    .image {
+      margin-top: 5px;
+    }
+
+    &:hover {
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+
+    padding: 7px;
+
+    &:hover {
+      .video-menu-trigger {
+        visibility: visible;
+      }
+    }
+
+    .video-menu-trigger {
+      visibility: hidden;
+
+      .mat-icon {
+        color: #444444;
+      }
+    }
+  }
+}
