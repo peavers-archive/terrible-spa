@@ -25,7 +25,7 @@ export class MediaListService {
     return this.httpClient.get<MediaList[]>(`${this.endpoint}?filter=${filter}`);
   }
 
-  findFavourite() {
+  findFavourite(): Observable<MediaList> {
     return this.httpClient.get<MediaList>(`${this.endpoint}/favourites`);
   }
 
@@ -33,23 +33,8 @@ export class MediaListService {
     return this.httpClient.get<MediaList>(`${this.endpoint}/${id}`);
   }
 
-  create(video: MediaFile) {
-    const dialogData: EditDialogData = {
-      title: 'New collection',
-      confirmText: 'Save',
-      cancelText: 'Cancel',
-
-      formFields: [
-        {
-          label: 'Name',
-          value: '',
-          placeholder: 'Name',
-          isReadOnly: false,
-        },
-      ],
-    };
-
-    Utils.openDialog(this.dialog, dialogData)
+  create(video: MediaFile): void {
+    Utils.openDialog(this.dialog, MediaListService.editDialog())
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -63,5 +48,39 @@ export class MediaListService {
 
         this.save(mediaList).subscribe(() => this.snackBar.open(`Added ${video.name} to ${mediaList.name}`));
       });
+  }
+
+  createWithBulk(numberOfItems: number, items: MediaFile[]) {
+    Utils.openDialog(this.dialog, MediaListService.editDialog())
+      .afterClosed()
+      .subscribe((response: FormField[]) => {
+        if (response === undefined) {
+          return;
+        }
+
+        const mediaList: MediaList = {
+          name: response[0].value,
+          mediaFiles: items,
+        };
+
+        this.save(mediaList).subscribe(() => this.snackBar.open(`Added ${numberOfItems} videos to ${mediaList.name}`));
+      });
+  }
+
+  private static editDialog(): EditDialogData {
+    return {
+      title: 'New collection',
+      confirmText: 'Save',
+      cancelText: 'Cancel',
+
+      formFields: [
+        {
+          label: 'Name',
+          value: '',
+          placeholder: 'Name',
+          isReadOnly: false,
+        },
+      ],
+    };
   }
 }

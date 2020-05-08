@@ -1,25 +1,11 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import Utils from '../../utils/utils.component';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { SelectService } from '../../../core/services/select-service';
 import { MediaListService } from '../../../core/services/media-list.service';
 import { SearchService } from '../../../core/services/search.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { User } from 'firebase';
-import { MediaFile, MediaList } from '../../../core/domain/modules';
+import { MediaList } from '../../../core/domain/modules';
 
 @Component({
   selector: 'app-select-bar',
@@ -41,7 +27,7 @@ export class SelectBarComponent implements OnInit {
 
   ngOnInit() {
     this.favourites = this.mediaListService.findFavourite();
-    this.mediaLists = this.mediaListService.findAllWithFilter('favorite');
+    this.mediaLists = this.mediaListService.findAllWithFilter('favourites');
   }
 
   get selectedLabel(): string {
@@ -50,11 +36,11 @@ export class SelectBarComponent implements OnInit {
     return selectedCount == 1 ? selectedCount + ' item selected' : selectedCount + ' items selected';
   }
 
-  clear() {
+  clear(): void {
     this.selectService.clear();
   }
 
-  addToList(mediaList: MediaList) {
+  addToList(mediaList: MediaList): void {
     mediaList.mediaFiles = mediaList.mediaFiles.concat(this.selectService.selected);
 
     this.mediaListService
@@ -62,13 +48,13 @@ export class SelectBarComponent implements OnInit {
       .subscribe(() => this.snackBar.open(`Added ${this.selectService.selected.length} videos to ${mediaList.name}`));
   }
 
-  deleteSelected() {
+  deleteSelected(): void {
     this.snackBar.open(`Deleted ${this.selectService.selected.length} videos from storage`);
   }
 
-  createMediaList() {
-    this.selectService.selected.forEach((mediaFile) => {
-      this.mediaListService.create(mediaFile);
-    });
+  createMediaList(): void {
+    this.mediaListService.createWithBulk(this.selectService.selected.length, this.selectService.selected);
+
+    this.clear();
   }
 }

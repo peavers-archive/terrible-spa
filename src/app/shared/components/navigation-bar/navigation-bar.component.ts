@@ -1,17 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import Utils from '../../utils/utils.component';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { SelectService } from '../../../core/services/select-service';
 import { MediaListService } from '../../../core/services/media-list.service';

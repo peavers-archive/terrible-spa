@@ -1,9 +1,9 @@
 .action {
-  display: inline-block;
   color: #294661;
-  text-transform: uppercase;
+  display: inline-block;
   font-size: 13px;
   font-weight: 400;
+  text-transform: uppercase;
 
   &:hover {
     cursor: pointer;
@@ -11,6 +11,7 @@
 }
 
 table {
+
   td {
     padding-right: 10px;
   }

@@ -1,10 +1,12 @@
 <div class="section">
   <div class="container is-fluid">
+    <app-page-title input="My Collections"></app-page-title>
+
     <div class="columns is-multiline">
       <div class="column is-12">
         <div class="columns is-multiline tab-body-content" *ngIf="favourites">
           <div class="column is-2" *ngFor="let mediaList of mediaLists">
-            <div class="video" @fade>
+            <div class="collection-card" @fade>
               <div (click)="goTo(mediaList)">
                 <div class="overlay">
                   <figure class="image is-3by2">

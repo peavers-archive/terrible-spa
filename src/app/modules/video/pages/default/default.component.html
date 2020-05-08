@@ -1,10 +1,6 @@
 <div class="section" *ngIf="mediaFile">
   <div class="container is-fluid">
-    <div class="columns video-header">
-      <div class="column">
-        <h1>{{ mediaFile.name }}</h1>
-      </div>
-    </div>
+    <app-page-title [input]="mediaFile.name"></app-page-title>
 
     <div class="columns is-multiline">
       <div class="column is-12">

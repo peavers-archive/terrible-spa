@@ -14,6 +14,7 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
 import { VideoCardMenuComponent } from './components/video-card-menu/video-card-menu.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { SelectBarComponent } from './components/select-bar/select-bar.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 @NgModule({
   imports: [
@@ -36,9 +37,11 @@ import { SelectBarComponent } from './components/select-bar/select-bar.component
     VideoCardMenuComponent,
     NavigationBarComponent,
     SelectBarComponent,
+    PageTitleComponent,
   ],
   exports: [
     CommonModule,
+    PageTitleComponent,
     SelectBarComponent,
     FormsModule,
     ReactiveFormsModule,

@@ -1,5 +1,5 @@
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { EditDialogComponent } from '../../modules/profile/components/edit-dialog/edit-dialog.component';
+import { EditDialogComponent } from '../../modules/system/components/edit-dialog/edit-dialog.component';
 import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@angular/animations';
 
 export default class Utils {

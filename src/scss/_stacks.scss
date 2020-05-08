@@ -1,20 +1,18 @@
-.section {
-  margin-top: 50px;
-}
-
-.header {
-  text-transform: capitalize;
-}
-
 .stacked-card {
-  margin-top: -1px;
   background: rgb(255, 255, 255);
-  border-width: 1px;
-  border-style: solid;
   border-color: rgb(233, 236, 239);
   border-image: initial;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: -1px;
   padding: 18px 20px;
   position: relative;
+
+  h2 {
+    color: #445b6c;
+    font-size: 20px;
+    line-height: 19px;
+  }
 
   .edit-button {
     position: absolute;
@@ -22,8 +20,8 @@
     top: 15px;
 
     .mat-icon {
-      font-size: 19px;
       color: #546b81;
+      font-size: 19px;
     }
 
     &:hover {
@@ -33,35 +31,21 @@
 
   .title {
     color: rgb(41, 70, 97);
-    text-transform: capitalize;
-    padding: 0;
     font-size: 13px;
     line-height: 20px;
+    padding: 0;
+    text-transform: capitalize;
   }
 
   .content {
-    margin: 0;
+    color: #546b81;
     font-size: 13px;
     line-height: 20px;
-    color: #546b81;
+    margin: 0;
 
     span {
       display: inline-block;
       word-break: break-all;
     }
   }
-}
-
-.bordered {
-  margin-top: -1px;
-  background: rgb(255, 255, 255);
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(233, 236, 239);
-  border-image: initial;
-  padding: 18px 20px;
-}
-
-.tab-body-content {
-  margin-top: 50px;
 }

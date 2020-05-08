@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+$blue: (
+  500: #294661,
+  contrast: (
+    500: #fff,
+  ),
+);
+$custom-primary: mat-palette($blue);
+$custom-accent: mat-palette($mat-pink, 500, 900, a100);
+$custom-warn: mat-palette($mat-deep-orange);
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+$custom-typography: mat-typography-config(
+  $font-family: 'ProximaNova, sans-serif',
+);
+
+@include angular-material-theme($custom-theme);
+
+@include angular-material-typography($custom-typography);
+
+.mat-dialog-actions {
+  float: right;
+  padding-bottom: 22px !important;
+  padding-top: 22px !important;
+}
+
+.mat-dialog-content {
+  overflow: visible !important;
+}
+
+.mat-form-field-infix {
+  font-size: 13px !important;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-tab-label {
+  font-size: 13px;
+}
+
+.mat-tab-label.mat-tab-label-active {
+  color: #294661;
+  font-size: 13px;
+  font-weight: 400;
+}

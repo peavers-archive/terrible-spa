@@ -6,6 +6,7 @@ import { HistoryService } from '../../../../core/services/history.service';
 import { History, MediaFile } from '../../../../core/domain/modules';
 import { Router } from '@angular/router';
 import Utils from '../../../../shared/utils/utils.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-default',
@@ -25,5 +26,9 @@ export class DefaultComponent implements OnInit {
 
   goTo(mediaFile: MediaFile) {
     this.router.navigate([`/video/${mediaFile.id}`]);
+  }
+
+  convertDate(mediaFile: MediaFile) {
+    moment().format();
   }
 }

@@ -1,32 +1,23 @@
 aside {
-  width: 180px;
   max-width: 180px;
   min-width: 180px;
+  padding-top: 42px;
   vertical-align: top;
-  padding-top: 100px;
+  width: 180px;
 
   .menu-item {
-    font-size: 13px;
     color: #294661;
+    font-size: 13px;
     font-weight: 400;
     padding: 14px;
 
     &:hover {
-      cursor: pointer;
       color: #546b81;
+      cursor: pointer;
     }
   }
 
   .mat-icon {
     margin-right: 14px;
   }
-}
-
-.with-icon {
-  display: flex;
-  align-items: center;
-}
-
-*:focus {
-  outline: none;
 }

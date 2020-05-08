@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EditDialogData, FormField, MediaList } from '../../../../core/domain/modules';
+import { MediaList } from '../../../../core/domain/modules';
 import { MediaListService } from '../../../../core/services/media-list.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import Utils from '../../../../shared/utils/utils.component';
 
 @Component({
@@ -17,18 +15,13 @@ import Utils from '../../../../shared/utils/utils.component';
 export class ListComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
-  mediaLists: MediaList[] = [];
+  mediaList: MediaList;
 
   favourites: MediaList;
 
-  mediaList: MediaList;
+  mediaLists: MediaList[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private mediaListService: MediaListService,
-    private dialog: MatDialog,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute, private mediaListService: MediaListService) {}
 
   ngOnInit() {
     this.subscriptions.push(
@@ -46,35 +39,6 @@ export class ListComponent implements OnInit, OnDestroy {
         this.mediaListService.findById(response.id).subscribe((mediaList) => (this.mediaList = mediaList))
       );
     });
-  }
-
-  editMediaList(mediaList: MediaList) {
-    const dialogData: EditDialogData = {
-      title: 'Rename ' + mediaList.name,
-      confirmText: 'Save',
-      cancelText: 'Close',
-
-      formFields: [
-        {
-          label: 'List name',
-          value: mediaList.name,
-          placeholder: 'List name',
-          isReadOnly: false,
-        },
-      ],
-    };
-
-    Utils.openDialog(this.dialog, dialogData)
-      .afterClosed()
-      .subscribe((response: FormField[]) => {
-        if (response === undefined) {
-          return;
-        }
-
-        mediaList.name = response[0].value;
-
-        this.mediaListService.save(mediaList).subscribe(() => this.snackBar.open(`Renamed to ${mediaList.name}`));
-      });
   }
 
   ngOnDestroy(): void {

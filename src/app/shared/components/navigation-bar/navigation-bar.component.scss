@@ -3,22 +3,22 @@
 }
 
 .navigation-bar {
-  z-index: 31;
+  border-bottom: none;
   top: 60px;
   width: 100%;
-  border-bottom: none;
+  z-index: 31;
 
   .tabs {
     background-color: white;
+    bottom: -1px;
     margin-left: 100px;
     position: absolute;
-    bottom: -1px;
 
     a {
+      color: rgba(0, 0, 0, .87);
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.87);
-      text-transform: uppercase;
       font-weight: 500;
+      text-transform: uppercase;
     }
   }
 }
@@ -34,10 +34,10 @@
 }
 
 .mat-tab-link {
-  text-transform: capitalize;
-  font-size: 13px;
   color: #294661;
+  font-size: 13px;
   font-weight: 400;
   min-width: 0;
   padding: 0 14px;
+  text-transform: capitalize;
 }

@@ -1,0 +1,197 @@
+<div class="section">
+  <div class="container is-fluid">
+    <app-page-title input="Account"></app-page-title>
+
+    <div class="columns is-multiline">
+      <div class="column is-12" *ngIf="user">
+        <div class="columns">
+          <div class="column is-12">
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">About</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button">
+                    <mat-icon (click)="editAbout()" fontSet="material-icons-outlined">edit</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>{{ user.displayName }}</span>
+                  </div>
+                  <div class="content">
+                    <span>{{ user.email }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Account</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button">
+                    <mat-icon (click)="editAccount()" fontSet="material-icons-outlined">edit</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>{{ user.uid }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Timezone</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button">
+                    <mat-icon (click)="editTimezone()" fontSet="material-icons-outlined">edit</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>{{ timezone }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-page-title input="Files"></app-page-title>
+
+        <div class="columns">
+          <div class="column is-12">
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Media Directory</div>
+                </div>
+                <div class="column is-10" *ngIf="directory | async as dir; else addDirectoryButton">
+                  <div class="edit-button">
+                    <mat-icon (click)="editDirectory(dir)" fontSet="material-icons-outlined">edit</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>{{ dir.path }}</span>
+                  </div>
+                </div>
+                <ng-template #addDirectoryButton>
+                  <div class="edit-button">
+                    <mat-icon (click)="addDirectory()" fontSet="material-icons-outlined">edit</mat-icon>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Scan Frequency</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button">
+                    <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>Every 5 minutes</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-page-title input="Tasks"></app-page-title>
+
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Directory scan</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button" (click)="taskScanDirectory()">
+                    <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>Trigger a manual scan of all directories looking for media files.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Generate Thumbnails</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button" (click)="taskGenerateThumbnails()">
+                    <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>Trigger a manual creation of thumbnails.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Reindex search</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button" (click)="taskGenerateSearchIndex()">
+                    <mat-icon fontSet="material-icons-outlined">play_arrow</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>Force the search index to be refreshed.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-page-title input="Danger zone"></app-page-title>
+
+        <div class="columns">
+          <div class="column is-12">
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Mongo</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button">
+                    <mat-icon fontSet="material-icons-outlined" (click)="taskDeleteMongo()">play_arrow</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>Delete all information from the database. This does not remove your files.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stacked-card">
+              <div class="columns is-multiline">
+                <div class="column is-2">
+                  <div class="title">Elasticsearch</div>
+                </div>
+                <div class="column is-10">
+                  <div class="edit-button">
+                    <mat-icon fontSet="material-icons-outlined" (click)="taskDeleteElasticIndex()">play_arrow</mat-icon>
+                  </div>
+                  <div class="content">
+                    <span>Delete all information from the search appliance. This does not remove your files.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

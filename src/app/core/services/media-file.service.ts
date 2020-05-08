@@ -22,7 +22,7 @@ export class MediaFileService {
     return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
   }
 
-  deleteAll() {
+  deleteAll(): Observable<Object> {
     return this.httpClient.delete(`${this.endpoint}`);
   }
 

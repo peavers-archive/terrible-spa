@@ -15,15 +15,15 @@ export class SearchService {
     this.endpoint = `${environment.api}/search`;
   }
 
-  generateIndex() {
-    return this.httpClient.get(`${this.endpoint}/index`).subscribe(() => this.snackBar.open(`Generating search index`));
+  generateIndex(): Observable<Object> {
+    return this.httpClient.get(`${this.endpoint}/index`);
   }
 
   search(query: string): Observable<MediaFile[]> {
     return this.httpClient.get<MediaFile[]>(`${this.endpoint}?query=${query}`);
   }
 
-  deleteAll() {
+  deleteAll(): Observable<Object> {
     return this.httpClient.delete(`${this.endpoint}`);
   }
 }

@@ -1,0 +1,30 @@
+.is-fullheight {
+  height: 100%;
+  min-height: 100%;
+}
+
+.metadata {
+  color: rgba(0, 0, 0, .54);
+  font-size: 14px;
+}
+
+.table {
+  width: 100%;
+}
+
+.action {
+  color: #294661;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.with-icon {
+  align-items: center;
+  display: flex;
+}
