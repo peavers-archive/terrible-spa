@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { MediaFileService } from '../../../../core/services/media-file.service';
 import { Observable, Subscription } from 'rxjs';
 import { MediaFile, MediaList } from '../../../../core/domain/modules';
-import { SearchService } from '../../../../core/services/search.service';
 import { MediaListService } from '../../../../core/services/media-list.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HistoryService } from '../../../../core/services/history.service';
@@ -28,7 +27,6 @@ export class DefaultComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private mediaFileService: MediaFileService,
-    private searchService: SearchService,
     private mediaListService: MediaListService,
     private historyService: HistoryService,
     private snackBar: MatSnackBar

@@ -30,3 +30,7 @@
   align-items: center;
   display: flex;
 }
+
+.zero-z-index {
+  z-index: 0 !important;
+}

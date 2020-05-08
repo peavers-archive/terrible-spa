@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../core/services/auth.service';
 import { SelectService } from '../../../core/services/select-service';
 import { MediaListService } from '../../../core/services/media-list.service';
-import { SearchService } from '../../../core/services/search.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaList } from '../../../core/domain/modules';
 
@@ -18,10 +16,8 @@ export class SelectBarComponent implements OnInit {
   favourites: Observable<MediaList> = new Observable<MediaList>();
 
   constructor(
-    private authService: AuthService,
     private selectService: SelectService,
     private mediaListService: MediaListService,
-    private searchService: SearchService,
     private snackBar: MatSnackBar
   ) {}
 

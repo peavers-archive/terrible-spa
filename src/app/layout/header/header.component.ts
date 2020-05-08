@@ -1,10 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
-import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { SelectService } from '../../core/services/select-service';
 import { MediaListService } from '../../core/services/media-list.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaFile, MediaList } from '../../core/domain/modules';
 import Utils from '../../shared/utils/utils.component';
 import { SearchService } from '../../core/services/search.service';
@@ -19,8 +16,6 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('menuElement') menuElement: ElementRef;
 
-  user: Observable<User> = new Observable<User>();
-
   mediaLists: MediaList[] = [];
 
   favourites: Observable<MediaList> = new Observable<MediaList>();
@@ -32,17 +27,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   elementPosition: any;
 
   constructor(
-    private authService: AuthService,
     private selectService: SelectService,
     private mediaListService: MediaListService,
     private searchService: SearchService,
-    private snackBar: MatSnackBar,
     private router: Router
   ) {}
 
   async ngOnInit() {
-    this.user = this.authService.getUser();
-
     this.favourites = this.mediaListService.findFavourite();
   }
 

@@ -2,9 +2,6 @@ import { Component, Input, OnDestroy } from '@angular/core';
 import { MediaFile, MediaList } from '../../../core/domain/modules';
 import { MediaListService } from '../../../core/services/media-list.service';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { MediaFileService } from '../../../core/services/media-file.service';
-import { SearchService } from '../../../core/services/search.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -27,13 +24,7 @@ export class VideoCardMenuComponent implements OnDestroy {
   @Input()
   favourites: MediaList;
 
-  constructor(
-    private route: ActivatedRoute,
-    private mediaFileService: MediaFileService,
-    private searchService: SearchService,
-    private mediaListService: MediaListService,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private mediaListService: MediaListService, private snackBar: MatSnackBar) {}
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());

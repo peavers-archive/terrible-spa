@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MediaList } from '../../../../core/domain/modules';
 import { MediaListService } from '../../../../core/services/media-list.service';
@@ -19,7 +18,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
 
   favourites: MediaList;
 
-  constructor(private router: Router, private route: ActivatedRoute, private mediaListService: MediaListService) {}
+  constructor(private mediaListService: MediaListService) {}
 
   ngOnInit() {
     this.subscriptions.push(

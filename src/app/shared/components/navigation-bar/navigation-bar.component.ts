@@ -1,9 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
-import { SelectService } from '../../../core/services/select-service';
-import { MediaListService } from '../../../core/services/media-list.service';
-import { SearchService } from '../../../core/services/search.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,7 +15,7 @@ export class NavigationBarComponent implements OnInit {
   navLinks = [
     {
       path: '/library',
-      label: 'favorites',
+      label: 'favourites',
     },
     {
       path: '/library/collections',
@@ -28,14 +23,7 @@ export class NavigationBarComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private authService: AuthService,
-    private selectService: SelectService,
-    private mediaListService: MediaListService,
-    private searchService: SearchService,
-    private snackBar: MatSnackBar,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     //Check here to handle refresh

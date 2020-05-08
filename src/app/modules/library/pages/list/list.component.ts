@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { EditDialogData, FormField, MediaList } from '../../../../core/domain/modules';
 import { MediaListService } from '../../../../core/services/media-list.service';
 import Utils from '../../../../shared/utils/utils.component';
-import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
