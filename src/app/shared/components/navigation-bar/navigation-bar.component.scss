@@ -34,7 +34,7 @@
 }
 
 .mat-tab-link {
-  color: #294661;
+  color: var(--primary-color) !important;
   font-size: 13px;
   font-weight: 400;
   min-width: 0;

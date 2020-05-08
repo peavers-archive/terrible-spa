@@ -1,6 +1,9 @@
+@import "variables";
+
 @import '~@angular/material/theming';
+
 $blue: (
-  500: #294661,
+  500:  var(--primary-color),
   contrast: (
     500: #fff,
   ),
@@ -40,7 +43,7 @@ $custom-typography: mat-typography-config(
 }
 
 .mat-tab-label.mat-tab-label-active {
-  color: #294661;
+  color:  var(--primary-color);
   font-size: 13px;
   font-weight: 400;
 }
