@@ -88,15 +88,15 @@
             </tr>
             <tr>
               <td>Created</td>
-              <td>{{ mediaFile.createdTime | amTimeAgo }}</td>
+              <td>{{ convertDate(mediaFile.createdTime) | amTimeAgo }}</td>
             </tr>
             <tr>
               <td>last accessed</td>
-              <td>{{ mediaFile.lastAccessTime | amTimeAgo }}</td>
+              <td>{{ convertDate(mediaFile.lastAccessTime) | amTimeAgo }}</td>
             </tr>
             <tr>
               <td>last modified</td>
-              <td>{{ mediaFile.lastModifiedTime | amTimeAgo }}</td>
+              <td>{{ convertDate(mediaFile.lastModifiedTime) | amTimeAgo }}</td>
             </tr>
           </table>
         </div>

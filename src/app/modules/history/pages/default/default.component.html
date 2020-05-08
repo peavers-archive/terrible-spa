@@ -8,7 +8,7 @@
           <div class="stacked-card on-hover" *ngFor="let item of scroll.viewPortItems" @fade (click)="goTo(item)">
             <div class="columns is-multiline">
               <div class="column is-2">
-                <div class="title">{{ convertDate(item) }} {{ item.lastWatched | amCalendar }}</div>
+                <div class="title">{{ convertDate(item.lastWatched) | amTimeAgo}}</div>
               </div>
               <div class="column is-10">
                 <div class="content">

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import Utils from '../../utils/utils.component';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { SelectService } from '../../../core/services/select-service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-video-card-layout',
@@ -48,5 +49,9 @@ export class VideoCardLayoutComponent {
     this.mediaFile.isSelected = event.checked
       ? this.selectService.add(this.mediaFile)
       : this.selectService.remove(this.mediaFile);
+  }
+
+  convertDate(date: number): moment.Moment {
+    return moment(Utils.convertToMoment(date));
   }
 }

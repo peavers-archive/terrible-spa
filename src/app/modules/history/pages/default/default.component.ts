@@ -28,7 +28,7 @@ export class DefaultComponent implements OnInit {
     this.router.navigate([`/video/${mediaFile.id}`]);
   }
 
-  convertDate(mediaFile: MediaFile) {
-    moment().format();
+  convertDate(date: number): moment.Moment {
+    return moment(Utils.convertToMoment(date));
   }
 }
