@@ -1,6 +1,10 @@
 <div class="section" *ngIf="mediaList">
   <div class="container is-fluid">
-    <app-page-title [input]="mediaList.name"></app-page-title>
+    <app-page-title
+      [title]="mediaList.name"
+      [editButton]="true"
+      (editEvent)="editMediaList(mediaList)"
+    ></app-page-title>
 
     <div class="columns is-multiline">
       <div class="column is-12">

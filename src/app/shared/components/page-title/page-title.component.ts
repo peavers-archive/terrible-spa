@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-page-title',
@@ -8,7 +8,27 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class PageTitleComponent {
   @Input()
-  input: string;
+  title: string;
+
+  @Input()
+  editButton: boolean = false;
+
+  @Input()
+  deleteButton: boolean = false;
+
+  @Output()
+  editEvent = new EventEmitter<boolean>();
+
+  @Output()
+  deleteEvent = new EventEmitter<boolean>();
 
   constructor() {}
+
+  edit() {
+    this.editEvent.emit(true);
+  }
+
+  delete() {
+    this.deleteEvent.emit(true);
+  }
 }

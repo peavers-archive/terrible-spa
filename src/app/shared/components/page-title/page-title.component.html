@@ -1,5 +1,14 @@
 <div class="columns is-multiline">
   <div class="column is-12">
-    <span class="terrible-title">{{ input }}</span>
+    <div class="level">
+      <div class="level-left">
+        <span class="terrible-title">{{ title }}</span>
+      </div>
+
+      <div class="level-right">
+        <button *ngIf="editButton" mat-icon-button (click)="edit()"><mat-icon fontSet="material-icons-outlined">edit</mat-icon></button>
+        <button *ngIf="deleteButton" mat-icon-button (click)="delete()"><mat-icon fontSet="material-icons-outlined">delete</mat-icon></button>
+      </div>
+    </div>
   </div>
 </div>
