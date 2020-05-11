@@ -10,7 +10,7 @@ import * as moment from 'moment';
   selector: 'app-video-card-layout',
   templateUrl: './video-card-layout.component.html',
   styleUrls: ['./video-card-layout.component.scss'],
-  animations: Utils.fadeAnimation(),
+  animations: Utils.fadeAnimation()
 })
 export class VideoCardLayoutComponent {
   THUMBNAIL_POSITION = 0;
