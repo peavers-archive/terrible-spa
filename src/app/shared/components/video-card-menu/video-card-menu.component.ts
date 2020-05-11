@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-video-card-menu',
   templateUrl: './video-card-menu.component.html',
-  styleUrls: ['./video-card-menu.component.scss'],
+  styleUrls: ['./video-card-menu.component.scss']
 })
 export class VideoCardMenuComponent implements OnDestroy {
   subscriptions: Subscription[] = [];
@@ -36,7 +36,7 @@ export class VideoCardMenuComponent implements OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   createMediaList(video: MediaFile) {
@@ -54,7 +54,7 @@ export class VideoCardMenuComponent implements OnDestroy {
   }
 
   removeFromList(mediaList: MediaList, video: MediaFile) {
-    mediaList.mediaFiles = mediaList.mediaFiles.filter((file) => file.id !== video.id);
+    mediaList.mediaFiles = mediaList.mediaFiles.filter(file => file.id !== video.id);
 
     this.subscriptions.push(
       this.mediaListService
@@ -64,6 +64,6 @@ export class VideoCardMenuComponent implements OnDestroy {
   }
 
   isInList(mediaList: MediaList, video: MediaFile) {
-    return mediaList.mediaFiles.some((value) => value.id === video.id);
+    return mediaList.mediaFiles.some(value => value.id === video.id);
   }
 }

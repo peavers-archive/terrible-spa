@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',
-  styleUrls: ['./navigation-bar.component.scss'],
+  styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent implements OnInit {
   @Input()
@@ -15,12 +15,12 @@ export class NavigationBarComponent implements OnInit {
   navLinks = [
     {
       path: '/library',
-      label: 'favourites',
+      label: 'favourites'
     },
     {
       path: '/library/collections',
-      label: 'my collections',
-    },
+      label: 'my collections'
+    }
   ];
 
   constructor(private router: Router) {}
