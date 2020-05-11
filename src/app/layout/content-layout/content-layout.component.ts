@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from 'firebase';
-import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-content-layout',
@@ -9,11 +6,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./content-layout.component.scss'],
 })
 export class ContentLayoutComponent implements OnInit {
-  user: Observable<User> = new Observable<User>();
+  constructor() {}
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit() {
-    this.user = this.authService.getUser();
-  }
+  ngOnInit() {}
 }

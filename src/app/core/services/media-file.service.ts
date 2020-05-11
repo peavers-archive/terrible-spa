@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GroupedMediaFile, MediaFile } from '../domain/modules';
+import { MediaFile } from '../domain/modules';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,9 +24,5 @@ export class MediaFileService {
 
   deleteAll(): Observable<Object> {
     return this.httpClient.delete(`${this.endpoint}`);
-  }
-
-  findAllGroupedByDate(group: string): Observable<GroupedMediaFile[]> {
-    return this.httpClient.get<GroupedMediaFile[]>(`${environment.api}/group/media-files?group=${group}`);
   }
 }

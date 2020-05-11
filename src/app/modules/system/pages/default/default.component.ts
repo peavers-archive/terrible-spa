@@ -16,6 +16,7 @@ import Utils from '../../../../shared/utils/utils.component';
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  animations: Utils.fadeAnimation(),
 })
 export class DefaultComponent implements OnInit {
   user: User;

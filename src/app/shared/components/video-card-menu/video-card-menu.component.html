@@ -16,8 +16,16 @@
         <button (click)="addToList(favourites, mediaFile)" mat-menu-item>Add to library</button>
       </ng-template>
 
+      <button *ngIf="removeFromCollection" (click)="removeFromList(mediaList, mediaFile)" mat-menu-item>
+        Remove from {{ mediaList.name }}
+      </button>
+
       <button [matMenuTriggerFor]="mediaListMenu" mat-menu-item>
-        My collections
+        Add to collections
+      </button>
+
+      <button mat-menu-item>
+        Delete from disk
       </button>
     </ng-template>
   </mat-menu>
@@ -25,10 +33,6 @@
   <!-- List sub content -->
   <mat-menu #mediaListMenu="matMenu">
     <ng-template matMenuContent>
-      <button *ngIf="mediaList" (click)="removeFromList(mediaList, mediaFile)" mat-menu-item>
-        Remove from {{ mediaList.name }}
-      </button>
-
       <button (click)="createMediaList(mediaFile)" mat-menu-item>New collection</button>
 
       <div *ngFor="let mediaList of mediaLists">

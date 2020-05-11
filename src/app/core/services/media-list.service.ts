@@ -21,6 +21,10 @@ export class MediaListService {
     return this.httpClient.post<MediaList>(`${this.endpoint}`, mediaList);
   }
 
+  delete(mediaList: MediaList): Observable<MediaList> {
+    return this.httpClient.delete<MediaList>(`${this.endpoint}/${mediaList.id}`);
+  }
+
   findAllWithFilter(filter: string): Observable<MediaList[]> {
     return this.httpClient.get<MediaList[]>(`${this.endpoint}?filter=${filter}`);
   }
@@ -64,6 +68,35 @@ export class MediaListService {
         };
 
         this.save(mediaList).subscribe(() => this.snackBar.open(`Added ${numberOfItems} videos to ${mediaList.name}`));
+      });
+  }
+
+  editMediaList(mediaList: MediaList): void {
+    const dialogData: EditDialogData = {
+      title: 'Rename ' + mediaList.name,
+      confirmText: 'Save',
+      cancelText: 'Close',
+
+      formFields: [
+        {
+          label: 'Collection name',
+          value: mediaList.name,
+          placeholder: 'Collection name',
+          isReadOnly: false,
+        },
+      ],
+    };
+
+    Utils.openDialog(this.dialog, dialogData)
+      .afterClosed()
+      .subscribe((response: FormField[]) => {
+        if (response === undefined) {
+          return;
+        }
+
+        mediaList.name = response[0].value;
+
+        this.save(mediaList).subscribe(() => this.snackBar.open(`Renamed to ${mediaList.name}`));
       });
   }
 

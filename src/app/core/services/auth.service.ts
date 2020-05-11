@@ -32,10 +32,4 @@ export class AuthService {
   getUser(): Observable<User | null> {
     return this.angularFireAuth.user;
   }
-
-  logout() {
-    this.angularFireAuth.signOut().then(() => console.log('Bye!'));
-
-    this.router.navigate(['/login']);
-  }
 }

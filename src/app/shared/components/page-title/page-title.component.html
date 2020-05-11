@@ -6,8 +6,12 @@
       </div>
 
       <div class="level-right">
-        <button *ngIf="editButton" mat-icon-button (click)="edit()"><mat-icon fontSet="material-icons-outlined">edit</mat-icon></button>
-        <button *ngIf="deleteButton" mat-icon-button (click)="delete()"><mat-icon fontSet="material-icons-outlined">delete</mat-icon></button>
+        <button *ngIf="editButton" mat-icon-button (click)="edit()">
+          <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+        </button>
+        <button *ngIf="deleteButton" mat-icon-button (click)="delete()">
+          <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
+        </button>
       </div>
     </div>
   </div>

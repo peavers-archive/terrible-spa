@@ -17,8 +17,8 @@
       {{ mediaFile.name }}
     </div>
     <div class="video-meta">
-      {{ convertDate(mediaFile.lastModifiedTime) | amTimeAgo }} <span
-            class="is-pulled-right">{{ mediaFile.size | fileSize }}</span>
+      Created {{ convertDate(mediaFile.createdTime) | amTimeAgo }}
+      <span class="is-pulled-right">{{ mediaFile.size | fileSize }}</span>
     </div>
   </div>
 
@@ -28,6 +28,7 @@
       [favourites]="favourites"
       [mediaList]="mediaList"
       [mediaLists]="mediaLists"
+      [removeFromCollection]="removeFromCollection"
     ></app-video-card-menu>
   </div>
 </div>

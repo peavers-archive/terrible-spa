@@ -6,13 +6,11 @@ aside {
   width: 180px;
 
   .menu-item {
-    color: var(--primary-color);
     font-size: 13px;
     font-weight: 400;
     padding: 14px;
 
     &:hover {
-      color: #546b81;
       cursor: pointer;
     }
   }

@@ -18,6 +18,9 @@ export class VideoCardLayoutComponent {
   constructor(private router: Router, private selectService: SelectService) {}
 
   @Input()
+  removeFromCollection: boolean = false;
+
+  @Input()
   mediaFile: MediaFile;
 
   @Input()

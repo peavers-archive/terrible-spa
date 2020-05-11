@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
   animations: Utils.fadeAnimation(),
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  @ViewChild('menuElement') menuElement: ElementRef;
+  @ViewChild('menuElement')
+  menuElement: ElementRef;
 
   mediaLists: MediaList[] = [];
 
@@ -33,19 +34,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private router: Router
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.favourites = this.mediaListService.findFavourite();
   }
 
   ngAfterViewInit() {
     this.elementPosition = this.menuElement.nativeElement.offsetTop;
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  handleScroll() {
-    const windowScroll = window.pageYOffset;
-
-    this.hasZeroIndex = windowScroll > this.elementPosition;
   }
 
   isSelectBar() {
@@ -62,5 +56,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   goTo(id: string) {
     this.router.navigate([`/video/${id}`]);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  handleScroll() {
+    const windowScroll = window.pageYOffset;
+
+    this.hasZeroIndex = windowScroll > this.elementPosition;
   }
 }

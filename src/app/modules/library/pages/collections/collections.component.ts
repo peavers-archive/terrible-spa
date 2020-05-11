@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MediaFile, MediaList } from '../../../../core/domain/modules';
+import { MediaList } from '../../../../core/domain/modules';
 import { MediaListService } from '../../../../core/services/media-list.service';
 import Utils from '../../../../shared/utils/utils.component';
 
@@ -37,8 +37,10 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
-  coverImage(mediaFile: MediaFile): string {
-    return null;
+  coverImage(mediaList: MediaList): string {
+    const position = mediaList.mediaFiles.length - 1;
+
+    return position == -1 ? null : mediaList.mediaFiles[position].thumbnails[0];
   }
 
   goTo(mediaList: MediaList): void {

@@ -4,6 +4,8 @@
       [title]="mediaList.name"
       [editButton]="true"
       (editEvent)="editMediaList(mediaList)"
+      [deleteButton]="true"
+      (deleteEvent)="deleteMediaList(mediaList)"
     ></app-page-title>
 
     <div class="columns is-multiline">
@@ -13,7 +15,9 @@
             <app-video-card-layout
               [mediaFile]="mediaFile"
               [mediaLists]="mediaLists"
+              [mediaList]="mediaList"
               [favourites]="favourites"
+              [removeFromCollection]="true"
             ></app-video-card-layout>
           </div>
         </div>

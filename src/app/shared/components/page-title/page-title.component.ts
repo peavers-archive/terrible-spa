@@ -16,11 +16,23 @@ export class PageTitleComponent {
   @Input()
   deleteButton: boolean = false;
 
+  @Input()
+  libraryButton: boolean = false;
+
+  @Input()
+  collectionButton: boolean = false;
+
   @Output()
   editEvent = new EventEmitter<boolean>();
 
   @Output()
   deleteEvent = new EventEmitter<boolean>();
+
+  @Output()
+  libraryEvent = new EventEmitter<boolean>();
+
+  @Output()
+  collectionEvent = new EventEmitter<boolean>();
 
   constructor() {}
 
@@ -30,5 +42,13 @@ export class PageTitleComponent {
 
   delete() {
     this.deleteEvent.emit(true);
+  }
+
+  library() {
+    this.libraryEvent.emit(true);
+  }
+
+  collection() {
+    this.collectionEvent.emit(true);
   }
 }

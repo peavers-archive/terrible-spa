@@ -10,11 +10,7 @@
               <div (click)="goTo(mediaList)">
                 <div class="overlay">
                   <figure class="image is-3by2">
-                    <img
-                      *ngIf="coverImage(mediaList.mediaFiles[0]) | remoteImage as thumbnail"
-                      [src]="thumbnail"
-                      alt="thumbnail"
-                    />
+                    <img *ngIf="coverImage(mediaList) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
                   </figure>
                 </div>
                 <div class="video-name">
