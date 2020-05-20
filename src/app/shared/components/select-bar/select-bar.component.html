@@ -4,7 +4,7 @@
   </div>
   <div class="navbar-start">
     <div class="navbar-item">
-      <div class="selected-count">{{ selectedLabel }}</div>
+      <div class="selected-count">{{ selectedLabel() }}</div>
     </div>
     <div class="navbar-item">
       <button mat-flat-button (click)="clear()">
@@ -23,6 +23,7 @@
     <div class="navbar-item">
       <button [matMenuTriggerFor]="mediaListMenu" mat-icon-button matTooltip="Add to collection">
         <mat-icon aria-label="Add to collection">playlist_add</mat-icon>
+
       </button>
 
       <!-- List sub content -->

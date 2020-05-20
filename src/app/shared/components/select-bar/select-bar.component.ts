@@ -8,7 +8,7 @@ import { MediaList } from '../../../core/domain/modules';
 @Component({
   selector: 'app-select-bar',
   templateUrl: './select-bar.component.html',
-  styleUrls: ['./select-bar.component.scss']
+  styleUrls: ['./select-bar.component.scss'],
 })
 export class SelectBarComponent implements OnInit {
   mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();
@@ -26,7 +26,7 @@ export class SelectBarComponent implements OnInit {
     this.mediaLists = this.mediaListService.findAllWithFilter('favourites');
   }
 
-  get selectedLabel(): string {
+  selectedLabel(): string {
     const selectedCount = this.selectService.selected.length;
 
     return selectedCount == 1 ? selectedCount + ' item selected' : selectedCount + ' items selected';
