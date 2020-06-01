@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
 
-  api: 'http://localhost:8080',
+  api: '/api',
 
   firebase: {
     apiKey: '***REDACTED***',
@@ -11,6 +11,6 @@ export const environment = {
     storageBucket: 'terrible-spa.appspot.com',
     messagingSenderId: '11119644174',
     appId: '1:11119644174:web:5d41387b07b24c3a36b65f',
-    measurementId: 'G-JKVFLY2J9W'
-  }
+    measurementId: 'G-JKVFLY2J9W',
+  },
 };
