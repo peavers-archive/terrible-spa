@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Release
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Run npm deploy:prod
+      - name: Run npm build:prod
         run: |
           npm ci
           npm run build:prod

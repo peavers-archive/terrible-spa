@@ -3,7 +3,7 @@ COPY package.json package-lock.json ./
 RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
 WORKDIR /ng-app
 COPY . .
-RUN npm run deploy:prod --output-path=dist
+RUN npm run build:prod --output-path=dist
 
 FROM nginx:latest
 COPY .nginx/default.conf /etc/nginx/conf.d/
