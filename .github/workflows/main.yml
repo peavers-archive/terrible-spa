@@ -25,6 +25,20 @@ jobs:
       - name: Run npm deploy:prod
         run: |
           npm ci
-          npm run deploy:prod
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          npm run build:prod
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@master
+
+      - name: Build and push docker container
+        uses: HurricanKai/Publish-Docker-Github-Action@master
+        with:
+          name: peavers/terrible-spa
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}

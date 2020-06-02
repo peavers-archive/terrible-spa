@@ -8,7 +8,7 @@
     "stylelint:fix": "stylelint \"**/*.(scss|css)\" --fix",
     "ng": "ng",
     "start": "ng serve",
-    "deploy:prod": "ng build --prod"
+    "build:prod": "ng build --prod"
   },
   "dependencies": {
     "@angular/animations": "~9.1.7",
