@@ -8,12 +8,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HistoryService } from '../../../../core/services/history.service';
 import * as moment from 'moment';
 import Utils from '../../../../shared/utils/utils.component';
+import { TaskProcessorService } from '../../../../core/services/task-processor.service';
 
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DefaultComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
@@ -29,6 +30,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
     private mediaFileService: MediaFileService,
     private mediaListService: MediaListService,
     private historyService: HistoryService,
+    private tasksService: TaskProcessorService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -36,8 +38,8 @@ export class DefaultComponent implements OnInit, OnDestroy {
     this.favourites = this.mediaListService.findFavourite();
     this.mediaLists = this.mediaListService.findAllWithFilter('favourites');
 
-    this.route.params.subscribe(response => {
-      this.mediaFileService.findById(response.id).subscribe(mediaFile => {
+    this.route.params.subscribe((response) => {
+      this.mediaFileService.findById(response.id).subscribe((mediaFile) => {
         this.mediaFile = mediaFile;
         this.historyService.addToHistory(mediaFile).subscribe(() => console.log('Added to History'));
       });
@@ -45,7 +47,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   createMediaList(video: MediaFile) {
@@ -63,7 +65,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
   }
 
   removeFromList(mediaList: MediaList, video: MediaFile) {
-    mediaList.mediaFiles = mediaList.mediaFiles.filter(file => file.id !== video.id);
+    mediaList.mediaFiles = mediaList.mediaFiles.filter((file) => file.id !== video.id);
 
     this.subscriptions.push(
       this.mediaListService
@@ -73,10 +75,14 @@ export class DefaultComponent implements OnInit, OnDestroy {
   }
 
   isInList(mediaList: MediaList, video: MediaFile) {
-    return mediaList.mediaFiles.some(value => value.id === video.id);
+    return mediaList.mediaFiles.some((value) => value.id === video.id);
   }
 
   convertDate(date: number): moment.Moment {
     return moment(Utils.convertToMoment(date));
+  }
+
+  recreateThumbnails(mediaFile: MediaFile) {
+    this.tasksService.recreateThumbnails(mediaFile);
   }
 }

@@ -49,6 +49,13 @@
                             </ng-template>
                         </mat-menu>
 
+                        <li class="action">
+                            <button mat-button (click)="recreateThumbnails(mediaFile)">
+                                <mat-icon>wallpaper</mat-icon>
+                                Recreate thumbnails
+                            </button>
+                        </li>
+
                         <li class="action is-pulled-right">
                             <button mat-button>
                                 <mat-icon>delete_forever</mat-icon>

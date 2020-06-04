@@ -21,4 +21,8 @@ export const CONTENT_ROUTES: Routes = [
     path: 'history',
     loadChildren: () => import('../../modules/history/history.module').then((m) => m.HistoryModule),
   },
+  {
+    path: 'statistics',
+    loadChildren: () => import('../../modules/statistics/statistics.module').then((m) => m.StatisticsModule),
+  },
 ];

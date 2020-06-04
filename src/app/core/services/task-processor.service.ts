@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MediaFile } from '../domain/modules';
+import { MediaFile, MediaList } from '../domain/modules';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,6 +13,12 @@ export class TaskProcessorService {
 
   constructor(private httpClient: HttpClient, private snackBar: MatSnackBar) {
     this.endpoint = `${environment.api}/task`;
+  }
+
+  recreateThumbnails(mediaFile: MediaFile) {
+    return this.httpClient
+      .get<MediaList>(`${this.endpoint}/recreate-thumbnails/${mediaFile.id}`)
+      .subscribe(() => this.snackBar.open(`Queued to recreate thumbnails for ${mediaFile.name}`));
   }
 
   thumbnails(): Observable<MediaFile[]> {

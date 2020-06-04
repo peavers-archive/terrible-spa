@@ -53,3 +53,16 @@ export class History {
   id: string;
   results: MediaFile[];
 }
+
+export class Statistics {
+  id: string;
+
+  totalLibraryCount: number;
+  totalLibrarySize: number;
+
+  totalThumbnailCount: number;
+  totalThumbnailSize: number;
+
+  averageMediaFileSize: number;
+  averageThumbnailSize: number;
+}
