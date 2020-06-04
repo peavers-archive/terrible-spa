@@ -9,6 +9,6 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
   declarations: [DefaultComponent],
   imports: [SharedModule, RoutingModule, MomentModule, VirtualScrollerModule],
   exports: [],
-  entryComponents: [],
+  entryComponents: []
 })
 export class StatisticsModule {}
