@@ -2,20 +2,20 @@
   <div class="container is-fluid">
     <app-page-title title="Statistics"></app-page-title>
 
-        <div class="columns has-text-centered is-multiline">
-            <div class="column" @fade *ngIf="totalMediaFileCount | async as totalMediaFileCount">
-                <div class="stacked-card">
-                    <div class="title">Total media file count</div>
-                    <p>{{ totalMediaFileCount }}</p>
-                </div>
-            </div>
-
-            <div class="column" @fade *ngIf="totalDirectorySize | async as totalDirectorySize">
-                <div class="stacked-card">
-                    <div class="title">Total monitored directory size</div>
-                    <p>{{ totalDirectorySize | fileSize}}</p>
-                </div>
-            </div>
+    <div class="columns has-text-centered is-multiline">
+      <div class="column" @fade *ngIf="totalMediaFileCount | async as totalMediaFileCount">
+        <div class="stacked-card">
+          <div class="title">Total media file count</div>
+          <p>{{ totalMediaFileCount }}</p>
         </div>
+      </div>
+
+      <div class="column" @fade *ngIf="totalDirectorySize | async as totalDirectorySize">
+        <div class="stacked-card">
+          <div class="title">Total monitored directory size</div>
+          <p>{{ totalDirectorySize | fileSize }}</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
