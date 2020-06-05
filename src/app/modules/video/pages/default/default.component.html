@@ -104,6 +104,10 @@
                             <td>{{ mediaFile.path }}</td>
                         </tr>
                         <tr>
+                            <td>Virtual Path</td>
+                            <td>{{ mediaFile.path }}</td>
+                        </tr>
+                        <tr>
                             <td>Thumbnail path</td>
                             <td>{{ mediaFile.thumbnailPath }}</td>
                         </tr>
@@ -118,6 +122,10 @@
                         <tr>
                             <td>last modified</td>
                             <td>{{ convertDate(mediaFile.lastModifiedTime) | amTimeAgo }}</td>
+                        </tr>
+                        <tr>
+                            <td>Is indexed</td>
+                            <td>{{ mediaFile.indexed }}</td>
                         </tr>
                     </table>
                 </div>

@@ -26,6 +26,7 @@ export interface MediaFile {
   id: string;
   name: string;
   path: string;
+  virtualPath: string;
   thumbnailPath: string;
   extension: string;
   size: number;
@@ -34,6 +35,7 @@ export interface MediaFile {
   lastAccessTime: number;
   lastModifiedTime: number;
   lastWatched: number;
+  indexed: boolean;
 }
 
 export class MediaList {

@@ -2,17 +2,27 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'fileSize' })
 export class FileSizePipe implements PipeTransform {
-  transform(input: number): string {
-    let size = Math.round((input / 1e9) * 100) / 100;
-    let unit = '';
+  transform(bytes: number) {
+    const si = false;
+    const dp = 1;
 
-    if (size >= 1) {
-      unit = 'Gb';
-    } else {
-      size = Math.round((input / 1e6) * 100) / 100;
-      unit = 'Mb';
+    const thresh = si ? 1000 : 1024;
+
+    if (Math.abs(bytes) < thresh) {
+      return bytes + ' B';
     }
 
-    return size + unit;
+    const units = si
+      ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+      : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+    let u = -1;
+    const r = 10 ** dp;
+
+    do {
+      bytes /= thresh;
+      ++u;
+    } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+
+    return bytes.toFixed(dp) + ' ' + units[u];
   }
 }
