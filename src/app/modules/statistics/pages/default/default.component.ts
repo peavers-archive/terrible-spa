@@ -9,7 +9,7 @@ import { StatisticsService } from '../../../../core/services/statistics.service'
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: Utils.fadeAnimation(),
+  animations: Utils.fadeAnimation()
 })
 export class DefaultComponent implements OnInit {
   constructor(private statisticsService: StatisticsService) {}
