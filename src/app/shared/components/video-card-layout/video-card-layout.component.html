@@ -9,7 +9,7 @@
   <div (click)="goTo(mediaFile)">
     <div class="overlay">
       <figure class="image is-3by2">
-        <img *ngIf="coverImage(mediaFile) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
+        <img *ngIf="coverImage(mediaFile) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
       </figure>
     </div>
 
@@ -17,7 +17,7 @@
       {{ mediaFile.name }}
     </div>
     <div class="video-meta">
-      Created {{ convertDate(mediaFile.createdTime) | amTimeAgo }}
+      {{ convertDate(mediaFile.createdTime) | amTimeAgo }}
       <span class="is-pulled-right">{{ mediaFile.size | fileSize }}</span>
     </div>
   </div>
