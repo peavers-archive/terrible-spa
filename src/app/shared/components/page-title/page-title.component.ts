@@ -40,8 +40,7 @@ export class PageTitleComponent {
   @Output()
   sortEvent = new EventEmitter<string>();
 
-  constructor() {
-  }
+  constructor() {}
 
   edit() {
     this.editEvent.emit(true);

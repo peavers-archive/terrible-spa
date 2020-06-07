@@ -32,8 +32,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
     private historyService: HistoryService,
     private tasksService: TaskProcessorService,
     private snackBar: MatSnackBar
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.favourites = this.mediaListService.findFavourite();
