@@ -26,29 +26,28 @@ export class DefaultComponent implements OnInit, OnDestroy {
     private mediaFileService: MediaFileService,
     private mediaListService: MediaListService,
     private searchService: SearchService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.mediaListService.findFavourite().subscribe((favourites) => (this.favourites = favourites))
+      this.mediaListService.findFavourite().subscribe(favourites => (this.favourites = favourites))
     );
 
     this.subscriptions.push(
-      this.mediaListService.findAllWithFilter('favourites').subscribe((mediaLists) => (this.mediaLists = mediaLists))
+      this.mediaListService.findAllWithFilter('favourites').subscribe(mediaLists => (this.mediaLists = mediaLists))
     );
 
-    this.subscriptions.push(this.mediaFileService.findAll().subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
+    this.subscriptions.push(this.mediaFileService.findAll().subscribe(mediaFiles => (this.mediaFiles = mediaFiles)));
   }
 
   search(query: any): void {
     const observable = query ? this.searchService.search(query) : this.mediaFileService.findAll();
 
-    this.subscriptions.push(observable.subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
+    this.subscriptions.push(observable.subscribe(mediaFiles => (this.mediaFiles = mediaFiles)));
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   sortMediaFiles($event: string) {
