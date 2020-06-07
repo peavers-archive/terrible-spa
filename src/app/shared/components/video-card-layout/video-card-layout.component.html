@@ -9,7 +9,7 @@
   <div (click)="goTo(mediaFile)">
     <div class="overlay">
       <figure class="image is-3by2">
-        <img *ngIf="coverImage(mediaFile) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
+        <img *ngIf="coverImage(mediaFile) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
       </figure>
     </div>
 
