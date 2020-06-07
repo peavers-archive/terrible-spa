@@ -1,11 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import {
-  AngularFireAuthGuard,
-  AngularFireAuthGuardModule,
-  redirectLoggedInTo,
-  redirectUnauthorizedTo,
-} from '@angular/fire/auth-guard';
+import { AngularFireAuthGuard, AngularFireAuthGuardModule, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { LoginComponent } from './layout/login/login.component';
 import { CONTENT_ROUTES } from './shared';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
@@ -19,14 +14,14 @@ const routes: Routes = [
     children: CONTENT_ROUTES,
     canActivate: [AngularFireAuthGuard],
     component: ContentLayoutComponent,
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'login',
     component: LoginComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectLoggedInToHome },
-  },
+    data: { authGuardPipe: redirectLoggedInToHome }
+  }
 ];
 
 @NgModule({
@@ -34,10 +29,12 @@ const routes: Routes = [
     AngularFireAuthGuardModule,
     RouterModule.forRoot(routes, {
       useHash: false,
-      onSameUrlNavigation: 'reload',
-    }),
+      scrollPositionRestoration: 'enabled',
+      onSameUrlNavigation: 'reload'
+    })
   ],
   exports: [RouterModule],
-  providers: [AngularFireAuthGuard],
+  providers: [AngularFireAuthGuard]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
