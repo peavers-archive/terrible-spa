@@ -10,7 +10,7 @@
               <div (click)="goTo(mediaList)">
                 <div class="overlay">
                   <figure class="image is-3by2">
-                    <img *ngIf="coverImage(mediaList) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
+                    <img *ngIf="coverImage(mediaList) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
                   </figure>
                 </div>
                 <div class="video-name">
@@ -25,7 +25,7 @@
 
       <ng-template #noContent>
         <div class="column is-12 has-text-centered">
-          <img src="/assets/no-content-flower.svg" width="50%" class="is-centered" alt="No content found">
+          <img src="/assets/no-content-flower.svg" width="50%" class="is-centered" alt="No content found" />
         </div>
       </ng-template>
     </div>
