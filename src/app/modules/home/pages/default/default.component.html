@@ -1,6 +1,10 @@
 <div class="section">
   <div class="container is-fluid">
-    <app-page-title title="Recently added"></app-page-title>
+    <app-page-title
+      [title]="'Recently added'"
+      [sortButton]="true"
+      (sortEvent)="sortMediaFiles($event)"
+    ></app-page-title>
 
     <div class="columns is-multiline">
       <div class="column is-12">

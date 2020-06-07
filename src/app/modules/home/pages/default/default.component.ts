@@ -4,13 +4,12 @@ import { Subscription } from 'rxjs';
 import { MediaFile, MediaList } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaListService } from '../../../../core/services/media-list.service';
-import Utils from '../../../../shared/utils/utils.component';
 
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class DefaultComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
@@ -25,7 +24,8 @@ export class DefaultComponent implements OnInit, OnDestroy {
     private mediaFileService: MediaFileService,
     private mediaListService: MediaListService,
     private searchService: SearchService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -40,7 +40,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
   }
 
   search(query: any): void {
-    let observable = query ? this.searchService.search(query) : this.mediaFileService.findAll();
+    const observable = query ? this.searchService.search(query) : this.mediaFileService.findAll();
 
     this.subscriptions.push(observable.subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
   }
@@ -49,7 +49,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
-  isEmpty(array: any[]): boolean {
-    return Utils.isEmpty(array);
+  sortMediaFiles($event: string) {
+    this.subscriptions.push(this.mediaFileService.findAll($event).subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
   }
 }

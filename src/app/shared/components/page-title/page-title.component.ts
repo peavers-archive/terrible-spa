@@ -11,16 +11,19 @@ export class PageTitleComponent {
   title: string;
 
   @Input()
-  editButton: boolean = false;
+  editButton = false;
 
   @Input()
-  deleteButton: boolean = false;
+  deleteButton = false;
 
   @Input()
-  libraryButton: boolean = false;
+  libraryButton = false;
 
   @Input()
-  collectionButton: boolean = false;
+  collectionButton = false;
+
+  @Input()
+  sortButton = false;
 
   @Output()
   editEvent = new EventEmitter<boolean>();
@@ -34,7 +37,11 @@ export class PageTitleComponent {
   @Output()
   collectionEvent = new EventEmitter<boolean>();
 
-  constructor() {}
+  @Output()
+  sortEvent = new EventEmitter<string>();
+
+  constructor() {
+  }
 
   edit() {
     this.editEvent.emit(true);
@@ -50,5 +57,9 @@ export class PageTitleComponent {
 
   collection() {
     this.collectionEvent.emit(true);
+  }
+
+  sort(order: string) {
+    this.sortEvent.emit(order);
   }
 }

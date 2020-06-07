@@ -18,11 +18,11 @@ export class MediaFileService {
     return this.httpClient.get<MediaFile>(`${this.endpoint}/${id}`);
   }
 
-  findAll(): Observable<MediaFile[]> {
-    return this.httpClient.get<MediaFile[]>(`${this.endpoint}`);
+  findAll(order: string = 'createdTime'): Observable<MediaFile[]> {
+    return this.httpClient.get<MediaFile[]>(`${this.endpoint}?order=${order}`);
   }
 
-  deleteAll(): Observable<Object> {
-    return this.httpClient.delete(`${this.endpoint}`);
+  deleteAll(): Observable<void> {
+    return this.httpClient.delete<void>(`${this.endpoint}`);
   }
 }

@@ -12,6 +12,24 @@
         <button *ngIf="deleteButton" mat-icon-button (click)="delete()">
           <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
         </button>
+        <button *ngIf="sortButton" mat-icon-button [matMenuTriggerFor]="sortMenu">
+          <mat-icon fontSet="material-icons-outlined">sort</mat-icon>
+        </button>
+
+        <mat-menu #sortMenu="matMenu">
+          <button mat-menu-item (click)="sort('createdTime')">
+            Created time
+          </button>
+          <button mat-menu-item (click)="sort('lastWatched')">
+            Last watched
+          </button>
+          <button mat-menu-item (click)="sort('name')">
+            File name
+          </button>
+          <button mat-menu-item (click)="sort('size')">
+            File size
+          </button>
+        </mat-menu>
       </div>
     </div>
   </div>
