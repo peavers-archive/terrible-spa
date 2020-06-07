@@ -15,6 +15,7 @@ import { VideoCardMenuComponent } from './components/video-card-menu/video-card-
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { SelectBarComponent } from './components/select-bar/select-bar.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -24,10 +25,11 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MomentModule,
+    MomentModule
   ],
   declarations: [
     EditDialogComponent,
+    ConfirmDialogComponent,
     RemoteImagePipe,
     RemoteVideoPipe,
     FileSizePipe,
@@ -37,7 +39,7 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     VideoCardMenuComponent,
     NavigationBarComponent,
     SelectBarComponent,
-    PageTitleComponent,
+    PageTitleComponent
   ],
   exports: [
     CommonModule,
@@ -55,8 +57,10 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     SearchBarComponent,
     NavigationBarComponent,
     UserPictureComponent,
+    ConfirmDialogComponent
   ],
-  entryComponents: [EditDialogComponent],
-  providers: [MaterialModule],
+  entryComponents: [EditDialogComponent, ConfirmDialogComponent],
+  providers: [MaterialModule]
 })
-export class SharedModule {}
+export class SharedModule {
+}

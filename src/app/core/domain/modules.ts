@@ -1,5 +1,6 @@
 export interface DialogData {
   title?: string;
+  message?: string;
   confirmText?: string | null;
   cancelText?: string;
 }

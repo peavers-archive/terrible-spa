@@ -59,7 +59,7 @@ export class DefaultComponent implements OnInit {
       ]
     };
 
-    Utils.openDialog(this.dialog, dialogData)
+    Utils.openEditDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -92,7 +92,7 @@ export class DefaultComponent implements OnInit {
       ]
     };
 
-    Utils.openDialog(this.dialog, dialogData)
+    Utils.openEditDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -131,7 +131,7 @@ export class DefaultComponent implements OnInit {
       ]
     };
 
-    Utils.openDialog(this.dialog, dialogData)
+    Utils.openEditDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -157,7 +157,7 @@ export class DefaultComponent implements OnInit {
       ]
     };
 
-    Utils.openDialog(this.dialog, dialogData)
+    Utils.openEditDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -183,7 +183,7 @@ export class DefaultComponent implements OnInit {
       ]
     };
 
-    Utils.openDialog(this.dialog, dialogData)
+    Utils.openEditDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {

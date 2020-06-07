@@ -32,7 +32,8 @@ export class DefaultComponent implements OnInit, OnDestroy {
     private historyService: HistoryService,
     private tasksService: TaskProcessorService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.favourites = this.mediaListService.findFavourite();
@@ -84,5 +85,9 @@ export class DefaultComponent implements OnInit, OnDestroy {
 
   recreateThumbnails(mediaFile: MediaFile) {
     this.tasksService.recreateThumbnails(mediaFile);
+  }
+
+  deleteById(mediaFile: MediaFile) {
+    this.mediaFileService.deleteById(mediaFile);
   }
 }

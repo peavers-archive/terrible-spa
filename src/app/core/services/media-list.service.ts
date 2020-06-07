@@ -38,7 +38,7 @@ export class MediaListService {
   }
 
   create(video: MediaFile): void {
-    Utils.openDialog(this.dialog, MediaListService.editDialog())
+    Utils.openEditDialog(this.dialog, MediaListService.editDialog())
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -55,7 +55,7 @@ export class MediaListService {
   }
 
   createWithBulk(numberOfItems: number, items: MediaFile[]) {
-    Utils.openDialog(this.dialog, MediaListService.editDialog())
+    Utils.openEditDialog(this.dialog, MediaListService.editDialog())
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {
@@ -87,7 +87,7 @@ export class MediaListService {
       ]
     };
 
-    Utils.openDialog(this.dialog, dialogData)
+    Utils.openEditDialog(this.dialog, dialogData)
       .afterClosed()
       .subscribe((response: FormField[]) => {
         if (response === undefined) {

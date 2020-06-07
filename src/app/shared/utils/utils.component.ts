@@ -1,13 +1,22 @@
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { EditDialogComponent } from '../../modules/system/components/edit-dialog/edit-dialog.component';
 import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@angular/animations';
 import * as moment from 'moment';
+import { EditDialogComponent } from '../components/edit-dialog/edit-dialog.component';
+import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 export default class Utils {
-  static openDialog(dialog: MatDialog, dialogData): MatDialogRef<EditDialogComponent> {
+
+  static openConfirmDialog(dialog: MatDialog, dialogData): MatDialogRef<ConfirmDialogComponent> {
+    return dialog.open(ConfirmDialogComponent, {
+      width: '35vw',
+      data: dialogData
+    });
+  }
+
+  static openEditDialog(dialog: MatDialog, dialogData): MatDialogRef<EditDialogComponent> {
     return dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData,
+      data: dialogData
     });
   }
 
