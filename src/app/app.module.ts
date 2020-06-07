@@ -33,5 +33,4 @@ import { SidebarLayoutComponent } from './layout/sidebar-layout/sidebar-layout.c
   providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
