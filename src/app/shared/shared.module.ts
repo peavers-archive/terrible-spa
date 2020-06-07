@@ -62,5 +62,4 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
   entryComponents: [EditDialogComponent, ConfirmDialogComponent],
   providers: [MaterialModule]
 })
-export class SharedModule {
-}
+export class SharedModule {}
