@@ -1,6 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AngularFireAuthGuard, AngularFireAuthGuardModule, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import {
+  AngularFireAuthGuard,
+  AngularFireAuthGuardModule,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo
+} from '@angular/fire/auth-guard';
 import { LoginComponent } from './layout/login/login.component';
 import { CONTENT_ROUTES } from './shared';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
@@ -36,5 +41,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AngularFireAuthGuard]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
