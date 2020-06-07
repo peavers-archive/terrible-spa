@@ -1,133 +1,138 @@
 <div class="section" *ngIf="mediaFile">
   <div class="container is-fluid">
-    <app-page-title [title]="mediaFile.name"></app-page-title>
-
     <div class="columns is-multiline">
       <div class="column is-12">
         <video width="100%" controls>
-          <source src="{{ mediaFile.id | remoteVideo }}" />
+          <source src="{{ mediaFile.id | remoteVideo }}"/>
         </video>
       </div>
     </div>
 
-    <div class="stacked-card">
-      <div class="columns is-multiline">
-        <div class="column is-12">
-          <ul>
-            <li class="action" *ngIf="favourites | async as favourites">
-              <div *ngIf="isInList(favourites, mediaFile); else addToListButton">
-                <button mat-button (click)="removeFromList(favourites, mediaFile)">
-                  <mat-icon>remove_from_queue</mat-icon>
-                  Remove from library
-                </button>
-              </div>
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <div class="level">
+          <div class="level-left">
+            <span class="terrible-title">{{ mediaFile.name }}</span>
+          </div>
+
+          <div class="level-right">
+            <div class="level-item" *ngIf="favourites | async as favourites">
+              <button
+                mat-icon-button
+                *ngIf="isInList(favourites, mediaFile); else addToListButton"
+                (click)="removeFromList(favourites, mediaFile)"
+                [matTooltip]="'Remove from library'"
+              >
+                <mat-icon>favorite</mat-icon>
+              </button>
 
               <ng-template #addToListButton>
-                <button mat-button (click)="addToList(favourites, mediaFile)">
-                  <mat-icon>add_to_queue</mat-icon>
-                  Add to library
+                <button mat-icon-button (click)="addToList(favourites, mediaFile)" [matTooltip]="'Add to library'">
+                  <mat-icon>favorite_border</mat-icon>
                 </button>
               </ng-template>
-            </li>
+            </div>
 
-            <li class="action">
-              <button mat-button [matMenuTriggerFor]="playlists">
-                <mat-icon>playlist_add</mat-icon>
-                Add to collection
-              </button>
-            </li>
-
-            <mat-menu #playlists="matMenu">
-              <ng-template matMenuContent>
-                <button (click)="createMediaList(mediaFile)" mat-menu-item>New collection</button>
-
-                <div *ngFor="let mediaList of mediaLists | async">
-                  <button (click)="addToList(mediaList, mediaFile)" mat-menu-item>
-                    {{ mediaList.name }}
-                  </button>
-                </div>
-              </ng-template>
-            </mat-menu>
-
-            <li class="action">
-              <button mat-button (click)="recreateThumbnails(mediaFile)">
-                <mat-icon>wallpaper</mat-icon>
-                Recreate thumbnails
-              </button>
-            </li>
-
-            <li class="action is-pulled-right">
-              <button mat-button (click)="deleteById(mediaFile)">
-                <mat-icon>delete_forever</mat-icon>
-                Delete
-              </button>
-            </li>
-          </ul>
+            <button mat-icon-button [matMenuTriggerFor]="playlists" [matTooltip]="'Add to a collection'">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button mat-icon-button [mat-menu-trigger-for]="extraMenu" [matTooltip]="'Extra options'">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="stacked-card">
-      <div class="columns is-multiline">
-        <div class="column is-4" *ngFor="let thumbnail of mediaFile.thumbnails">
-          <figure class="image is-3by2">
-            <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
-          </figure>
+    <!-- Playlist menu -->
+    <mat-menu #playlists="matMenu">
+      <ng-template matMenuContent>
+        <button (click)="createMediaList(mediaFile)" mat-menu-item>New collection</button>
+
+        <div *ngFor="let mediaList of mediaLists | async">
+          <button (click)="addToList(mediaList, mediaFile)" mat-menu-item>
+            {{ mediaList.name }}
+          </button>
+        </div>
+      </ng-template>
+    </mat-menu>
+
+    <!-- Extra menu content -->
+    <mat-menu #extraMenu="matMenu">
+      <button mat-menu-item (click)="recreateThumbnails(mediaFile)">
+        Generate thumbnails
+      </button>
+
+      <button mat-menu-item (click)="deleteById(mediaFile)">
+        Delete
+      </button>
+    </mat-menu>
+
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <div class="stacked-card">
+          <div class="columns is-multiline">
+            <div class="column is-4" *ngFor="let thumbnail of mediaFile.thumbnails">
+              <figure class="image is-3by2">
+                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
+              </figure>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="stacked-card">
-      <h2>Metadata</h2>
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <div class="stacked-card">
+          <h2>Metadata</h2>
 
-      <div class="columns is-multiline">
-        <div class="column is-12">
-          <table>
-            <tr>
-              <td>Id</td>
-              <td>{{ mediaFile.id }}</td>
-            </tr>
-            <tr>
-              <td>Name</td>
-              <td>{{ mediaFile.name }}</td>
-            </tr>
-            <tr>
-              <td>Extension</td>
-              <td>{{ mediaFile.extension }}</td>
-            </tr>
-            <tr>
-              <td>Size</td>
-              <td>{{ mediaFile.size | fileSize }}</td>
-            </tr>
-            <tr>
-              <td>Path</td>
-              <td>{{ mediaFile.path }}</td>
-            </tr>
-            <tr>
-              <td>Virtual Path</td>
-              <td>{{ mediaFile.path }}</td>
-            </tr>
-            <tr>
-              <td>Thumbnail path</td>
-              <td>{{ mediaFile.thumbnailPath }}</td>
-            </tr>
-            <tr>
-              <td>Created</td>
-              <td>{{ convertDate(mediaFile.createdTime) | amTimeAgo }}</td>
-            </tr>
-            <tr>
-              <td>last accessed</td>
-              <td>{{ convertDate(mediaFile.lastAccessTime) | amTimeAgo }}</td>
-            </tr>
-            <tr>
-              <td>last modified</td>
-              <td>{{ convertDate(mediaFile.lastModifiedTime) | amTimeAgo }}</td>
-            </tr>
-            <tr>
-              <td>Is indexed</td>
-              <td>{{ mediaFile.indexed }}</td>
-            </tr>
-          </table>
+          <div class="columns is-multiline">
+            <div class="column is-12">
+              <table>
+                <tr>
+                  <td>Id</td>
+                  <td>{{ mediaFile.id }}</td>
+                </tr>
+                <tr>
+                  <td>Name</td>
+                  <td>{{ mediaFile.name }}</td>
+                </tr>
+                <tr>
+                  <td>Extension</td>
+                  <td>{{ mediaFile.extension }}</td>
+                </tr>
+                <tr>
+                  <td>Size</td>
+                  <td>{{ mediaFile.size | fileSize }}</td>
+                </tr>
+                <tr>
+                  <td>Path</td>
+                  <td>{{ mediaFile.path }}</td>
+                </tr>
+                <tr>
+                  <td>Thumbnail path</td>
+                  <td>{{ mediaFile.thumbnailPath }}</td>
+                </tr>
+                <tr>
+                  <td>Created</td>
+                  <td>{{ convertDate(mediaFile.createdTime) | amTimeAgo }}</td>
+                </tr>
+                <tr>
+                  <td>last accessed</td>
+                  <td>{{ convertDate(mediaFile.lastAccessTime) | amTimeAgo }}</td>
+                </tr>
+                <tr>
+                  <td>last modified</td>
+                  <td>{{ convertDate(mediaFile.lastModifiedTime) | amTimeAgo }}</td>
+                </tr>
+                <tr>
+                  <td>Searchable</td>
+                  <td>{{ mediaFile.indexed }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

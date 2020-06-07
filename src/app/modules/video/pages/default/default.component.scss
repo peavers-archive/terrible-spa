@@ -1,3 +1,12 @@
+.terrible-title {
+  color: var(--light-theme-text-color);
+  cursor: default;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 14px 0;
+}
+
 .action {
   color: var(--primary-color);
   display: inline-block;
