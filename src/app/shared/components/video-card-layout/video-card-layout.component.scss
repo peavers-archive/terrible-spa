@@ -3,7 +3,7 @@
   border: 1px solid #dadce0;
   box-shadow: none;
   position: relative;
-  transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.selectedVideo {
     box-shadow: none;
@@ -25,7 +25,7 @@
     cursor: pointer;
 
     .image {
-      opacity: .8;
+      opacity: 0.8;
     }
 
     .checkbox-overlay {
@@ -54,7 +54,7 @@
   }
 
   .video-meta {
-    color: rgba(17, 17, 17, .6);
+    color: rgba(17, 17, 17, 0.6);
     font-size: 13px;
     font-weight: 400;
     line-height: 18px;
@@ -81,5 +81,5 @@
 }
 
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
-  border-color: rgba(255, 255, 255, .7);
+  border-color: rgba(255, 255, 255, 0.7);
 }

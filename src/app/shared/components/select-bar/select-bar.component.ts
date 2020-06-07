@@ -8,7 +8,7 @@ import { MediaList } from '../../../core/domain/modules';
 @Component({
   selector: 'app-select-bar',
   templateUrl: './select-bar.component.html',
-  styleUrls: ['./select-bar.component.scss']
+  styleUrls: ['./select-bar.component.scss'],
 })
 export class SelectBarComponent implements OnInit {
   mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();

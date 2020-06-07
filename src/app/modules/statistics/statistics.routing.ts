@@ -9,14 +9,14 @@ export const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: DefaultComponent
-      }
-    ]
-  }
+        component: DefaultComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class RoutingModule {}

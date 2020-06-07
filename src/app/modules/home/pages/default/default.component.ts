@@ -10,7 +10,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
   selector: 'app-default',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DefaultComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
@@ -30,31 +30,31 @@ export class DefaultComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.mediaListService.findFavourite().subscribe(favourites => (this.favourites = favourites))
+      this.mediaListService.findFavourite().subscribe((favourites) => (this.favourites = favourites))
     );
 
     this.subscriptions.push(
-      this.mediaListService.findAllWithFilter('favourites').subscribe(mediaLists => (this.mediaLists = mediaLists))
+      this.mediaListService.findAllWithFilter('favourites').subscribe((mediaLists) => (this.mediaLists = mediaLists))
     );
 
-    this.subscriptions.push(this.mediaFileService.findAll().subscribe(mediaFiles => (this.mediaFiles = mediaFiles)));
+    this.subscriptions.push(this.mediaFileService.findAll().subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
   }
 
   search(query: any): void {
     const observable = query ? this.searchService.search(query) : this.mediaFileService.findAll();
 
-    this.subscriptions.push(observable.subscribe(mediaFiles => (this.mediaFiles = mediaFiles)));
+    this.subscriptions.push(observable.subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   sortMediaFiles($event: string) {
     this.storage.set('defaultOrder', $event);
 
     this.subscriptions.push(
-      this.mediaFileService.findAll($event).subscribe(mediaFiles => (this.mediaFiles = mediaFiles))
+      this.mediaFileService.findAll($event).subscribe((mediaFiles) => (this.mediaFiles = mediaFiles))
     );
   }
 }

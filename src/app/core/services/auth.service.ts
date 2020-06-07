@@ -6,23 +6,23 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {}
 
   doGoogleLogin() {
-    return new Promise<any>(resolve => {
+    return new Promise<any>((resolve) => {
       const provider = new auth.GoogleAuthProvider();
       provider.addScope('profile');
       provider.addScope('email');
 
       this.angularFireAuth.signInWithPopup(provider).then(
-        response => {
+        (response) => {
           resolve(response);
           this.router.navigate(['/']);
         },
-        error => {
+        (error) => {
           console.log('Unable to communicate with Google', error);
         }
       );

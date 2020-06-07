@@ -25,7 +25,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MomentModule
+    MomentModule,
   ],
   declarations: [
     EditDialogComponent,
@@ -39,7 +39,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     VideoCardMenuComponent,
     NavigationBarComponent,
     SelectBarComponent,
-    PageTitleComponent
+    PageTitleComponent,
   ],
   exports: [
     CommonModule,
@@ -57,9 +57,9 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     SearchBarComponent,
     NavigationBarComponent,
     UserPictureComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   entryComponents: [EditDialogComponent, ConfirmDialogComponent],
-  providers: [MaterialModule]
+  providers: [MaterialModule],
 })
 export class SharedModule {}

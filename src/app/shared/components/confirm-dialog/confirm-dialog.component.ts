@@ -6,7 +6,7 @@ import { DialogData, EditDialogData } from '../../../core/domain/modules';
   selector: 'app-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ConfirmDialogComponent {
   input: DialogData;

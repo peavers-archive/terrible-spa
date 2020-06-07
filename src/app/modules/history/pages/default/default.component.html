@@ -1,14 +1,14 @@
 <div class="section">
   <div class="container is-fluid">
-    <app-page-title title="History"></app-page-title>
+    <app-page-title title="History" [deleteButton]="true" (deleteEvent)="deleteHistory()"></app-page-title>
 
     <div class="columns is-multiline">
-      <div class="column is-12" *ngIf="history | async as history">
+      <div class="column is-12" *ngIf="history | async as history; else noContent">
         <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="history.results">
           <div class="stacked-card on-hover" *ngFor="let item of scroll.viewPortItems" @fade (click)="goTo(item)">
             <div class="columns is-multiline">
               <div class="column is-2">
-                <div class="title">{{ convertDate(item.lastWatched) | amTimeAgo}}</div>
+                <div class="title">{{ convertDate(item.lastWatched) | amTimeAgo }}</div>
               </div>
               <div class="column is-10">
                 <div class="content">
@@ -19,6 +19,12 @@
           </div>
         </virtual-scroller>
       </div>
+
+      <ng-template #noContent>
+        <div class="column is-12 has-text-centered">
+          <img src="/assets/no-content-robot.svg" width="50%" class="is-centered" alt="No content found" />
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
