@@ -5,7 +5,6 @@ import { EditDialogComponent } from '../components/edit-dialog/edit-dialog.compo
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 export default class Utils {
-
   static openConfirmDialog(dialog: MatDialog, dialogData): MatDialogRef<ConfirmDialogComponent> {
     return dialog.open(ConfirmDialogComponent, {
       width: '35vw',
