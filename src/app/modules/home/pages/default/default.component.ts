@@ -53,6 +53,8 @@ export class DefaultComponent implements OnInit, OnDestroy {
   sortMediaFiles($event: string) {
     this.storage.set('defaultOrder', $event);
 
-    this.subscriptions.push(this.mediaFileService.findAll($event).subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
+    this.subscriptions.push(
+      this.mediaFileService.findAll($event).subscribe(mediaFiles => (this.mediaFiles = mediaFiles))
+    );
   }
 }
