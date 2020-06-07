@@ -3,7 +3,7 @@
     <div class="columns is-multiline">
       <div class="column is-12">
         <video width="100%" controls>
-          <source src="{{ mediaFile.id | remoteVideo }}"/>
+          <source src="{{ mediaFile.id | remoteVideo }}" />
         </video>
       </div>
     </div>
@@ -74,7 +74,7 @@
           <div class="columns is-multiline">
             <div class="column is-4" *ngFor="let thumbnail of mediaFile.thumbnails">
               <figure class="image is-3by2">
-                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
+                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
               </figure>
             </div>
           </div>
