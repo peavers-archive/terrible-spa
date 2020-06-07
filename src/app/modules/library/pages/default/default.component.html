@@ -3,8 +3,8 @@
     <app-page-title title="Favourites"></app-page-title>
 
     <div class="columns is-multiline">
-      <div class="column is-12">
-        <div class="columns is-multiline tab-body-content" *ngIf="favourites">
+      <div class="column is-12" *ngIf="favourites">
+        <div class="columns is-multiline tab-body-content" *ngIf="favourites.mediaFiles.length > 0; else noContent">
           <div class="column is-2" *ngFor="let mediaFile of favourites.mediaFiles">
             <app-video-card-layout
               [mediaFile]="mediaFile"
@@ -14,6 +14,12 @@
           </div>
         </div>
       </div>
+
+      <ng-template #noContent>
+        <div class="column is-12 has-text-centered">
+          <img src="/assets/no-content-flower.svg" width="50%" class="is-centered" alt="No content found">
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -3,14 +3,14 @@
     <app-page-title title="My Collections"></app-page-title>
 
     <div class="columns is-multiline">
-      <div class="column is-12">
-        <div class="columns is-multiline tab-body-content" *ngIf="favourites">
+      <div class="column is-12" *ngIf="mediaLists">
+        <div class="columns is-multiline tab-body-content" *ngIf="mediaLists.length > 0; else noContent">
           <div class="column is-2" *ngFor="let mediaList of mediaLists">
             <div class="collection-card" @fade>
               <div (click)="goTo(mediaList)">
                 <div class="overlay">
                   <figure class="image is-3by2">
-                    <img *ngIf="coverImage(mediaList) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
+                    <img *ngIf="coverImage(mediaList) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
                   </figure>
                 </div>
                 <div class="video-name">
@@ -22,6 +22,12 @@
           </div>
         </div>
       </div>
+
+      <ng-template #noContent>
+        <div class="column is-12 has-text-centered">
+          <img src="/assets/no-content-flower.svg" width="50%" class="is-centered" alt="No content found">
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
