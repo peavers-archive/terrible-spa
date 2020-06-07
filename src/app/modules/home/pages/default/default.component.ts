@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MediaFileService } from '../../../../core/services/media-file.service';
 import { Subscription } from 'rxjs';
 import { MediaFile, MediaList } from '../../../../core/domain/modules';
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaListService } from '../../../../core/services/media-list.service';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
   selector: 'app-default',
@@ -21,6 +22,7 @@ export class DefaultComponent implements OnInit, OnDestroy {
   favourites: MediaList;
 
   constructor(
+    @Inject(LOCAL_STORAGE) private storage: StorageService,
     private mediaFileService: MediaFileService,
     private mediaListService: MediaListService,
     private searchService: SearchService
@@ -50,6 +52,8 @@ export class DefaultComponent implements OnInit, OnDestroy {
   }
 
   sortMediaFiles($event: string) {
+    this.storage.set('defaultOrder', $event);
+
     this.subscriptions.push(this.mediaFileService.findAll($event).subscribe((mediaFiles) => (this.mediaFiles = mediaFiles)));
   }
 }
