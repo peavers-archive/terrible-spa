@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: Utils.fadeAnimation(),
+  animations: Utils.fadeAnimation()
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('menuElement')
@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   search(query: any): void {
-    this.searchService.search(query).subscribe((searchResults) => (this.searchResults = searchResults));
+    this.searchService.search(query).subscribe(searchResults => (this.searchResults = searchResults));
   }
 
   showSearchResults(): boolean {
@@ -66,8 +66,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   coverImage(mediaFile: MediaFile): string {
-    return mediaFile.thumbnails == null || mediaFile.thumbnails[6] == null
-      ? null
-      : mediaFile.thumbnails[6];
+    return mediaFile.thumbnails == null || mediaFile.thumbnails[6] == null ? null : mediaFile.thumbnails[6];
   }
 }
