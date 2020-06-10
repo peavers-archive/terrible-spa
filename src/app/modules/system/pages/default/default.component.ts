@@ -16,7 +16,7 @@ import Utils from '../../../../shared/utils/utils.component';
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: Utils.fadeAnimation(),
+  animations: Utils.fadeAnimation()
 })
 export class DefaultComponent implements OnInit {
   user: User;
@@ -33,7 +33,8 @@ export class DefaultComponent implements OnInit {
     private searchService: SearchService,
     private mediaFileService: MediaFileService,
     private authService: AuthService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.authService.getUser().subscribe((user) => {
@@ -54,9 +55,9 @@ export class DefaultComponent implements OnInit {
           label: 'Directory',
           value: '',
           placeholder: 'Directory',
-          isReadOnly: false,
-        },
-      ],
+          isReadOnly: false
+        }
+      ]
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -68,7 +69,7 @@ export class DefaultComponent implements OnInit {
 
         response.forEach((field) => {
           const directory: Directory = {
-            path: field.value,
+            path: field.value
           };
 
           this.directory = this.directoryService.save(directory);
@@ -87,9 +88,9 @@ export class DefaultComponent implements OnInit {
           label: 'Directory',
           value: directory.path,
           placeholder: 'Directory',
-          isReadOnly: false,
-        },
-      ],
+          isReadOnly: false
+        }
+      ]
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -119,16 +120,16 @@ export class DefaultComponent implements OnInit {
           ngModel: '',
           value: this.user.displayName,
           placeholder: 'Name',
-          isReadOnly: false,
+          isReadOnly: false
         },
         {
           label: 'Email',
           ngModel: '',
           value: this.user.email,
           placeholder: 'Email',
-          isReadOnly: false,
-        },
-      ],
+          isReadOnly: false
+        }
+      ]
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -152,9 +153,9 @@ export class DefaultComponent implements OnInit {
           ngModel: '',
           value: this.user.uid,
           placeholder: 'Unique identifier',
-          isReadOnly: true,
-        },
-      ],
+          isReadOnly: true
+        }
+      ]
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -178,9 +179,9 @@ export class DefaultComponent implements OnInit {
           ngModel: '',
           value: this.timezone,
           placeholder: 'Name',
-          isReadOnly: false,
-        },
-      ],
+          isReadOnly: false
+        }
+      ]
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -209,10 +210,10 @@ export class DefaultComponent implements OnInit {
   }
 
   taskDeleteMongo() {
-    this.mediaFileService.deleteAll().subscribe(() => this.snackBar.open(`Deleting all files from the database`));
+    this.mediaFileService.deleteAll();
   }
 
   taskDeleteElasticIndex() {
-    this.searchService.deleteAll().subscribe(() => this.snackBar.open(`Deleting all search indexes`));
+    this.searchService.deleteAll();
   }
 }

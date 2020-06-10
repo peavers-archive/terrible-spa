@@ -14,12 +14,17 @@
           <ul class="search-results" *ngIf="showSearchResults()">
             <li *ngFor="let video of searchResults" class="search-results-item">
               <div class="columns">
-                <div (click)="goTo(video.id)" class="column is-11">
+
+                <div class="column is-2">
+                  <figure class="image">
+                    <img *ngIf="coverImage(video) | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
+                  </figure>
+                </div>
+
+                <div (click)="goTo(video.id)" class="column is-10">
                   <p>{{ video.name }}</p>
                   <p class="metadata">{{ video.path }}</p>
                 </div>
-
-                <div class="column is-1"></div>
               </div>
             </li>
           </ul>

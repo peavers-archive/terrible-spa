@@ -64,4 +64,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     this.hasZeroIndex = windowScroll > this.elementPosition;
   }
+
+  coverImage(mediaFile: MediaFile): string {
+    return mediaFile.thumbnails == null || mediaFile.thumbnails[6] == null
+      ? null
+      : mediaFile.thumbnails[6];
+  }
 }

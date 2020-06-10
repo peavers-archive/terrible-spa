@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MediaFileService {
   private readonly endpoint: string;
@@ -42,7 +42,7 @@ export class MediaFileService {
       title: `Delete ${mediaFile.name} from disk`,
       message: 'This is irreversible. We will destroy this media file.',
       cancelText: 'Cancel',
-      confirmText: 'Confirm',
+      confirmText: 'Confirm'
     };
 
     Utils.openConfirmDialog(this.dialog, dialogData)
@@ -56,7 +56,22 @@ export class MediaFileService {
       });
   }
 
-  deleteAll(): Observable<void> {
-    return this.httpClient.delete<void>(`${this.endpoint}`);
+  deleteAll() {
+    const dialogData: DialogData = {
+      title: `Delete the database content`,
+      message: 'Empty the database. No files will be harmed in this operation.',
+      cancelText: 'Cancel',
+      confirmText: 'Confirm'
+    };
+
+    Utils.openConfirmDialog(this.dialog, dialogData)
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.httpClient
+            .delete(`${this.endpoint}`)
+            .subscribe(() => this.snackBar.open(`Deleting all documents from the database`));
+        }
+      });
   }
 }

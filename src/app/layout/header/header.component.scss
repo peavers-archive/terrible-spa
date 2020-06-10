@@ -9,6 +9,12 @@ header {
   margin-left: 10px;
 }
 
+.navbar-item {
+  img {
+    max-height: none;
+  }
+}
+
 .navbar {
   background-color: rgba(255, 255, 255, 0.98);
   border-bottom: 1px solid #e9ecef;
@@ -24,16 +30,16 @@ header {
   overflow-y: auto;
   position: absolute;
   top: 56px;
-  transition: all 0.2s ease;
+  transition: all .2s ease;
   width: 800px;
   z-index: 2;
 
+  p {
+    font-size: 13px;
+  }
+
   .search-results-item {
     padding: 7px;
-
-    .image {
-      margin-top: 5px;
-    }
 
     &:hover {
       background-color: #f5f5f5;
