@@ -33,11 +33,10 @@ export class DefaultComponent implements OnInit {
     private searchService: SearchService,
     private mediaFileService: MediaFileService,
     private authService: AuthService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-    this.authService.getUser().subscribe((user) => {
+    this.authService.getUser().subscribe(user => {
       this.user = user;
     });
 
@@ -67,7 +66,7 @@ export class DefaultComponent implements OnInit {
           return;
         }
 
-        response.forEach((field) => {
+        response.forEach(field => {
           const directory: Directory = {
             path: field.value
           };
@@ -100,7 +99,7 @@ export class DefaultComponent implements OnInit {
           return;
         }
 
-        response.forEach((field) => {
+        response.forEach(field => {
           directory.path = field.value;
 
           this.directoryService.save(directory).subscribe();
@@ -194,7 +193,7 @@ export class DefaultComponent implements OnInit {
   }
 
   taskScanDirectory() {
-    this.directoryService.findAll().subscribe((directory) => {
+    this.directoryService.findAll().subscribe(directory => {
       this.taskProcessorService
         .directories(directory.path)
         .subscribe(() => this.snackBar.open(`Processing ${directory.path}`));

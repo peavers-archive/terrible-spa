@@ -35,11 +35,9 @@ export class SearchService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
-          this.httpClient
-            .delete(`${this.endpoint}`)
-            .subscribe(() => this.snackBar.open(`Deleting all search indexes`));
+          this.httpClient.delete(`${this.endpoint}`).subscribe(() => this.snackBar.open(`Deleting all search indexes`));
         }
       });
   }
