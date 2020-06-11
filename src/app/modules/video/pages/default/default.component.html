@@ -58,6 +58,10 @@
 
     <!-- Extra menu content -->
     <mat-menu #extraMenu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="ignoreMediaFile(mediaFile)">
+        Ignore file
+      </button>
+
       <button mat-menu-item (click)="recreateThumbnails(mediaFile)">
         Generate thumbnails
       </button>

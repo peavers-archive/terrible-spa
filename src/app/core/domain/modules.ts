@@ -37,6 +37,7 @@ export interface MediaFile {
   lastModifiedTime: number;
   lastWatched: number;
   indexed: boolean;
+  ignored: boolean;
 }
 
 export class MediaList {

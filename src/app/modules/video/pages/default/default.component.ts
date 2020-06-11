@@ -89,4 +89,8 @@ export class DefaultComponent implements OnInit, OnDestroy {
   deleteById(mediaFile: MediaFile) {
     this.mediaFileService.deleteById(mediaFile);
   }
+
+  ignoreMediaFile(mediaFile: MediaFile) {
+    this.mediaFileService.ignoreMediaFile(mediaFile);
+  }
 }
