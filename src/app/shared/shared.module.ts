@@ -64,5 +64,4 @@ import { DirectoryDialogComponent } from './components/directory-dialog/director
   entryComponents: [EditDialogComponent, ConfirmDialogComponent, DirectoryDialogComponent],
   providers: [MaterialModule]
 })
-export class SharedModule {
-}
+export class SharedModule {}
