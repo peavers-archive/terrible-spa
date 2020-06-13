@@ -33,8 +33,7 @@ export class DefaultComponent implements OnInit {
     private searchService: SearchService,
     private mediaFileService: MediaFileService,
     private authService: AuthService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.authService.getUser().subscribe(user => {
