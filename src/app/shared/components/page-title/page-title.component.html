@@ -15,13 +15,18 @@
         <button *ngIf="sortButton" mat-icon-button [matMenuTriggerFor]="sortMenu">
           <mat-icon fontSet="material-icons-outlined">sort</mat-icon>
         </button>
-
         <mat-menu #sortMenu="matMenu">
           <button mat-menu-item (click)="sort('createdTime')">
             Created time
           </button>
+          <button mat-menu-item (click)="sort('lastAccessTime')">
+            Last accessed time
+          </button>
+          <button mat-menu-item (click)="sort('lastModifiedTime')">
+            Last modified time
+          </button>
           <button mat-menu-item (click)="sort('lastWatched')">
-            Last watched
+            Last watched time
           </button>
           <button mat-menu-item (click)="sort('name')">
             File name

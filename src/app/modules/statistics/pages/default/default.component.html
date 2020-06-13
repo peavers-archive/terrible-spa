@@ -19,27 +19,21 @@
 
       <div class="column is-12" @fade *ngIf="ignoredFiles | async as ignoredFiles">
         <div class="stacked-card">
-          <div class="title">Problematic files</div>
-          <p *ngIf="isEmpty(ignoredFiles); else noIgnoredFiles">Errors processing these files</p>
-
-          <ng-template #noIgnoredFiles>
-            <p>No errors found</p>
-          </ng-template>
+          <div class="title">Ignored files</div>
+          <p>{{ignoredFiles.length}}</p>
         </div>
 
-        <div *ngIf="ignoredFiles; else noIgnoredFiles">
-          <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="ignoredFiles">
-            <div class="stacked-card on-hover" *ngFor="let item of scroll.viewPortItems" @fade>
-              <div class="columns is-multiline">
-                <div class="column is-10">
-                  <div class="content has-text-left">
-                    <span>{{ item.path }}</span>
-                  </div>
+        <virtual-scroller #scroll class="scroll-window" [parentScroll]="scroll.window" [items]="ignoredFiles">
+          <div class="stacked-card on-hover" *ngFor="let item of scroll.viewPortItems" @fade>
+            <div class="columns is-multiline">
+              <div class="column is-10">
+                <div class="content has-text-left">
+                  <span>{{ item.path }}</span>
                 </div>
               </div>
             </div>
-          </virtual-scroller>
-        </div>
+          </div>
+        </virtual-scroller>
       </div>
     </div>
   </div>

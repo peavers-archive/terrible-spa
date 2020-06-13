@@ -19,7 +19,7 @@ export interface FormField {
 
 export interface Directory {
   id?: string | null;
-  path?: string;
+  path: string | null;
 }
 
 export interface MediaFile {

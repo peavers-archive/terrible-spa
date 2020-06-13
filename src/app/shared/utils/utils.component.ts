@@ -3,19 +3,29 @@ import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@
 import * as moment from 'moment';
 import { EditDialogComponent } from '../components/edit-dialog/edit-dialog.component';
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { DirectoryDialogComponent } from '../components/directory-dialog/directory-dialog.component';
+import { Directory } from '../../core/domain/modules';
 
 export default class Utils {
+
+  static openDirectoryDialog(dialog: MatDialog, directories: Directory[]): MatDialogRef<DirectoryDialogComponent> {
+    return dialog.open(DirectoryDialogComponent, {
+      width: '35vw',
+      data: directories
+    });
+  }
+
   static openConfirmDialog(dialog: MatDialog, dialogData): MatDialogRef<ConfirmDialogComponent> {
     return dialog.open(ConfirmDialogComponent, {
       width: '35vw',
-      data: dialogData,
+      data: dialogData
     });
   }
 
   static openEditDialog(dialog: MatDialog, dialogData): MatDialogRef<EditDialogComponent> {
     return dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData,
+      data: dialogData
     });
   }
 

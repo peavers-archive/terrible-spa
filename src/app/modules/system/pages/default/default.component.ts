@@ -23,7 +23,7 @@ export class DefaultComponent implements OnInit {
 
   timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  directory: Observable<Directory> = new Observable<Directory>();
+  directories: Observable<Directory[]> = new Observable<Directory[]>();
 
   constructor(
     private dialog: MatDialog,
@@ -33,14 +33,15 @@ export class DefaultComponent implements OnInit {
     private searchService: SearchService,
     private mediaFileService: MediaFileService,
     private authService: AuthService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.authService.getUser().subscribe(user => {
       this.user = user;
     });
 
-    this.directory = this.directoryService.findAll();
+    this.directories = this.directoryService.findAll();
   }
 
   addDirectory() {
@@ -71,37 +72,20 @@ export class DefaultComponent implements OnInit {
             path: field.value
           };
 
-          this.directory = this.directoryService.save(directory);
+          this.directoryService.save(directory);
         });
       });
   }
 
-  editDirectory(directory: Directory) {
-    const dialogData: EditDialogData = {
-      title: 'Media Directory',
-      confirmText: 'Save',
-      cancelText: 'Cancel',
-
-      formFields: [
-        {
-          label: 'Directory',
-          value: directory.path,
-          placeholder: 'Directory',
-          isReadOnly: false
-        }
-      ]
-    };
-
-    Utils.openEditDialog(this.dialog, dialogData)
+  editDirectory(directories: Directory[]) {
+    Utils.openDirectoryDialog(this.dialog, directories)
       .afterClosed()
-      .subscribe((response: FormField[]) => {
+      .subscribe((response: Directory[]) => {
         if (response === undefined) {
           return;
         }
 
-        response.forEach(field => {
-          directory.path = field.value;
-
+        response.forEach(directory => {
           this.directoryService.save(directory).subscribe();
         });
       });
@@ -193,11 +177,11 @@ export class DefaultComponent implements OnInit {
   }
 
   taskScanDirectory() {
-    this.directoryService.findAll().subscribe(directory => {
-      this.taskProcessorService
-        .directories(directory.path)
-        .subscribe(() => this.snackBar.open(`Processing ${directory.path}`));
-    });
+    // this.directoryService.findAll().subscribe(directory => {
+    //   this.taskProcessorService
+    //     .directories(directory.path)
+    //     .subscribe(() => this.snackBar.open(`Processing ${directory.path}`));
+    // });
   }
 
   taskGenerateThumbnails() {

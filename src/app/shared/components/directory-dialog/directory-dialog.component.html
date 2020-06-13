@@ -1,0 +1,29 @@
+<div class="level">
+  <div class="level-left">
+    <span class="terrible-title">Modify Directories</span>
+  </div>
+
+  <div class="level-right">
+    <button mat-icon-button>
+      <mat-icon fontSet="material-icons-outlined" (click)="addRow()">add</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div class="columns is-multiline">
+    <div class="column is-12" *ngFor="let dir of directories">
+      <mat-form-field class="is-fullwidth" shouldLabelFloat="false">
+        <input matInput [(ngModel)]="dir.path" [value]="dir.path"/>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" color="primary" mat-button>Cancel</button>
+
+  <button (click)="submit()" [mat-dialog-close]="true" color="primary" mat-raised-button>
+    Confirm
+  </button>
+</div>

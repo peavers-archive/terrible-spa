@@ -16,6 +16,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { SelectBarComponent } from './components/select-bar/select-bar.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { DirectoryDialogComponent } from './components/directory-dialog/directory-dialog.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MomentModule,
+    MomentModule
   ],
   declarations: [
     EditDialogComponent,
@@ -40,6 +41,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     NavigationBarComponent,
     SelectBarComponent,
     PageTitleComponent,
+    DirectoryDialogComponent
   ],
   exports: [
     CommonModule,
@@ -57,9 +59,10 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     SearchBarComponent,
     NavigationBarComponent,
     UserPictureComponent,
-    ConfirmDialogComponent,
+    ConfirmDialogComponent
   ],
-  entryComponents: [EditDialogComponent, ConfirmDialogComponent],
-  providers: [MaterialModule],
+  entryComponents: [EditDialogComponent, ConfirmDialogComponent, DirectoryDialogComponent],
+  providers: [MaterialModule]
 })
-export class SharedModule {}
+export class SharedModule {
+}

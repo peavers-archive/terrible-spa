@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DirectoryService {
   private readonly endpoint;
@@ -18,7 +18,7 @@ export class DirectoryService {
     return this.httpClient.post<Directory>(`${this.endpoint}`, directory);
   }
 
-  findAll(): Observable<Directory> {
-    return this.httpClient.get<Directory>(this.endpoint);
+  findAll(): Observable<Directory[]> {
+    return this.httpClient.get<Directory[]>(this.endpoint);
   }
 }
