@@ -51,7 +51,7 @@ export class MediaFileService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
           mediaFile.ignored = true;
 
@@ -72,7 +72,7 @@ export class MediaFileService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
           this.httpClient.delete<void>(`${this.endpoint}/${mediaFile.id}`).subscribe(() => {
             this.router.navigate(['/']).then(() => this.snackBar.open(`Successfully deleted ${mediaFile.name}`));
@@ -91,14 +91,13 @@ export class MediaFileService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
-          mediaFiles.forEach((mediaFile) => {
+          mediaFiles.forEach(mediaFile => {
             this.httpClient.delete<void>(`${this.endpoint}/${mediaFile.id}`).subscribe();
           });
 
-          this.router.navigate(['/'])
-            .then(() => this.snackBar.open(`Successfully deleted ${mediaFiles.length} files`));
+          this.router.navigate(['/']).then(() => this.snackBar.open(`Successfully deleted ${mediaFiles.length} files`));
         }
       });
   }
@@ -113,7 +112,7 @@ export class MediaFileService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
           this.httpClient
             .delete(`${this.endpoint}`)
