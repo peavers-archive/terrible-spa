@@ -7,7 +7,6 @@ import { DirectoryDialogComponent } from '../components/directory-dialog/directo
 import { Directory } from '../../core/domain/modules';
 
 export default class Utils {
-
   static openDirectoryDialog(dialog: MatDialog, directories: Directory[]): MatDialogRef<DirectoryDialogComponent> {
     return dialog.open(DirectoryDialogComponent, {
       width: '35vw',
