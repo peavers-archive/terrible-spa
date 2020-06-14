@@ -3,12 +3,13 @@ import { Observable } from 'rxjs';
 import { SelectService } from '../../../core/services/select-service';
 import { MediaListService } from '../../../core/services/media-list.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MediaList } from '../../../core/domain/modules';
+import { MediaFile, MediaList } from '../../../core/domain/modules';
+import { MediaFileService } from '../../../core/services/media-file.service';
 
 @Component({
   selector: 'app-select-bar',
   templateUrl: './select-bar.component.html',
-  styleUrls: ['./select-bar.component.scss'],
+  styleUrls: ['./select-bar.component.scss']
 })
 export class SelectBarComponent implements OnInit {
   mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();
@@ -18,8 +19,10 @@ export class SelectBarComponent implements OnInit {
   constructor(
     private selectService: SelectService,
     private mediaListService: MediaListService,
+    private mediaFileService: MediaFileService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.favourites = this.mediaListService.findFavourite();
@@ -29,7 +32,7 @@ export class SelectBarComponent implements OnInit {
   selectedLabel(): string {
     const selectedCount = this.selectService.selected.length;
 
-    return selectedCount == 1 ? selectedCount + ' item selected' : selectedCount + ' items selected';
+    return selectedCount === 1 ? selectedCount + ' item selected' : selectedCount + ' items selected';
   }
 
   clear(): void {
@@ -41,16 +44,36 @@ export class SelectBarComponent implements OnInit {
 
     this.mediaListService
       .save(mediaList)
-      .subscribe(() => this.snackBar.open(`Added ${this.selectService.selected.length} videos to ${mediaList.name}`));
+      .subscribe(() => {
+        this.snackBar.open(`Added ${this.selectService.selected.length} videos to ${mediaList.name}`);
+
+        this.clear();
+      });
   }
 
   deleteSelected(): void {
-    this.snackBar.open(`Deleted ${this.selectService.selected.length} videos from storage`);
+
+
+
+    this.mediaFileService.deleteBulk(this.selectService.selected);
   }
 
   createMediaList(): void {
     this.mediaListService.createWithBulk(this.selectService.selected.length, this.selectService.selected);
 
     this.clear();
+  }
+
+  isInList(mediaList: MediaList, video: MediaFile) {
+    return mediaList.mediaFiles.some((value) => value.id === video.id);
+  }
+
+  deleteById() {
+  }
+
+  recreateThumbnails() {
+  }
+
+  ignoreMediaFile() {
   }
 }

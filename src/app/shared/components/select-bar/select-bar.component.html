@@ -2,6 +2,7 @@
   <div class="navbar-brand">
     terrible.io
   </div>
+
   <div class="navbar-start">
     <div class="navbar-item">
       <div class="selected-count">{{ selectedLabel() }}</div>
@@ -15,34 +16,29 @@
 
   <div class="navbar-end">
     <div class="navbar-item" *ngIf="favourites | async as favourites">
-      <button (click)="addToList(favourites)" mat-icon-button matTooltip="Add to library">
-        <mat-icon>add_to_queue</mat-icon>
+      <button mat-icon-button [matTooltip]="'Add all to library'" (click)="addToList(favourites)">
+        <mat-icon>favorite_border</mat-icon>
       </button>
     </div>
-
     <div class="navbar-item">
-      <button [matMenuTriggerFor]="mediaListMenu" mat-icon-button matTooltip="Add to collection">
-        <mat-icon aria-label="Add to collection">playlist_add</mat-icon>
-      </button>
-
-      <!-- List sub content -->
-      <mat-menu #mediaListMenu="matMenu">
-        <ng-template matMenuContent>
-          <button (click)="createMediaList()" mat-menu-item>New collection</button>
-
-          <div *ngFor="let mediaList of mediaLists | async">
-            <button (click)="addToList(mediaList)" mat-menu-item>
-              {{ mediaList.name }}
-            </button>
-          </div>
-        </ng-template>
-      </mat-menu>
-    </div>
-
-    <div class="navbar-item">
-      <button mat-icon-button matTooltip="Delete forever" (click)="deleteSelected()">
-        <mat-icon>delete_forever</mat-icon>
+      <button mat-icon-button [mat-menu-trigger-for]="extraMenu" [matTooltip]="'Extra options'">
+        <mat-icon>more_vert</mat-icon>
       </button>
     </div>
   </div>
 </nav>
+
+<!-- Extra menu content -->
+<mat-menu #extraMenu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="ignoreMediaFile()">
+    Ignore files
+  </button>
+
+  <button mat-menu-item (click)="recreateThumbnails()">
+    Recreate thumbnails
+  </button>
+
+  <button mat-menu-item (click)="deleteSelected()">
+    Delete
+  </button>
+</mat-menu>

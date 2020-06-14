@@ -3,7 +3,7 @@
     <div class="columns is-multiline">
       <div class="column is-12">
         <video width="100%" controls>
-          <source src="{{ mediaFile.id | remoteVideo }}" />
+          <source src="{{ mediaFile.id | remoteVideo }}"/>
         </video>
       </div>
     </div>
@@ -17,12 +17,7 @@
 
           <div class="level-right">
             <div class="level-item" *ngIf="favourites | async as favourites">
-              <button
-                mat-icon-button
-                *ngIf="isInList(favourites, mediaFile); else addToListButton"
-                (click)="removeFromList(favourites, mediaFile)"
-                [matTooltip]="'Remove from library'"
-              >
+              <button mat-icon-button *ngIf="isInList(favourites, mediaFile); else addToListButton" (click)="removeFromList(favourites, mediaFile)" [matTooltip]="'Remove from library'">
                 <mat-icon>favorite</mat-icon>
               </button>
 
@@ -63,7 +58,7 @@
       </button>
 
       <button mat-menu-item (click)="recreateThumbnails(mediaFile)">
-        Generate thumbnails
+        Recreate thumbnails
       </button>
 
       <button mat-menu-item (click)="deleteById(mediaFile)">
@@ -77,7 +72,7 @@
           <div class="columns is-multiline">
             <div class="column is-4" *ngFor="let thumbnail of mediaFile.thumbnails">
               <figure class="image is-3by2">
-                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
+                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
               </figure>
             </div>
           </div>

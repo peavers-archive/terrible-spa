@@ -51,7 +51,7 @@ export class MediaFileService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe(response => {
+      .subscribe((response) => {
         if (response) {
           mediaFile.ignored = true;
 
@@ -72,11 +72,33 @@ export class MediaFileService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe(response => {
+      .subscribe((response) => {
         if (response) {
           this.httpClient.delete<void>(`${this.endpoint}/${mediaFile.id}`).subscribe(() => {
             this.router.navigate(['/']).then(() => this.snackBar.open(`Successfully deleted ${mediaFile.name}`));
           });
+        }
+      });
+  }
+
+  deleteBulk(mediaFiles: MediaFile[]) {
+    const dialogData: DialogData = {
+      title: `Delete ${mediaFiles.length} from disk`,
+      message: 'This is irreversible. We will destroy these media file.',
+      cancelText: 'Cancel',
+      confirmText: 'Confirm'
+    };
+
+    Utils.openConfirmDialog(this.dialog, dialogData)
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          mediaFiles.forEach((mediaFile) => {
+            this.httpClient.delete<void>(`${this.endpoint}/${mediaFile.id}`).subscribe();
+          });
+
+          this.router.navigate(['/'])
+            .then(() => this.snackBar.open(`Successfully deleted ${mediaFiles.length} files`));
         }
       });
   }
@@ -91,7 +113,7 @@ export class MediaFileService {
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe(response => {
+      .subscribe((response) => {
         if (response) {
           this.httpClient
             .delete(`${this.endpoint}`)
