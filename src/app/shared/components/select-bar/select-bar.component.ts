@@ -3,13 +3,14 @@ import { Observable } from 'rxjs';
 import { SelectService } from '../../../core/services/select-service';
 import { MediaListService } from '../../../core/services/media-list.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MediaFile, MediaList } from '../../../core/domain/modules';
+import { MediaList } from '../../../core/domain/modules';
 import { MediaFileService } from '../../../core/services/media-file.service';
+import { TaskProcessorService } from '../../../core/services/task-processor.service';
 
 @Component({
   selector: 'app-select-bar',
   templateUrl: './select-bar.component.html',
-  styleUrls: ['./select-bar.component.scss']
+  styleUrls: ['./select-bar.component.scss'],
 })
 export class SelectBarComponent implements OnInit {
   mediaLists: Observable<MediaList[]> = new Observable<MediaList[]>();
@@ -20,6 +21,7 @@ export class SelectBarComponent implements OnInit {
     private selectService: SelectService,
     private mediaListService: MediaListService,
     private mediaFileService: MediaFileService,
+    private taskProcessorService: TaskProcessorService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -58,13 +60,11 @@ export class SelectBarComponent implements OnInit {
     this.clear();
   }
 
-  isInList(mediaList: MediaList, video: MediaFile) {
-    return mediaList.mediaFiles.some(value => value.id === video.id);
+  recreateThumbnails() {
+    this.taskProcessorService.recreateThumbnailsBulk(this.selectService.selected);
   }
 
-  deleteById() {}
-
-  recreateThumbnails() {}
-
-  ignoreMediaFile() {}
+  ignoreMediaFile() {
+    this.mediaFileService.ignoreMediaFileBulk(this.selectService.selected);
+  }
 }
