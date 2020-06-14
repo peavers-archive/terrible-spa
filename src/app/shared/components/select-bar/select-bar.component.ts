@@ -21,8 +21,7 @@ export class SelectBarComponent implements OnInit {
     private mediaListService: MediaListService,
     private mediaFileService: MediaFileService,
     private snackBar: MatSnackBar
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.favourites = this.mediaListService.findFavourite();
@@ -42,19 +41,14 @@ export class SelectBarComponent implements OnInit {
   addToList(mediaList: MediaList): void {
     mediaList.mediaFiles = mediaList.mediaFiles.concat(this.selectService.selected);
 
-    this.mediaListService
-      .save(mediaList)
-      .subscribe(() => {
-        this.snackBar.open(`Added ${this.selectService.selected.length} videos to ${mediaList.name}`);
+    this.mediaListService.save(mediaList).subscribe(() => {
+      this.snackBar.open(`Added ${this.selectService.selected.length} videos to ${mediaList.name}`);
 
-        this.clear();
-      });
+      this.clear();
+    });
   }
 
   deleteSelected(): void {
-
-
-
     this.mediaFileService.deleteBulk(this.selectService.selected);
   }
 
@@ -65,15 +59,12 @@ export class SelectBarComponent implements OnInit {
   }
 
   isInList(mediaList: MediaList, video: MediaFile) {
-    return mediaList.mediaFiles.some((value) => value.id === video.id);
+    return mediaList.mediaFiles.some(value => value.id === video.id);
   }
 
-  deleteById() {
-  }
+  deleteById() {}
 
-  recreateThumbnails() {
-  }
+  recreateThumbnails() {}
 
-  ignoreMediaFile() {
-  }
+  ignoreMediaFile() {}
 }
