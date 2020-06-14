@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MediaFileService {
   private readonly endpoint: string;
@@ -46,12 +46,12 @@ export class MediaFileService {
       title: `Ignore ${mediaFile.name}`,
       message: 'Ignored files are hidden from view but are not deleted from disk',
       cancelText: 'Cancel',
-      confirmText: 'Confirm',
+      confirmText: 'Confirm'
     };
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
           mediaFile.ignored = true;
 
@@ -67,14 +67,14 @@ export class MediaFileService {
       title: `Ignoring ${mediaFiles.length} media files`,
       message: 'Ignored files are hidden from view but are not deleted from disk',
       cancelText: 'Cancel',
-      confirmText: 'Confirm',
+      confirmText: 'Confirm'
     };
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
-          mediaFiles.forEach((mediaFile) => {
+          mediaFiles.forEach(mediaFile => {
             mediaFile.ignored = true;
             this.save(mediaFile).subscribe();
           });
@@ -89,12 +89,12 @@ export class MediaFileService {
       title: `Delete ${mediaFile.name} from disk`,
       message: 'This is irreversible. We will destroy this media file.',
       cancelText: 'Cancel',
-      confirmText: 'Confirm',
+      confirmText: 'Confirm'
     };
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
           this.httpClient.delete<void>(`${this.endpoint}/${mediaFile.id}`).subscribe(() => {
             this.router.navigate(['/']).then(() => this.snackBar.open(`Successfully deleted ${mediaFile.name}`));
@@ -108,14 +108,14 @@ export class MediaFileService {
       title: `Delete ${mediaFiles.length} from disk`,
       message: 'This is irreversible. We will destroy these media file.',
       cancelText: 'Cancel',
-      confirmText: 'Confirm',
+      confirmText: 'Confirm'
     };
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
-          mediaFiles.forEach((mediaFile) => {
+          mediaFiles.forEach(mediaFile => {
             this.httpClient.delete<void>(`${this.endpoint}/${mediaFile.id}`).subscribe();
           });
 
@@ -129,12 +129,12 @@ export class MediaFileService {
       title: `Delete the database content`,
       message: 'Empty the database. No files will be harmed in this operation.',
       cancelText: 'Cancel',
-      confirmText: 'Confirm',
+      confirmText: 'Confirm'
     };
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe((response) => {
+      .subscribe(response => {
         if (response) {
           this.httpClient
             .delete(`${this.endpoint}`)

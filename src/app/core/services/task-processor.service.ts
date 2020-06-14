@@ -22,7 +22,7 @@ export class TaskProcessorService {
   }
 
   recreateThumbnailsBulk(mediaFiles: MediaFile[]) {
-    mediaFiles.forEach((mediaFile) => {
+    mediaFiles.forEach(mediaFile => {
       this.httpClient.get<MediaList>(`${this.endpoint}/recreate-thumbnails/${mediaFile.id}`).subscribe();
 
       this.snackBar.open(`Queued to recreate thumbnails for ${mediaFiles.length} media files`);
