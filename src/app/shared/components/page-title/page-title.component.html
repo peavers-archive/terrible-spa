@@ -15,7 +15,7 @@
         <button *ngIf="sortButton" mat-icon-button [matMenuTriggerFor]="sortMenu">
           <mat-icon fontSet="material-icons-outlined">sort</mat-icon>
         </button>
-        <mat-menu #sortMenu="matMenu">
+        <mat-menu #sortMenu="matMenu" xPosition="before">
           <button mat-menu-item (click)="sort('createdTime')">
             Created time
           </button>

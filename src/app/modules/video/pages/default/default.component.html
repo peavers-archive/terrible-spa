@@ -1,12 +1,5 @@
 <div class="section" *ngIf="mediaFile">
   <div class="container is-fluid">
-    <div class="columns is-multiline">
-      <div class="column is-12">
-        <video width="100%" controls>
-          <source src="{{ mediaFile.id | remoteVideo }}" />
-        </video>
-      </div>
-    </div>
 
     <div class="columns is-multiline">
       <div class="column is-12">
@@ -21,8 +14,7 @@
                 mat-icon-button
                 *ngIf="isInList(favourites, mediaFile); else addToListButton"
                 (click)="removeFromList(favourites, mediaFile)"
-                [matTooltip]="'Remove from library'"
-              >
+                [matTooltip]="'Remove from library'">
                 <mat-icon>favorite</mat-icon>
               </button>
 
@@ -44,7 +36,7 @@
     </div>
 
     <!-- Playlist menu -->
-    <mat-menu #playlists="matMenu">
+    <mat-menu #playlists="matMenu" xPosition="before">
       <ng-template matMenuContent>
         <button (click)="createMediaList(mediaFile)" mat-menu-item>New collection</button>
 
@@ -73,11 +65,19 @@
 
     <div class="columns is-multiline">
       <div class="column is-12">
+        <video width="100%" controls>
+          <source src="{{ mediaFile.id | remoteVideo }}"/>
+        </video>
+      </div>
+    </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-12">
         <div class="stacked-card">
           <div class="columns is-multiline">
             <div class="column is-4" *ngFor="let thumbnail of mediaFile.thumbnails">
               <figure class="image is-3by2">
-                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
+                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
               </figure>
             </div>
           </div>
