@@ -66,7 +66,7 @@
     <div class="columns is-multiline">
       <div class="column is-12">
         <video width="100%" controls>
-          <source src="{{ mediaFile.id | remoteVideo }}" />
+          <source src="{{ mediaFile.id | remoteVideo }}"/>
         </video>
       </div>
     </div>
@@ -78,7 +78,7 @@
           <div class="columns is-multiline">
             <div class="column is-4" *ngFor="let thumbnail of mediaFile.thumbnails">
               <figure class="image is-3by2">
-                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail" />
+                <img *ngIf="thumbnail | remoteImage as thumbnail" [src]="thumbnail" alt="thumbnail"/>
               </figure>
             </div>
           </div>
@@ -89,6 +89,7 @@
     <!-- Meta data -->
     <div class="columns is-multiline">
       <div class="column is-12">
+
         <div class="stacked-card">
           <div class="columns is-multiline">
             <div class="column is-2">
@@ -99,6 +100,11 @@
                 <span>{{ mediaFile.id }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Name</div>
             </div>
@@ -107,6 +113,11 @@
                 <span>{{ mediaFile.name }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Extension</div>
             </div>
@@ -115,6 +126,11 @@
                 <span>{{ mediaFile.extension }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Size</div>
             </div>
@@ -123,6 +139,11 @@
                 <span>{{ mediaFile.size | fileSize }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Path</div>
             </div>
@@ -131,6 +152,11 @@
                 <span>{{ mediaFile.path }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Thumbnail path</div>
             </div>
@@ -139,6 +165,11 @@
                 <span>{{ mediaFile.thumbnailPath }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Created</div>
             </div>
@@ -147,6 +178,11 @@
                 <span>{{ mediaFile.createdTime | amTimeAgo }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Last accessed</div>
             </div>
@@ -155,6 +191,11 @@
                 <span>{{ mediaFile.lastAccessTime | amTimeAgo }}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="columns is-multiline">
             <div class="column is-2">
               <div class="title">Last modified</div>
             </div>
