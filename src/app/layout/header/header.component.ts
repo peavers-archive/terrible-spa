@@ -34,8 +34,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private mediaListService: MediaListService,
     private searchService: SearchService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.favourites = this.mediaListService.findFavourite();
@@ -50,7 +49,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   search(query: any): void {
-    this.searchService.search(query).subscribe((searchResults) => {
+    this.searchService.search(query).subscribe(searchResults => {
       this.searchResults = searchResults;
       this.noResults = searchResults.length <= 0;
 
