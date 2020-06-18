@@ -17,7 +17,7 @@ export class SearchBarComponent {
   valueChange = new EventEmitter<string | boolean>();
 
   constructor() {
-    this.debouncer.pipe(debounceTime(250)).subscribe((value) => this.valueChange.emit(value));
+    this.debouncer.pipe(debounceTime(250)).subscribe(value => this.valueChange.emit(value));
   }
 
   @HostListener('window:keyup', ['$event'])
