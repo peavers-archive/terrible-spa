@@ -8,7 +8,7 @@ import Utils from '../../shared/utils/utils.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchService {
   private readonly endpoint;
@@ -17,7 +17,7 @@ export class SearchService {
     this.endpoint = `${environment.api}/search`;
   }
 
-  generateIndex(): Observable<Object> {
+  generateIndex() {
     return this.httpClient.get(`${this.endpoint}/index`);
   }
 
@@ -30,12 +30,12 @@ export class SearchService {
       title: `Delete all search indexes`,
       message: 'This will force a recreation of each search index',
       cancelText: 'Cancel',
-      confirmText: 'Confirm'
+      confirmText: 'Confirm',
     };
 
     Utils.openConfirmDialog(this.dialog, dialogData)
       .afterClosed()
-      .subscribe(response => {
+      .subscribe((response) => {
         if (response) {
           this.httpClient.delete(`${this.endpoint}`).subscribe(() => this.snackBar.open(`Deleting all search indexes`));
         }
