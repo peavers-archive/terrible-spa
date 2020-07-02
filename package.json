@@ -31,7 +31,7 @@
     "ngx-virtual-scroller": "^4.0.3",
     "ngx-webstorage-service": "^4.1.0",
     "postcss-scss": "^2.1.1",
-    "rxjs": "~6.5.5",
+    "rxjs": "~6.6.0",
     "stylefmt": "^6.0.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
