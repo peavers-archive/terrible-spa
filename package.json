@@ -33,7 +33,7 @@
     "postcss-scss": "^2.1.1",
     "rxjs": "~6.6.2",
     "stylefmt": "^6.0.3",
-    "tslib": "^2.0.0",
+    "tslib": "^2.0.1",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
