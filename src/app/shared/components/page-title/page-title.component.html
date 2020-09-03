@@ -16,24 +16,12 @@
           <mat-icon fontSet="material-icons-outlined">sort</mat-icon>
         </button>
         <mat-menu #sortMenu="matMenu" xPosition="before">
-          <button mat-menu-item (click)="sort('createdTime')">
-            Created time
-          </button>
-          <button mat-menu-item (click)="sort('lastAccessTime')">
-            Last accessed time
-          </button>
-          <button mat-menu-item (click)="sort('lastModifiedTime')">
-            Last modified time
-          </button>
-          <button mat-menu-item (click)="sort('lastWatched')">
-            Last watched time
-          </button>
-          <button mat-menu-item (click)="sort('name')">
-            File name
-          </button>
-          <button mat-menu-item (click)="sort('size')">
-            File size
-          </button>
+          <button mat-menu-item (click)="sort('createdTime')">Created time</button>
+          <button mat-menu-item (click)="sort('lastAccessTime')">Last accessed time</button>
+          <button mat-menu-item (click)="sort('lastModifiedTime')">Last modified time</button>
+          <button mat-menu-item (click)="sort('lastWatched')">Last watched time</button>
+          <button mat-menu-item (click)="sort('name')">File name</button>
+          <button mat-menu-item (click)="sort('size')">File size</button>
         </mat-menu>
       </div>
     </div>

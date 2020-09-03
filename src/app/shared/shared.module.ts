@@ -26,7 +26,7 @@ import { DirectoryDialogComponent } from './components/directory-dialog/director
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MomentModule
+    MomentModule,
   ],
   declarations: [
     EditDialogComponent,
@@ -41,7 +41,7 @@ import { DirectoryDialogComponent } from './components/directory-dialog/director
     NavigationBarComponent,
     SelectBarComponent,
     PageTitleComponent,
-    DirectoryDialogComponent
+    DirectoryDialogComponent,
   ],
   exports: [
     CommonModule,
@@ -59,9 +59,9 @@ import { DirectoryDialogComponent } from './components/directory-dialog/director
     SearchBarComponent,
     NavigationBarComponent,
     UserPictureComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   entryComponents: [EditDialogComponent, ConfirmDialogComponent, DirectoryDialogComponent],
-  providers: [MaterialModule]
+  providers: [MaterialModule],
 })
 export class SharedModule {}

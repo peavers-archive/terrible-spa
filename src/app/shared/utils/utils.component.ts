@@ -10,21 +10,21 @@ export default class Utils {
   static openDirectoryDialog(dialog: MatDialog, directories: Directory[]): MatDialogRef<DirectoryDialogComponent> {
     return dialog.open(DirectoryDialogComponent, {
       width: '35vw',
-      data: directories
+      data: directories,
     });
   }
 
   static openConfirmDialog(dialog: MatDialog, dialogData): MatDialogRef<ConfirmDialogComponent> {
     return dialog.open(ConfirmDialogComponent, {
       width: '35vw',
-      data: dialogData
+      data: dialogData,
     });
   }
 
   static openEditDialog(dialog: MatDialog, dialogData): MatDialogRef<EditDialogComponent> {
     return dialog.open(EditDialogComponent, {
       width: '35vw',
-      data: dialogData
+      data: dialogData,
     });
   }
 

@@ -1,16 +1,12 @@
 <nav class="navbar top-bar is-fixed-top select-bar">
-  <div class="navbar-brand">
-    terrible.io
-  </div>
+  <div class="navbar-brand">terrible.io</div>
 
   <div class="navbar-start">
     <div class="navbar-item">
       <div class="selected-count">{{ selectedLabel() }}</div>
     </div>
     <div class="navbar-item">
-      <button mat-flat-button (click)="clear()">
-        Deselect all
-      </button>
+      <button mat-flat-button (click)="clear()">Deselect all</button>
     </div>
   </div>
 
@@ -30,15 +26,9 @@
 
 <!-- Extra menu content -->
 <mat-menu #extraMenu="matMenu" xPosition="before">
-  <button mat-menu-item (click)="ignoreMediaFile()">
-    Ignore files
-  </button>
+  <button mat-menu-item (click)="ignoreMediaFile()">Ignore files</button>
 
-  <button mat-menu-item (click)="recreateThumbnails()">
-    Recreate thumbnails
-  </button>
+  <button mat-menu-item (click)="recreateThumbnails()">Recreate thumbnails</button>
 
-  <button mat-menu-item (click)="deleteSelected()">
-    Delete
-  </button>
+  <button mat-menu-item (click)="deleteSelected()">Delete</button>
 </mat-menu>

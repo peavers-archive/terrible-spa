@@ -50,17 +50,11 @@
 
     <!-- Extra menu content -->
     <mat-menu #extraMenu="matMenu" xPosition="before">
-      <button mat-menu-item (click)="ignoreMediaFile(mediaFile)">
-        Ignore file
-      </button>
+      <button mat-menu-item (click)="ignoreMediaFile(mediaFile)">Ignore file</button>
 
-      <button mat-menu-item (click)="recreateThumbnails(mediaFile)">
-        Recreate thumbnails
-      </button>
+      <button mat-menu-item (click)="recreateThumbnails(mediaFile)">Recreate thumbnails</button>
 
-      <button mat-menu-item (click)="deleteById(mediaFile)">
-        Delete
-      </button>
+      <button mat-menu-item (click)="deleteById(mediaFile)">Delete</button>
     </mat-menu>
 
     <div class="columns is-multiline">

@@ -6,7 +6,7 @@ import { Directory } from '../../../core/domain/modules';
   selector: 'app-edit-dialog',
   templateUrl: './directory-dialog.component.html',
   styleUrls: ['./directory-dialog.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DirectoryDialogComponent {
   directories: Directory[];
@@ -21,7 +21,7 @@ export class DirectoryDialogComponent {
   addRow() {
     const directory: Directory = {
       id: null,
-      path: ''
+      path: '',
     };
 
     this.directories.push(directory);

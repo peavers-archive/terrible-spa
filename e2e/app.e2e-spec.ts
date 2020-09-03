@@ -1,6 +1,6 @@
 import { TerribleSpaPage } from './app.po';
 
-describe('terrible-spa App', function() {
+describe('terrible-spa App', function () {
   let page: TerribleSpaPage;
 
   beforeEach(() => {

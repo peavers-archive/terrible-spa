@@ -16,7 +16,7 @@ import Utils from '../../../../shared/utils/utils.component';
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: Utils.fadeAnimation()
+  animations: Utils.fadeAnimation(),
 })
 export class DefaultComponent implements OnInit {
   user: User;
@@ -36,7 +36,7 @@ export class DefaultComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.getUser().subscribe(user => {
+    this.authService.getUser().subscribe((user) => {
       this.user = user;
     });
 
@@ -54,9 +54,9 @@ export class DefaultComponent implements OnInit {
           label: 'Directory',
           value: '',
           placeholder: 'Directory',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -66,9 +66,9 @@ export class DefaultComponent implements OnInit {
           return;
         }
 
-        response.forEach(field => {
+        response.forEach((field) => {
           const directory: Directory = {
-            path: field.value
+            path: field.value,
           };
 
           this.directoryService.save(directory);
@@ -84,7 +84,7 @@ export class DefaultComponent implements OnInit {
           return;
         }
 
-        response.forEach(directory => {
+        response.forEach((directory) => {
           this.directoryService.save(directory).subscribe();
         });
       });
@@ -102,16 +102,16 @@ export class DefaultComponent implements OnInit {
           ngModel: '',
           value: this.user.displayName,
           placeholder: 'Name',
-          isReadOnly: false
+          isReadOnly: false,
         },
         {
           label: 'Email',
           ngModel: '',
           value: this.user.email,
           placeholder: 'Email',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -135,9 +135,9 @@ export class DefaultComponent implements OnInit {
           ngModel: '',
           value: this.user.uid,
           placeholder: 'Unique identifier',
-          isReadOnly: true
-        }
-      ]
+          isReadOnly: true,
+        },
+      ],
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
@@ -161,9 +161,9 @@ export class DefaultComponent implements OnInit {
           ngModel: '',
           value: this.timezone,
           placeholder: 'Name',
-          isReadOnly: false
-        }
-      ]
+          isReadOnly: false,
+        },
+      ],
     };
 
     Utils.openEditDialog(this.dialog, dialogData)
