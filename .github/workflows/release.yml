@@ -22,10 +22,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Run npm build:prod
+      - name: Run npm build
         run: |
           npm ci
-          npm run build:prod
+          npm run build
 
   deploy:
     name: Deploy
