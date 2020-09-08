@@ -11,6 +11,12 @@
   </div>
 
   <div class="navbar-end">
+    <div class="navbar-item">
+      <button mat-icon-button [mat-menu-trigger-for]="playlistMenu" [matTooltip]="'Add all to collection'">
+        <mat-icon fontSet="material-icons-outlined">video_library</mat-icon>
+      </button>
+    </div>
+
     <div class="navbar-item" *ngIf="favourites | async as favourites">
       <button mat-icon-button [matTooltip]="'Add all to library'" (click)="addToList(favourites)">
         <mat-icon>favorite_border</mat-icon>
@@ -23,6 +29,15 @@
     </div>
   </div>
 </nav>
+
+<!-- Playlist menu content -->
+<mat-menu #playlistMenu="matMenu" xPosition="before">
+  <div *ngIf="mediaLists | async as playlists">
+    <div *ngFor="let list of playlists">
+      <button mat-menu-item (click)="addToList(list)">{{list.name}}</button>
+    </div>
+  </div>
+</mat-menu>
 
 <!-- Extra menu content -->
 <mat-menu #extraMenu="matMenu" xPosition="before">
