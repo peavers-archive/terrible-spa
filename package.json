@@ -24,7 +24,7 @@
     "@angular/router": "~10.1.0",
     "bulma": "^0.9.0",
     "codelyzer": "^6.0.0",
-    "firebase": "^7.19.1",
+    "firebase": "^7.20.0",
     "moment": "^2.27.0",
     "ngx-moment": "^5.0.0",
     "ngx-virtual-scroller": "^4.0.3",
