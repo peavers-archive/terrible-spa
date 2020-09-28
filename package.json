@@ -29,7 +29,7 @@
     "ngx-moment": "^5.0.0",
     "ngx-virtual-scroller": "^4.0.3",
     "ngx-webstorage-service": "^4.1.0",
-    "postcss-scss": "^3.0.1",
+    "postcss-scss": "^3.0.2",
     "rxjs": "~6.6.3",
     "stylefmt": "^6.0.3",
     "tslib": "^2.0.1",
