@@ -33,10 +33,11 @@ const routes: Routes = [
   imports: [
     AngularFireAuthGuardModule,
     RouterModule.forRoot(routes, {
-      useHash: false,
-      scrollPositionRestoration: 'enabled',
-      onSameUrlNavigation: 'reload',
-    }),
+    useHash: false,
+    scrollPositionRestoration: 'enabled',
+    onSameUrlNavigation: 'reload',
+    relativeLinkResolution: 'legacy'
+}),
   ],
   exports: [RouterModule],
   providers: [AngularFireAuthGuard],
