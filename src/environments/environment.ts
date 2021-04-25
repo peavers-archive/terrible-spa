@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
 
-  api: 'http://***REDACTED-IP***:6961/api',
+  api: 'http://localhost:8080',
 
   firebase: {
     apiKey: '***REDACTED***',

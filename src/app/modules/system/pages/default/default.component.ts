@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
-import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { Directory, EditDialogData, FormField } from '../../../../core/domain/modules';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,6 +9,8 @@ import { TaskProcessorService } from '../../../../core/services/task-processor.s
 import { SearchService } from '../../../../core/services/search.service';
 import { MediaFileService } from '../../../../core/services/media-file.service';
 import Utils from '../../../../shared/utils/utils.component';
+import firebase from "firebase";
+import User = firebase.User;
 
 @Component({
   selector: 'app-profile',

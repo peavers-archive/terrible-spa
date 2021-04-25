@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth, User } from 'firebase/app';
 
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import firebase from "firebase";
+import auth = firebase.auth;
+import User = firebase.User;
 
 @Injectable({
   providedIn: 'root',
