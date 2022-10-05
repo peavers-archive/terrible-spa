@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout master
-        uses: actions/checkout@master
+        uses: actions/checkout@v3.1.0
 
       - name: Using Node ${{ matrix.node-version }}
         uses: actions/setup-node@master
@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout master
-        uses: actions/checkout@master
+        uses: actions/checkout@v3.1.0
 
       - name: Build and push docker container
         uses: HurricanKai/Publish-Docker-Github-Action@master
